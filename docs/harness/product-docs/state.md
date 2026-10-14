@@ -65,6 +65,10 @@ round: 1
 - 2026-10-14：owner 同意第一批上線並授權推送 main（G5、G7）。本機 git 防護掛鉤擋下 Builder 的推送指令，由 owner 自行推送。
 - 2026-10-14：owner 第二批方向：認知負荷以 Sweller 2023 綜述為主；自我解釋主要依據季清華（Michelene T. H. Chi）的研究
   （取代 brief 以 Tan 2025、Bisra 2018 為主的文獻池；其他文獻可輔助）；KLI 由 owner 稍後提供參考資料，收到前不開工。
+- 2026-10-14：owner 提供認知負荷的 Sweller 2024 與 Paas & van Merriënboer 2020 出版社 PDF。
+- 2026-10-14：自我解釋：Bisra et al. 2018 用第一作者 SFU 博士論文第 2 章（改寫自期刊文）為依據，只採與期刊摘要核對過的數字
+  （69 個效果量、g = .55），核對紀錄註明版本。Tan et al. 2025 找不到全文，放延伸閱讀，owner 裁定**不標**「本文僅依據摘要」
+  （覆寫 spec-slice3 R23 第 2 點對本篇的要求）；閱讀指引仍只寫摘要明寫的內容。
 
 ## Decisions by Builder
 - Builder: 2026-10-14 slice 2 的 state 封存為 `state-slice2.md`，本檔改記 slice 3。
