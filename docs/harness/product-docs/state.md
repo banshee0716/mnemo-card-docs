@@ -4,7 +4,7 @@
 slug: product-docs
 slice: "3b"
 stage: SPEC
-holder: builder
+holder: human
 tier: LOW
 gates_passed: [G1, G2A, G2B]
 open_p0p1: 0
@@ -82,3 +82,5 @@ round: 1
 - Builder: 2026-10-14 第一批四份文案 S6 全部 PASS（verification/content-ls-{index,retrieval-practice,spaced-practice,generative-learning}.md）；送 owner 審。
 - Builder: 2026-10-14 第一批上站（37358c5）：四頁 mdx 由 copy 產生（同步腳本只去 HTML 註解、導讀頁去文末兩節並加 prev: false）；側欄「學習科學」、首頁入口；測試 AC19–AC24 常數、PAGES、目錄；AC22 加 APA 回歸斷言（不得殘留中文式引用）。`npm test` 89 passed。
 - Builder: 2026-10-14 第一批推送前，先平行查證第二批（10、11）的文獻；只蒐集事實，不動網站，第二批上站仍等第一批 RELEASED。
+- Builder: 2026-10-14 〈自我解釋〉Chi (2000) 專章沒有章節 DOI（重印本只有書級 DOI，不能當章節 DOI），參考文獻連到作者實驗室（ASU）公開該章的頁面：APA 7 允許附可取得的網址，且讀者能直接讀到全文；偏離 spec-slice3 R23 第 1 點「沒有 DOI 才用出版社頁」，此處記錄理由（S6 F4）。
+- Builder: 2026-10-14 第二批〈自我解釋〉〈認知負荷理論〉文案 S6 全部 PASS（verification/content-ls-self-explanation.md、content-ls-cognitive-load.md）；送 owner 審。KLI 等 owner 資料。
