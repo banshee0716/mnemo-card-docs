@@ -13,8 +13,10 @@
 
 ## 審查範圍
 
-- 審查範圍：`492e030...HEAD`（指令以 `--base 492e030` 傳入；HEAD 是加入本 packet 的提交）。
-  492e030 之前只有 G1／G2 的 harness 文件，不在範圍內。
+- 審查範圍：`fa5a923...HEAD`（指令以 `--base fa5a923` 傳入；HEAD 是加入本 packet 的提交）。
+  fa5a923 之前只有 G1／G2 的 harness 文件，不在範圍內。
+- 範圍內另含預審後的兩項 owner 要求：移除側欄外部連結群組（spec R6／AC4 已改），以及介面整理
+  （`src/styles/custom.css`、Logo 改為品牌方塊、首頁改用 splash hero，只改樣式與版型、不動文章文字）。
 - 範圍內的關注面（請在摘要中說明你涵蓋了哪些）：
   1. **建置與設定**：`package.json`、`package-lock.json`（只看依賴是否鎖定精確版本）、`.npmrc`、`astro.config.mjs`、
      `src/content.config.ts`、`src/content/i18n/zh-TW.json`、`src/styles/custom.css`、`src/assets/logo.svg`、`public/favicon.svg`。
@@ -37,18 +39,19 @@
 
 ## 驗證證據（Builder 提供；你不能執行測試，請判斷其可信度）
 
-- G4（全新 opus 子代理，乾淨 clone @ cea85bf）：`npm ci && npm run build` exit 0，`npm test` 43 passed，
+- G4（全新 opus 子代理，乾淨 clone @ d6fc960）：`npm ci && npm run build` exit 0，`npm test` 43 passed，
   AC 對照與變異實驗見 `state.md` § Evidence (G4)。
 - 各票驗收：全新子代理在乾淨 clone 執行，記錄在 `state.md` § Decisions by Builder。
 - 內容核對：`verification/content-first-use.md`（62 PASS）、`content-mnemo-study-cards.md`（35 PASS）、
   `content-getting-started.md`（52 PASS），FAIL 皆 0。
-- 預審修正後（b2abc51）：`npm test` 43 passed（測試改在 4399 埠）。
+- 預審修正後（61e3dbb）：`npm test` 43 passed（測試改在 4399 埠）。
 
 ## 已處理的預審發現（Builder 內部預審，不是 Reviewer 回合；請確認是否真正關閉）
 
 - 預審 P1：G2 審查原文（`reviews/product-docs-s1-g2a-r1.md`）與 spec R9 含主程式檔案路徑、帳號與寄信設定。
-  已在工作樹以「[主程式內部細節]」取代，spec AC13 搜尋擴大到全儲存庫。**Git 歷史（含已推送到公開 origin/main 的
-  26123a3）仍有原文**；是否改寫歷史並強制推送待 owner 決定。請確認工作樹已無殘留，並評估 AC13 新搜尋是否足夠。
+  已以「[主程式內部細節]」取代，並依 owner 裁定改寫全部歷史（每個提交都已替換，最後的檔案內容不變），
+  GitHub 上的儲存庫刪除重建，舊提交不再存在；spec AC13 搜尋擴大到全儲存庫。請確認範圍內的每個提交都已無殘留，
+  並評估 AC13 新搜尋是否足夠。
 - 預審 P2：Playwright 重用 4321 上手動開的 preview → 改為 4399 且 `reuseExistingServer: false`。
 - 預審 P2：AC10 斷言太窄 → 第一篇全文禁止「「忘記密碼？」」，提到「建立帳號」的句子必須含「不開放使用」。
 
@@ -67,3 +70,4 @@
 2. 工作流在第一次推送 `main` 時，有沒有會讓部署失敗或部署未測試內容的情況？
 3. 範圍內的公開文件是否還有主程式未公開的細節、secret 或個人信箱？
 4. 有沒有實作超出或不足 spec 的地方（例如側欄、上下篇、首頁入口、繁中字串覆寫、字型與配色）？
+5. 介面整理後，標題層級、對比、鍵盤操作與手機版面是否仍符合 spec R4、R7、R8 與 AC6–AC8？

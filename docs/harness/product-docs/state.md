@@ -18,15 +18,15 @@ round: 1
 - intent：`docs/harness/product-docs/intent.md`（owner G1 2026-10-14）
 - spec：`docs/harness/product-docs/spec.md`（G2A＋G2B r1 合審，修完關閉，2026-10-14）
 - tickets：`docs/harness/product-docs/tickets/` 01–04（同上）
-- what is left：G6A＋G6B 一輪 Codex 合審（packet：handoff-1-final-review.md，範圍 492e030...HEAD），等 owner 在本儲存庫發動；之後 G5、G7。
-- blockers：Git 歷史（已推送的 26123a3）含主程式內部細節，是否改寫歷史並強制推送待 owner 決定。
+- what is left：G6A＋G6B 一輪 Codex 合審（packet：handoff-1-final-review.md，範圍 fa5a923...HEAD），等 owner 在本儲存庫發動；之後 G5、G7。
+- blockers：GitHub 儲存庫待 owner 刪除後重建（見 § Decisions by human 2026-10-14 外洩處理）。
 
 ## Gates
 - [x] G1 intent approved by human（2026-10-14）
 - [x] G2A spec reviewed（fresh opus r1 NEEDS FIXES → F1–F10 修完，依 owner 裁定不複審；reviews/product-docs-s1-g2a-r1.md）
 - [x] G2B tickets reviewed（同一輪合審）
 - [x] G3 conditional checkpoint（LOW 不適用）
-- [x] G4 verified（全新 opus 子代理，乾淨 clone @ cea85bf，2026-10-14）
+- [x] G4 verified（全新 opus 子代理，乾淨 clone @ d6fc960，2026-10-14）
 - [ ] G5 accepted by human
 - [ ] G6A task review（Codex，與 G6B 合一輪）
 - [ ] G6B code review
@@ -36,7 +36,7 @@ round: 1
 | Acceptance criterion | Check | Result/output ref |
 | --- | --- | --- |
 | AC1 | 乾淨 clone `npm ci && npm run build`（Node 24.21.0） | EXIT=0；dist 四頁＋pagefind（zh-tw page_count 4） |
-| AC2、AC3、AC6、AC8、AC9 | `npm test`，四頁各跑（AC8 淺色＋深色） | 43 passed @ cea85bf |
+| AC2、AC3、AC6、AC8、AC9 | `npm test`，四頁各跑（AC8 淺色＋深色） | 43 passed @ d6fc960 |
 | AC4 | 側欄順序與外部連結、三篇文章目錄、R8 上下篇逐頁斷言 | PASS；調換側欄群組、拿掉 `next: false` 時測試變紅 |
 | AC5 | 鍵盤開搜尋：「熟悉度」→第一篇；「卡包」→技能文章 | PASS |
 | AC7 | 跳轉連結、桌機側欄、手機選單 Enter／Esc、手機文章目錄、搜尋 | PASS（G4 後補強：Tab 走到手機目錄與文章連結，43 passed） |
@@ -60,6 +60,9 @@ round: 1
 - 2026-10-14：owner 決定先跑 G6（一輪 Codex 合審）再做 G5 驗收，讓 G5 看到最終版本。
 - 2026-10-14：owner 裁定移除側欄「Mnemo-Card」外部連結群組（開啟 Mnemo-Card、產品首頁），側欄只放文章（spec R6、AC4 已改）；
   並要求參考產品官網首頁與 DDIA 文件站（ddia.vonng.com/tw/ch2/）整理介面；並要求慎重處理 G2 審查原文外洩。
+- 2026-10-14：外洩處理。owner 裁定刪除 GitHub 上的儲存庫並重建，遠端 main 只放到原本公開的位置
+  （乾淨版 fa5a923，對應舊 492e030，不含工作流、不觸發部署）。理由：查證 GitHub 仍可用 SHA 打開被強制推送取代的
+  舊提交（含個人信箱的 5fe8c1f、含主程式內部細節的 26123a3），強制推送無法清除。
 
 ## Decisions by Builder
 - Builder: 2026-10-14 以 `npm view` 查證並鎖定：`astro` 7.3.8、`@astrojs/starlight` 0.42.6、
@@ -119,7 +122,7 @@ round: 1
 - Builder: G4 驗證者的 P3 建議中，AC7 兩項已補強（手機文章目錄改用 Tab 走到再 Enter；側欄改斷言走到文章連結）。
   其餘 P3 不處理：AC3 不遞迴檢查 CSS `url()` 字型分片（四頁互相連結，頁面層級已完整）；文章目錄只在桌機斷言；
   建置時 Starlight 的 404 內容項警告（自動產生 404 頁，無影響）。
-- Builder: G6 正式審查前由全新 opus 子代理預審（範圍 73eef06..67cab0c）：G6A、G6B 皆 APPROVE AFTER FIXES，
+- Builder: G6 正式審查前由全新 opus 子代理預審（範圍 73eef06..f46d100）：G6A、G6B 皆 APPROVE AFTER FIXES，
   1 個 P1、2 個 P2、1 個 P3。處理如下：
   - P1：G2 審查原文含主程式的檔案路徑與帳號、寄信設定，且已在公開的 origin/main。已將公開檔改以
     「[主程式內部細節]」取代，未刪節原文存於主程式儲存庫 `docs/harness/product-docs/`（未追蹤）；spec R9 的
@@ -142,3 +145,12 @@ round: 1
     下方沿用原有段落與文章卡片；首頁因此沒有側欄與目錄，原本測在首頁的側欄鍵盤測試改到文章頁。
   - 卡片、上下篇、表格統一圓角與淡邊框。新增 `--mc-active-fg`、`--mc-muted` 讓兩種主題的對比都達 AA（axe 驗證）。
   - 截圖：`evidence/ui-*.png`（淺色、深色、手機）。
+
+- Builder: 歷史改寫：在獨立 clone 以 `git filter-branch --tree-filter` 對全部 15 個提交套用相同替換（只在原文存在時替換），
+  驗證：最後的 tree 與改寫前相同、提交數與訊息與日期相同、身分只有 noreply、全歷史搜尋只剩無害命中
+  （標題中的「Gmail」一詞、spec 與 ticket 中的搜尋指令本身）。本機 main 已切到新歷史；舊歷史打包為本機備份
+  （scratchpad，不留分支）。新舊 SHA 對照：73eef06 不變；26123a3→725f8e8、117f21f→1b82f6e、492e030→fa5a923、
+  fe28821→2835059、1d67eab→197ba22、51e18fa→1a0bf7d、b89d3e3→911f255、65a70d4→bdccda4、cea85bf→d6fc960、
+  67cab0c→f46d100、b2abc51→61e3dbb、5d4d03a→7d212c4、9af07a4→8ab5910、350433e→1c900ba。
+  本檔較早段落提到的舊 SHA 依此表對照。
+- Builder: gh 權杖沒有 `delete_repo` 權限，刪庫由 owner 在 GitHub 設定頁執行；重建（同名、公開、同描述與功能開關）與推送 fa5a923 由 Builder 執行。
