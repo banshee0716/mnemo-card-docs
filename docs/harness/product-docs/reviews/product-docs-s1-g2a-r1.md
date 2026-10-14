@@ -3,7 +3,7 @@
 - review-id: product-docs-s1-g2a-r1   gate: G2A（與 G2B 合審，owner 裁定）
 - review type: initial  lens: combined（spec＋tickets）
 - reviewer: fresh-context Claude opus 子代理（LOW 輕量流程）
-- head SHA: 5fe8c1f1de1dc565a4510d2199a5c6bd34bffa2f
+- head SHA: 5fe8c1f1de1dc565a4510d2199a5c6bd34bffa2f（2026-10-14 依 owner 授權改寫作者身分後，同一內容的提交為 73eef06）
 - raw verdict: NEEDS FIXES
 - findings returned: 10 → recorded as F1–F10 in findings.md
 
