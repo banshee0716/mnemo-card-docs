@@ -3,10 +3,10 @@
 ```harness
 slug: product-docs
 slice: "2"
-stage: BUILT
+stage: RELEASED
 holder: human
 tier: LOW
-gates_passed: [G1, G2A, G2B, G4, G5, G6A, G6B]
+gates_passed: [G1, G2A, G2B, G4, G5, G6A, G6B, G7]
 open_p0p1: 0
 gate: G7
 round: 1
@@ -18,7 +18,7 @@ round: 1
 - slice 1：RELEASED 2026-10-14，紀錄封存於 `state-slice1.md`。
 - intent：`docs/harness/product-docs/intent-slice2.md`（owner G1 2026-10-14）
 - spec：`spec-slice2.md`；tickets：`tickets/05-rewrite-skill-article.md`
-- what is left：owner 推送 main（G7）→ S4 線上冒煙。G5、G6 依 owner 豁免。 → owner 審文案 → G4 → G6 → G5 → G7。
+- what is left：none（slice 2 RELEASED 2026-10-14）。下一步：owner 規劃「學習科學」分區，另開工作階段。 → owner 審文案 → G4 → G6 → G5 → G7。
 - blockers：none
 
 ## Gates
@@ -30,7 +30,7 @@ round: 1
 - [x] G5 accepted by human（owner 2026-10-14 同意文案並要求上線，視為驗收）
 - [x] G6A task review（owner 2026-10-14 豁免：要求輕量流程）
 - [x] G6B code review（同上豁免）
-- [ ] G7 released
+- [x] G7 released（2026-10-14，run 38549511926；evidence/s2-g7-s4-smoke.md）
 
 ## Evidence (G4)
 | Acceptance criterion | Check | Result/output ref |
