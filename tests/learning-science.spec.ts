@@ -152,6 +152,15 @@ test('AC23：學習科學各頁的上一篇／下一篇依 R21', async ({ page }
 	}
 });
 
+test('R26：導讀頁清單恰為已上線的文章，依 R19 順序', async ({ page }) => {
+	test.skip(LEARNING_SCIENCE.length === 0, '學習科學尚無上線頁面');
+	await page.goto('learning-science/');
+	const paths = await page
+		.locator('.sl-markdown-content li a[href]')
+		.evaluateAll((as) => as.map((a) => new URL((a as HTMLAnchorElement).href).pathname));
+	expect(paths).toEqual(LEARNING_SCIENCE.filter((p) => !p.isIndex).map((p) => `${BASE}learning-science/${p.slug}`));
+});
+
 test('AC23：首頁有「學習科學」入口連到導讀頁', async ({ page }) => {
 	test.skip(LEARNING_SCIENCE.length === 0, '學習科學尚無上線頁面');
 	await page.goto('');
