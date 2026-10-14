@@ -3,12 +3,12 @@
 ```harness
 slug: product-docs
 slice: "1"
-stage: FIXING
-holder: builder
+stage: BUILT
+holder: human
 tier: LOW
-gates_passed: [G1, G2A, G2B, G4]
+gates_passed: [G1, G2A, G2B, G4, G6A, G6B]
 open_p0p1: 0
-gate: G6A
+gate: G5
 round: 1
 ```
 本區塊是唯一的狀態事實；下方文字都不構成授權。
@@ -18,7 +18,7 @@ round: 1
 - intent：`docs/harness/product-docs/intent.md`（owner G1 2026-10-14）
 - spec：`docs/harness/product-docs/spec.md`（G2A＋G2B r1 合審，修完關閉，2026-10-14）
 - tickets：`docs/harness/product-docs/tickets/` 01–04（同上）
-- what is left：G6 r1 的 F11–F15 已修並由全新 opus 確認關閉（P1 關閉）；最終 G4 VERIFIED @ 5694ca9。下一步 G5（owner 驗收），之後 G7。
+- what is left：G6 r1 的 F11–F15 已修並由全新 opus 確認關閉（P1 關閉）；驗證者追加的 N1–N5 亦確認關閉 @ 3a3d059。下一步 G5（owner 驗收），之後 G7。
 - blockers：none
 
 ## Gates
@@ -28,22 +28,22 @@ round: 1
 - [x] G3 conditional checkpoint（LOW 不適用）
 - [x] G4 verified（全新 opus 子代理，乾淨 clone @ d6fc960；G6 修正後最終重跑 VERIFIED @ 5694ca9，2026-10-14）
 - [ ] G5 accepted by human
-- [ ] G6A task review（Codex r1 2026-10-14：APPROVE AFTER FIXES，F11–F15）
-- [ ] G6B code review（同上，APPROVE AFTER FIXES）
+- [x] G6A task review（Codex r1 2026-10-14：APPROVE AFTER FIXES，F11–F15 修完；全新 opus 確認關閉，依 LOW 流程不複審）
+- [x] G6B code review（同上）
 - [ ] G7 released
 
 ## Evidence (G4)
 | Acceptance criterion | Check | Result/output ref |
 | --- | --- | --- |
 | AC1 | 乾淨 clone `npm ci && npm run build`（Node 24.21.0） | EXIT=0；dist 四頁＋pagefind（zh-tw page_count 4） |
-| AC2、AC3、AC6、AC8、AC9 | `npm test`，四頁各跑（AC8 淺色＋深色） | 43 passed @ d6fc960；最終重跑 43 passed @ 5694ca9（全新 opus，乾淨 clone） |
+| AC2、AC3、AC6、AC8、AC9 | `npm test`，四頁各跑（AC8 淺色＋深色） | 43 passed @ d6fc960；最終重跑 43 passed @ 5694ca9 與 3a3d059（全新 opus，乾淨 clone） |
 | AC4 | 側欄順序與外部連結、三篇文章目錄、R8 上下篇逐頁斷言 | PASS；調換側欄群組、拿掉 `next: false` 時測試變紅 |
 | AC5 | 鍵盤開搜尋：「熟悉度」→第一篇；「卡包」→技能文章 | PASS |
 | AC7 | 跳轉連結、桌機側欄、手機選單 Enter／Esc、手機文章目錄、搜尋 | PASS（G4 後補強：Tab 走到手機目錄與文章連結，43 passed） |
 | AC10 | 第一篇禁用字與步驟句；第三篇下載段一句、無連結無程式碼、無待補待確認 | PASS；加連結時測試變紅 |
 | AC11 | verification/ 三份報告 | first-use 62 PASS；mnemo-study-cards 35 PASS；getting-started 52 PASS；FAIL 皆 0 |
 | AC12 | 部署與線上冒煙 | G7 時執行 |
-| AC13 | `npm run check:public`（逐提交掃描）；提交者身分 | 乾淨（19 個提交）@ 5694ca9；只有 noreply 地址 |
+| AC13 | `npm run check:public`（逐提交掃描）；提交者身分 | 乾淨（19 個提交）@ 5694ca9；乾淨（20 個提交）@ 3a3d059；只有 noreply 地址 |
 
 ## Deviation log
 
@@ -165,3 +165,12 @@ round: 1
     圖片以外一律 `--text` 掃描（含被標為二進位的文字檔）。
   - N4：AC10 只允許核准的那一句忘記密碼說法，其他談到忘記或重設密碼的句子一律失敗。
   - N5：本檔剩餘步驟、G4 證據與推送者描述已更新。
+- Builder: N1–N5 由同一驗證者在乾淨 clone 複核 @ 3a3d059：全部關閉（變異 H2、H3、H4、H4b、H6、C3、JWT、AWS 皆 exit 1；
+  N4 兩個變異皆紅；`npm test` 43 passed；check:public 乾淨 20 個提交，允許清單 10 條逐條確認無害且都有用到）。
+  以下殘餘列為已知限制（P3，樣式比對的先天限制，不處理）：
+  - 「檔案:行號」引用只比對檔名，主程式路徑剛好與本儲存庫檔名相同（如 helpers.ts、package.json）時放行；
+    沒有行號的主程式路徑不會命中；文字檔取名為圖片副檔名會被略過。
+  - AC10 只攔下含「忘記／忘了密碼、重設密碼」的句子；換說法（如「找回密碼」）或刪掉核准句，測試不會發現。
+  - N6：腳本目前版本的每一行都被信任。已在腳本開頭註明新增樣式只能寫一般字樣，不得寫真實專案網址、識別碼或金鑰；
+    腳本改動會出現在 diff 與審查中。
+- Builder: G6A／G6B 關閉。owner 先前裁定 G6 先於 G5，因此階段記為 BUILT、閘門 G5、持有者 owner。
