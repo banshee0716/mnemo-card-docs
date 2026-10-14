@@ -4,11 +4,11 @@
 slug: product-docs
 slice: "2"
 stage: BUILT
-holder: builder
+holder: human
 tier: LOW
-gates_passed: [G1, G2A, G2B, G5, G6A, G6B]
+gates_passed: [G1, G2A, G2B, G4, G5, G6A, G6B]
 open_p0p1: 0
-gate: G4
+gate: G7
 round: 1
 ```
 本區塊是唯一的狀態事實；下方文字都不構成授權。
@@ -18,7 +18,7 @@ round: 1
 - slice 1：RELEASED 2026-10-14，紀錄封存於 `state-slice1.md`。
 - intent：`docs/harness/product-docs/intent-slice2.md`（owner G1 2026-10-14）
 - spec：`spec-slice2.md`；tickets：`tickets/05-rewrite-skill-article.md`
-- what is left：輕量獨立驗證（G4）→ owner 推送 main（G7）→ S4 線上冒煙。G5、G6 依 owner 豁免。 → owner 審文案 → G4 → G6 → G5 → G7。
+- what is left：owner 推送 main（G7）→ S4 線上冒煙。G5、G6 依 owner 豁免。 → owner 審文案 → G4 → G6 → G5 → G7。
 - blockers：none
 
 ## Gates
@@ -26,7 +26,7 @@ round: 1
 - [x] G2A spec reviewed（全新 opus r1 APPROVE AFTER FIXES → F16–F24 修完，不複審；reviews/product-docs-s2-g2a-r1.md）
 - [x] G2B tickets reviewed（同一輪合審）
 - [x] G3 conditional checkpoint（LOW 不適用）
-- [ ] G4 verified
+- [x] G4 verified（全新 sonnet，乾淨 clone @ 580df81：npm test 47 passed、check:public 乾淨；變異 5/6 紅，M5 已補斷言）
 - [x] G5 accepted by human（owner 2026-10-14 同意文案並要求上線，視為驗收）
 - [x] G6A task review（owner 2026-10-14 豁免：要求輕量流程）
 - [x] G6B code review（同上豁免）
@@ -59,3 +59,4 @@ round: 1
   v2 文案草稿記的「深入解析定義差異」是主程式內部詞彙表與技能的差異，讀者看不到，不觸發 intent 第 3 條的停點。
   spec-slice2 R16 仍要求核對者以畫面文字複核。
 - Builder: 文案上站（index.mdx、getting-started.mdx 與 copy 逐字相同；首頁說明句）；測試加 AC14、AC15、AC17、AC18，AC10 下載段改為 owner 同意的兩段；`npm test` 47 passed。
+- Builder: G4 變異 M5（刪光第二篇「卡包」）原本不變紅：Pagefind 對中文逐字比對。AC17 補「正文含卡包」斷言；以 `sed` 把卡包換成資料包重跑 AC17 → 1 failed，還原後 `npm test` 47 passed。

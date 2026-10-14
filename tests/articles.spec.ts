@@ -58,6 +58,9 @@ test('AC5：搜「卡包」找得到 mnemo-study-cards 的文章', async ({ page
 test('AC17：搜「卡包」的結果含第二篇本身', async ({ page }) => {
 	const hrefs = await searchFor(page, '卡包');
 	expect(hrefs.some((h) => h.split('#')[0] === `${BASE}${ABOUT_SKILL}`)).toBe(true);
+	// Pagefind 對中文逐字比對，單靠搜尋擋不住「卡包」被刪光；直接斷言正文含這個詞（spec-slice2 R15 第 3 點）。
+	await page.goto(ABOUT_SKILL);
+	await expect(page.locator('.sl-markdown-content')).toContainText('卡包');
 });
 
 test('AC18：第三篇第 4 節列出三種結果狀態', async ({ page }) => {
