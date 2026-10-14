@@ -1,6 +1,6 @@
 # 07：學習科學〈檢索練習〉（slice 3a）
 contract-freezing: no
-depends-on: []
+depends-on: [06a]
 
 ## 要做什麼
 
@@ -10,7 +10,7 @@ spec-slice3 R22–R25、R27、R28；本篇方向、例子、限制與文獻池�
 2. 文案：`copy/learning-science/retrieval-practice.md`。只用 `research/` 標了頁碼的發現；brief「待查證」說法不符就改寫或刪除。
 3. S6：全新 opus 子代理核對，產出 `verification/content-ls-retrieval-practice.md`；修 FAIL，同一核對者複核 FAIL 列。
 4. 與同批文案一起送 owner；同意後寫進 `src/content/docs/learning-science/retrieval-practice.mdx`（與 copy 逐字相同，只多前言）。
-5. 測試：本篇 h2 清單寫進 AC20 常數；`PAGES`、側欄、上下篇隨 06 的結構加入本篇。
+5. 測試：本篇 h2 清單寫進 AC20 常數；`PAGES`、側欄、上下篇由 06b（第一批）或 13（第二批）統一上站。
 6. 產品段（R25）：有。與產品內範例卡講的檢索練習、建構性檢索說法一致。
 
 ## 測試接縫

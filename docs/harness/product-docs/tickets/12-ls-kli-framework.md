@@ -1,17 +1,19 @@
-# 12：學習科學〈KLI〉（slice 框架）
+# 12：學習科學〈KLI 框架〉（slice 3b）
 contract-freezing: no
-depends-on: [3b]
+depends-on: [第一批 RELEASED]
 
 ## 要做什麼
 
-spec-slice3 R22–R25、R27、R28；本篇方向、例子、限制與文獻池見 brief §4「KLI」。
+spec-slice3 R22–R24、R27、R28；本篇方向、例子、限制與文獻池見 brief §4「6. KLI 框架」。
 
-1. 文獻查證（R24）：由子代理產出 `research/kli-framework.md`（批次內共用文獻寫在第一個用到的檔案）。主幹文獻讀不到 → 停下問 owner。
+1. 文獻查證（R24）：由子代理產出 `research/kli-framework.md`。主幹文獻（Koedinger 等人 2012）讀不到 → 停下問 owner。
 2. 文案：`copy/learning-science/kli-framework.md`。只用 `research/` 標了頁碼的發現；brief「待查證」說法不符就改寫或刪除。
 3. S6：全新 opus 子代理核對，產出 `verification/content-ls-kli-framework.md`；修 FAIL，同一核對者複核 FAIL 列。
 4. 與同批文案一起送 owner；同意後寫進 `src/content/docs/learning-science/kli-framework.mdx`（與 copy 逐字相同，只多前言）。
-5. 測試：本篇 h2 清單寫進 AC20 常數；`PAGES`、側欄、上下篇隨 06 的結構加入本篇。
-第一批 RELEASED
+5. 測試：本篇 h2 清單寫進 AC20 常數（由 13 統一上站）。
+6. 產品段：無；正文不出現 Mnemo-Card 與四種卡型名稱（AC22）。Reinhold 等人 2024、Loibl 等人 2025 說明為借鑑或延伸 KLI 的框架，不是新版 KLI。
+   文獻池只有 3 篇；任一篇降級導致少於 3 筆時停下問 owner（R23 第 4 點）。
+
 ## 測試接縫
 
 S1、S2、S6。

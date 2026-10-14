@@ -2,13 +2,13 @@
 
 ```harness
 slug: product-docs
-slice: "3"
-stage: SPEC
+slice: "3a"
+stage: IMPLEMENT
 holder: builder
 tier: LOW
-gates_passed: [G1]
+gates_passed: [G1, G2A, G2B]
 open_p0p1: 0
-gate: G2
+gate: G4
 round: 1
 ```
 本區塊是唯一的狀態事實；下方文字都不構成授權。
@@ -18,13 +18,13 @@ round: 1
 - slice 1：RELEASED 2026-10-14，封存於 `state-slice1.md`；slice 2：RELEASED 2026-10-14，封存於 `state-slice2.md`。
 - brief：`brief-slice3-learning-science.md`（owner 兩輪討論整理，非 intent）
 - intent：`intent-slice3.md`（owner G1 2026-10-14）
-- what is left：spec-slice3 與工作票 → G2 合審 → 逐篇查證文獻、寫文案、核對 → owner 審文案 → 上站與測試 → G4 → G5 → G7 → S4。
+- what is left：第一批（3a）：06a 骨架 → 07–09 逐篇查證文獻、寫文案、核對 → owner 審文案 → 上站與測試 → G4 → G5 → G7 → S4。
 - blockers：none
 
 ## Gates
 - [x] G1 intent approved by human（2026-10-14）
-- [ ] G2A spec reviewed
-- [ ] G2B tickets reviewed
+- [x] G2A spec reviewed（全新 opus r1 APPROVE AFTER FIXES → F25–F35 修完，不複審；reviews/product-docs-s3-g2-r1.md）
+- [x] G2B tickets reviewed（同一輪合審；工作票改為 06a、06b、07–13）
 - [x] G3 conditional checkpoint（LOW 不適用）
 - [ ] G4 verified
 - [ ] G5 accepted by human
@@ -49,3 +49,10 @@ round: 1
 
 ## Decisions by Builder
 - Builder: 2026-10-14 slice 2 的 state 封存為 `state-slice2.md`，本檔改記 slice 3。
+- Builder: 2026-10-14 spec-slice3 R19 導讀頁側欄文字用「導讀」（brief 寫「學習科學」，與群組名重複）；頁面標題「學習科學導讀」。隨導讀頁文案送 owner。
+- Builder: 2026-10-14 R22 引文格式定為全形括號作者姓氏＋年份（一位／兩位「與」／三位以上「等人」）。
+- Builder: 2026-10-14 為縮短等待，G2 合審與第一批文獻查證（三位 sonnet，產出 `research/`）同時進行；查證只蒐集事實，不實作。
+  若 G2 改動 R24，再補查。另派 sonnet 唯讀擷取主程式正式版讀者看得到的產品事實，供產品段起草（S6 仍獨立核對）。
+- Builder: 2026-10-14 產品事實（主程式 main 5c9454d7 畫面文字）：背面＝概述＋「檢索提示」「自我解釋提示」；評分不影響下次複習；
+  排程整副牌組、兩種固定模式（1、3、7、14、30 天／每 7 天共 8 次），畫面無「最佳化／個人化」字樣；沒有對應生成學習的功能。
+  → 生成學習篇預計不放產品段（R25 第 1 點，S6 確認）；文章用「檢索提示」（編輯器另稱「提取提示」）。
