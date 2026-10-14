@@ -38,3 +38,7 @@ NEEDS FIXES → F1–F10 全部關閉，依 owner 裁定不複審。
 ## F15 [P3] AC3 丟棄跨頁 fragment，壞掉的深連結仍回報成功（tests/helpers.ts:35-65）
 - 失敗情境：連到 ../first-use/#不存在，頁面 200 即通過。
 - Disposition: fixed — AC3 保留站內連結的 fragment，取得目標頁後確認存在對應 id。變異：連到 `../../first-use/#不存在的段落` → 紅燈；連到存在的 `#7-安排下一次練習` → 綠燈。
+
+## Round 1 verdict (2026-10-14)
+G6A APPROVE AFTER FIXES；G6B APPROVE AFTER FIXES → F11–F15 全部修正；F11（P1）由全新 opus 確認關閉（不跑第二輪 Codex，LOW 輕量流程）。
+關閉驗證者另提 N1–N5（P2／P3，無實際洩漏）已處理，見 state.md § Decisions by Builder。

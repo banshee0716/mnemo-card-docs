@@ -7,8 +7,9 @@
  *   2. 提交者身分：作者與提交者只能是 GitHub noreply 地址。
  *   3. 提交訊息：不得含非 noreply 的電子郵件地址。
  *
- * 搜尋樣式只定義在本檔，本檔自身不掃描。歷史中已知無害的命中（例如舊版搜尋指令本身）
- * 以「檔案＋整行文字」逐行列入 ALLOWED，不整檔排除。
+ * 搜尋樣式只定義在本檔；本檔目前版本的每一行視為可信，歷史中曾出現後刪除的行照常判斷。
+ * 歷史中已知無害的命中（例如舊版搜尋指令本身）以「檔案＋整行文字」逐行列入 ALLOWED，不整檔排除。
+ * 圖片以外的檔案一律當文字掃描；package-lock.json 只查憑證與電子郵件。
  *
  * 用法：node scripts/check-public.mjs [<rev-range>]   （預設 HEAD）
  * 結束碼：0 乾淨；1 有命中；2 git 執行失敗。
@@ -19,36 +20,50 @@ import { spawnSync } from 'node:child_process';
 const SELF = 'scripts/check-public.mjs';
 const NOREPLY = '62146316+banshee0716@users.noreply.github.com';
 
-/** 內容樣式（不分大小寫，ERE）。 */
-const CONTENT_PATTERNS = [
+/** 內容樣式（不分大小寫，ERE）。命中後再由 lineProblem() 判斷是否真的有問題。 */
+const STRICT_PATTERNS = [
 	// 主程式與後端
 	'supabase|service_role|memo-card-system|disable_signup|smtp',
 	// 帳號與寄信能力的描述
 	'寄不到|專案成員|手動重設',
-	// 主程式檔案路徑：lib/、components/、app/(…)（前面接 / 或 - 的是套件內路徑，例如 dist/components/）
+	// 主程式檔案路徑：lib/、components/、app/(…)、app/api/（前面接 / 或 - 的是套件內路徑，例如 dist/components/）
 	'(^|[^a-z/-])(lib|components)/[a-z]',
-	'app/\\([a-z]',
-	// 主程式 TSX 檔與 STATUS.md 的行號引用（本儲存庫沒有 .tsx，也沒有 STATUS.md）
-	'\\.tsx:[0-9]',
-	'status\\.md:[0-9]',
-	// 其他切片的 harness 文件路徑（本儲存庫只有 product-docs，下方 HARNESS_OK 過濾）
-	'docs/harness/[a-z0-9-]+/',
+	'(^|[^a-z/-])app/(\\(|api/)',
 	// 環境檔
 	'(^|[^a-z.])\\.env([^a-z]|$)',
-	// 憑證樣式
-	'ghp_[a-z0-9]{20,}|github_pat_[a-z0-9_]{20,}|sk-[a-z0-9_-]{20,}|-----begin [a-z ]*private key-----',
-	// 電子郵件地址（允許的網域在下方 isAllowedEmail 過濾）
-	'[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,}',
 ];
+
+/** 憑證樣式：也用於 package-lock.json。 */
+const SECRET_PATTERNS = [
+	'ghp_[a-z0-9]{20,}|github_pat_[a-z0-9_]{20,}|sk-[a-z0-9_-]{20,}|-----begin [a-z ]*private key-----',
+	'eyj[a-z0-9_-]{10,}\\.[a-z0-9_-]{10,}|akia[0-9a-z]{16}|aiza[0-9a-z_-]{35}',
+];
+
+/** 需要再判斷的樣式：其他切片的 harness 路徑、帶行號的檔案引用、電子郵件。 */
+const HARNESS_RE = 'docs/harness/[a-z0-9-]+/';
+const PATH_REF_RE = '[a-z0-9_./-]+\\.(tsx?|jsx?|mjs|md|sql|json):[0-9]';
+const EMAIL_RE = '[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,}';
+
+const CONTENT_PATTERNS = [...STRICT_PATTERNS, ...SECRET_PATTERNS, HARNESS_RE, PATH_REF_RE, EMAIL_RE];
+
+/** 圖片是真正的二進位檔，不當文字掃描；其他檔案一律當文字掃描（含被標成二進位的文字檔）。 */
+const BINARY_EXCLUDES = ['png', 'jpg', 'jpeg', 'gif', 'webp', 'ico', 'woff', 'woff2'].map(
+	(ext) => `:(exclude,glob)**/*.${ext}`,
+);
 
 const HARNESS_PATH = /docs\/harness\/([a-z0-9-]+)\//gi;
 const HARNESS_OK = new Set(['product-docs']);
+const PATH_REF = /([a-z0-9_./-]+\.(?:tsx?|jsx?|mjs|md|sql|json)):[0-9]/gi;
 
 const EMAIL = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}/gi;
 const ALLOWED_EMAIL = [/@users\.noreply\.github\.com$/i, /^noreply@anthropic\.com$/i, /@example\.com$/i];
 
 /** 歷史中已知無害的整行（檔案、去頭尾空白後的整行文字）。新增前必須確認該行不含真實內部細節。 */
 const ALLOWED = [
+	// 舊版本腳本（5694ca9）的樣式說明註解
+	["scripts/check-public.mjs", "// 主程式檔案路徑：lib/、components/、app/(…)（前面接 / 或 - 的是套件內路徑，例如 dist/components/）"],
+	// G2 審查原文：F3 的建議句列出要搜尋的樣式名稱（`app/(` 等），非實際路徑
+	["docs/harness/product-docs/reviews/product-docs-s1-g2a-r1.md", "- 要改：公開報告的對照欄只寫讀者看得到的證據（畫面文字、操作路徑、核對時的正式版日期）；檔案層級的對照留在主程式儲存庫（與 intent 的內部紀錄同做法）或本機不提交的檔案。AC13 的 `git grep` 擴大到整個儲存庫（排除 AGENTS.md 事實來源段），並加搜 `lib/`、`components/`、`app/(`、`.ts:` 等。"],
 	// G6 r1 Codex 原文：F11 的假設失敗情境（SMTP 一詞），逐字存檔不可改
 	["docs/harness/product-docs/reviews/product-docs-s1-g6ab-r1.md", "相關需求：K2、AC13。證據：命令宣稱擴大到全儲存庫，卻明確排除 spec.md；它也只執行一次 git grep，沒有走訪提交歷史。這正好漏掉先前曾發生洩漏的規格檔與「先提交、後刪除」情況。失敗情境：提交 A 在 spec.md 加入內部路徑、SMTP 設定或憑證，提交 B 在 G4 前刪除；既定命令零輸出，兩個提交 push 後 A 仍能以 SHA 公開存取。影響是不可由普通修正提交清除的隱私／安全洩漏，可能再次需要刪庫重建。"],
 	// 最初版 spec AC13 描述要搜尋的字樣
@@ -87,14 +102,26 @@ function isAllowedEmail(addr) {
 	return ALLOWED_EMAIL.some((re) => re.test(addr));
 }
 
-/** 一行是否只因「允許的電子郵件」或「本儲存庫的 harness 路徑」而命中。 */
-function onlyBenign(text) {
-	const strict = CONTENT_PATTERNS.filter((p) => !p.startsWith('docs/harness') && !p.includes('@'));
-	if (strict.some((p) => new RegExp(p, 'i').test(text))) return false;
-	const emails = text.match(EMAIL) ?? [];
-	if (!emails.every(isAllowedEmail)) return false;
-	const slugs = [...text.matchAll(HARNESS_PATH)].map((m) => m[1].toLowerCase());
-	return slugs.every((slug) => HARNESS_OK.has(slug));
+/** 本儲存庫 HEAD 的檔名（含路徑與檔名本身），用來判斷「檔案:行號」引用是否指向本儲存庫自己的檔案。 */
+function ownFileNames() {
+	const names = new Set();
+	for (const f of git(['ls-tree', '-r', '--name-only', 'HEAD']).split('\n').filter(Boolean)) {
+		names.add(f.toLowerCase());
+		names.add(f.split('/').pop().toLowerCase());
+	}
+	return names;
+}
+
+/** 一行文字是否有問題（命中樣式且不是已知無害的形式）。 */
+function lineProblem(text, ownNames) {
+	if ([...STRICT_PATTERNS, ...SECRET_PATTERNS].some((p) => new RegExp(p, 'i').test(text))) return true;
+	if (!(text.match(EMAIL) ?? []).every(isAllowedEmail)) return true;
+	if (![...text.matchAll(HARNESS_PATH)].every((m) => HARNESS_OK.has(m[1].toLowerCase()))) return true;
+	for (const m of text.matchAll(PATH_REF)) {
+		const ref = m[1].toLowerCase().replace(/^\.?\//, '');
+		if (!ownNames.has(ref) && !ownNames.has(ref.split('/').pop())) return true;
+	}
+	return false;
 }
 
 const allowed = new Set(ALLOWED.map(([f, t]) => `${f}\u0000${t}`));
@@ -103,25 +130,34 @@ const commits = git(['rev-list', range]).split('\n').filter(Boolean);
 const problems = new Map();
 const used = new Set();
 
-for (const sha of commits) {
-	const out = git([
-		'grep', '-n', '-I', '-i', '-E',
-		...CONTENT_PATTERNS.flatMap((p) => ['-e', p]),
-		sha, '--', '.', `:(exclude)${SELF}`, ':(exclude)package-lock.json',
-	]);
+const ownNames = ownFileNames();
+// 本腳本自身：只信任目前版本的每一行（樣式與允許清單）；歷史中曾出現、後來刪掉的行照常判斷。
+const selfLines = new Set(
+	git(['show', `HEAD:${SELF}`]).split('\n').map((l) => l.trim()).filter(Boolean),
+);
+
+function scan(sha, patterns, pathspec) {
+	const out = git(['grep', '-n', '--text', '-i', '-E', ...patterns.flatMap((p) => ['-e', p]), sha, '--', ...pathspec]);
 	for (const line of out.split('\n').filter(Boolean)) {
 		// <sha>:<path>:<lineno>:<text>
 		const m = line.match(/^[0-9a-f]{40}:(.+?):(\d+):(.*)$/);
 		if (!m) continue;
 		const [, file, lineNo, text] = m;
-		if (allowed.has(`${file}\u0000${text.trim()}`)) {
-			used.add(`${file}\u0000${text.trim()}`);
+		const key = `${file}\u0000${text.trim()}`;
+		if (allowed.has(key)) {
+			used.add(key);
 			continue;
 		}
-		if (onlyBenign(text)) continue;
-		const key = `${file}\u0000${text.trim()}`;
+		if (file === SELF && selfLines.has(text.trim())) continue;
+		if (!lineProblem(text, ownNames)) continue;
 		if (!problems.has(key)) problems.set(key, `${sha.slice(0, 7)} ${file}:${lineNo}: ${text.trim().slice(0, 160)}`);
 	}
+}
+
+for (const sha of commits) {
+	scan(sha, CONTENT_PATTERNS, ['.', ':(exclude)package-lock.json', ...BINARY_EXCLUDES]);
+	// lockfile 內容大多是套件路徑，只查憑證與電子郵件。
+	scan(sha, [...SECRET_PATTERNS, EMAIL_RE], ['package-lock.json']);
 }
 
 for (const sha of commits) {
@@ -129,8 +165,10 @@ for (const sha of commits) {
 	for (const who of [ae, ce]) {
 		if (who.trim() !== NOREPLY) problems.set(`id:${sha}:${who}`, `${sha.slice(0, 7)} 提交者身分不是 noreply：${who.trim()}`);
 	}
-	for (const addr of body.match(EMAIL) ?? []) {
-		if (!isAllowedEmail(addr)) problems.set(`msg:${sha}:${addr}`, `${sha.slice(0, 7)} 提交訊息含電子郵件地址：${addr}`);
+	for (const line of body.split('\n')) {
+		if (lineProblem(line, ownNames)) {
+			problems.set(`msg:${sha}:${line}`, `${sha.slice(0, 7)} 提交訊息：${line.trim().slice(0, 160)}`);
+		}
 	}
 }
 

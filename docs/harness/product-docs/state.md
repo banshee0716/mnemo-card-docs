@@ -7,7 +7,7 @@ stage: FIXING
 holder: builder
 tier: LOW
 gates_passed: [G1, G2A, G2B, G4]
-open_p0p1: 1
+open_p0p1: 0
 gate: G6A
 round: 1
 ```
@@ -18,7 +18,7 @@ round: 1
 - intent：`docs/harness/product-docs/intent.md`（owner G1 2026-10-14）
 - spec：`docs/harness/product-docs/spec.md`（G2A＋G2B r1 合審，修完關閉，2026-10-14）
 - tickets：`docs/harness/product-docs/tickets/` 01–04（同上）
-- what is left：G6 r1（Codex）APPROVE AFTER FIXES，F11–F15 待修；P1 修完由全新 opus 確認關閉，最終 HEAD 由全新驗證者重跑 G4；之後 G5、G7。
+- what is left：G6 r1 的 F11–F15 已修並由全新 opus 確認關閉（P1 關閉）；最終 G4 VERIFIED @ 5694ca9。下一步 G5（owner 驗收），之後 G7。
 - blockers：none
 
 ## Gates
@@ -26,7 +26,7 @@ round: 1
 - [x] G2A spec reviewed（fresh opus r1 NEEDS FIXES → F1–F10 修完，依 owner 裁定不複審；reviews/product-docs-s1-g2a-r1.md）
 - [x] G2B tickets reviewed（同一輪合審）
 - [x] G3 conditional checkpoint（LOW 不適用）
-- [x] G4 verified（全新 opus 子代理，乾淨 clone @ d6fc960，2026-10-14）
+- [x] G4 verified（全新 opus 子代理，乾淨 clone @ d6fc960；G6 修正後最終重跑 VERIFIED @ 5694ca9，2026-10-14）
 - [ ] G5 accepted by human
 - [ ] G6A task review（Codex r1 2026-10-14：APPROVE AFTER FIXES，F11–F15）
 - [ ] G6B code review（同上，APPROVE AFTER FIXES）
@@ -36,14 +36,14 @@ round: 1
 | Acceptance criterion | Check | Result/output ref |
 | --- | --- | --- |
 | AC1 | 乾淨 clone `npm ci && npm run build`（Node 24.21.0） | EXIT=0；dist 四頁＋pagefind（zh-tw page_count 4） |
-| AC2、AC3、AC6、AC8、AC9 | `npm test`，四頁各跑（AC8 淺色＋深色） | 43 passed @ d6fc960 |
+| AC2、AC3、AC6、AC8、AC9 | `npm test`，四頁各跑（AC8 淺色＋深色） | 43 passed @ d6fc960；最終重跑 43 passed @ 5694ca9（全新 opus，乾淨 clone） |
 | AC4 | 側欄順序與外部連結、三篇文章目錄、R8 上下篇逐頁斷言 | PASS；調換側欄群組、拿掉 `next: false` 時測試變紅 |
 | AC5 | 鍵盤開搜尋：「熟悉度」→第一篇；「卡包」→技能文章 | PASS |
 | AC7 | 跳轉連結、桌機側欄、手機選單 Enter／Esc、手機文章目錄、搜尋 | PASS（G4 後補強：Tab 走到手機目錄與文章連結，43 passed） |
 | AC10 | 第一篇禁用字與步驟句；第三篇下載段一句、無連結無程式碼、無待補待確認 | PASS；加連結時測試變紅 |
 | AC11 | verification/ 三份報告 | first-use 62 PASS；mnemo-study-cards 35 PASS；getting-started 52 PASS；FAIL 皆 0 |
 | AC12 | 部署與線上冒煙 | G7 時執行 |
-| AC13 | spec 的 `git grep`；提交者身分 | 無輸出；只有 noreply 地址 |
+| AC13 | `npm run check:public`（逐提交掃描）；提交者身分 | 乾淨（19 個提交）@ 5694ca9；只有 noreply 地址 |
 
 ## Deviation log
 
@@ -156,4 +156,12 @@ round: 1
   fe28821→2835059、1d67eab→197ba22、51e18fa→1a0bf7d、b89d3e3→911f255、65a70d4→bdccda4、cea85bf→d6fc960、
   67cab0c→f46d100、b2abc51→61e3dbb、5d4d03a→7d212c4、9af07a4→8ab5910、350433e→1c900ba。
   本檔較早段落提到的舊 SHA 依此表對照。
-- Builder: gh 權杖沒有 `delete_repo` 權限，刪庫由 owner 在 GitHub 設定頁執行；重建（同名、公開、同描述與功能開關）與推送 fa5a923 由 Builder 執行。
+- Builder: gh 權杖沒有 `delete_repo` 權限，刪庫由 owner 在 GitHub 設定頁執行；重建（同名、公開、同描述與功能開關）由 Builder 以 gh 執行；推送 fa5a923 因 owner 的 git 保護規則改由 owner 親自執行。
+- Builder: G6 r1 收尾：全新 opus 確認 F11（P1）關閉、F12–F15 關閉，並在乾淨 clone 重跑 G4：AC1–AC11、AC13 Verified，
+  AC12 留待 G7（43 passed、check:public 乾淨 @ 5694ca9）。驗證者另提 N1–N5（皆無實際洩漏），已處理：
+  - N1：腳本不再整檔排除自己——只信任目前版本的每一行；package-lock.json 改以憑證與電子郵件樣式掃描。
+  - N2：提交訊息逐行套用全部內容規則。
+  - N3：「檔案:行號」引用（ts/tsx/js/mjs/md/sql/json）只允許指向本儲存庫存在的檔案；加主程式 API 路由、JWT、AWS、Google 金鑰樣式；
+    圖片以外一律 `--text` 掃描（含被標為二進位的文字檔）。
+  - N4：AC10 只允許核准的那一句忘記密碼說法，其他談到忘記或重設密碼的句子一律失敗。
+  - N5：本檔剩餘步驟、G4 證據與推送者描述已更新。
