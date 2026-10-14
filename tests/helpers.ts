@@ -144,8 +144,3 @@ export async function tabUntil(page: Page, selector: string, maxTabs = 60) {
 	return false;
 }
 
-/** 側欄的外部連結（spec R6）。 */
-export const PRODUCT_LINKS = [
-	{ text: '開啟 Mnemo-Card', href: 'https://mnemo-card.vercel.app/app' },
-	{ text: '產品首頁', href: 'https://mnemo-card.vercel.app/' },
-];

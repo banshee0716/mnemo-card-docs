@@ -58,6 +58,8 @@ round: 1
 - 2026-10-14：ticket 04 第二篇〈認識 mnemo-study-cards〉與第三篇〈安裝並第一次產卡〉文案同意上站
   （含依核對附註修正的 5 處）。
 - 2026-10-14：owner 決定先跑 G6（一輪 Codex 合審）再做 G5 驗收，讓 G5 看到最終版本。
+- 2026-10-14：owner 裁定移除側欄「Mnemo-Card」外部連結群組（開啟 Mnemo-Card、產品首頁），側欄只放文章（spec R6、AC4 已改）；
+  並要求參考產品官網首頁與 DDIA 文件站（ddia.vonng.com/tw/ch2/）整理介面；並要求慎重處理 G2 審查原文外洩。
 
 ## Decisions by Builder
 - Builder: 2026-10-14 以 `npm view` 查證並鎖定：`astro` 7.3.8、`@astrojs/starlight` 0.42.6、

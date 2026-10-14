@@ -40,10 +40,10 @@ for (const path of [FIRST_USE, ABOUT_SKILL, GETTING_STARTED]) {
 	});
 }
 
-test('AC4：側欄依 R6 排列：開始使用、mnemo-study-cards、Mnemo-Card', async ({ page }) => {
+test('AC4：側欄依 R6 排列：開始使用、mnemo-study-cards', async ({ page }) => {
 	await page.goto('');
 	const groups = page.locator('#starlight__sidebar .top-level > li > details');
-	await expect(groups.locator('> summary')).toHaveText(['開始使用', 'mnemo-study-cards', 'Mnemo-Card']);
+	await expect(groups.locator('> summary')).toHaveText(['開始使用', 'mnemo-study-cards']);
 	const skillLinks = groups.nth(1).locator('a');
 	await expect(skillLinks).toHaveText(['認識 mnemo-study-cards', '安裝並第一次產卡']);
 	await expect(skillLinks.nth(0)).toHaveAttribute('href', `${BASE}${ABOUT_SKILL}`);

@@ -49,9 +49,7 @@
 
   文件首頁不列入側欄，由頁首的 Logo 與標題回到首頁。
 
-  側欄最後一組「Mnemo-Card」放兩個外部連結，用 Starlight 側欄的 `link` 項目設定：
-  - 「開啟 Mnemo-Card」→ `https://mnemo-card.vercel.app/app`
-  - 「產品首頁」→ `https://mnemo-card.vercel.app/`
+  側欄只放文章，不放外部連結（owner 2026-10-14 裁定移除原本的「Mnemo-Card」外部連結群組）。
 - **R7**：文件首頁說明三件事：這個站是什麼、給誰讀、先讀哪一篇。另有三篇文章的入口，以及一個
   「開啟 Mnemo-Card」連結。首頁用 Starlight 內建元件（例如 `LinkCard`／`CardGrid`，或 splash
   模板的 `hero.actions`），不寫自訂版型。
@@ -150,7 +148,7 @@
 - **AC1**：`npm ci && npm run build` 在乾淨 clone 上 exit 0；`.npmrc` 與鎖定版本符合 R1。
 - **AC2**：四頁在 `base` 之下回 200；`<html lang="zh-TW">`；網頁標題含「Mnemo-Card 文件」。
 - **AC3**：從四頁出發爬所有站內連結與資源（`href`／`src`），全部回 200；沒有任何站內連結漏掉 `base` 前綴。
-- **AC4**：側欄依 R6 排列，含兩個外部連結，網址正確；首頁不在側欄。
+- **AC4**：側欄依 R6 排列，只有文章、沒有外部連結；首頁不在側欄。
   文章頁有文章目錄（至少兩個二級標題的頁面）；每頁上一篇／下一篇的文字與網址完全符合 R8 的表。
 - **AC5**：搜尋可用。搜「熟悉度」結果含第一次使用；搜「卡包」結果含 mnemo-study-cards 的文章。
 - **AC6**：375px 寬度下四頁都沒有橫向捲動（`scrollWidth <= clientWidth`）。

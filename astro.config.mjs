@@ -31,13 +31,6 @@ export default defineConfig({
 						{ label: '安裝並第一次產卡', slug: 'skills/mnemo-study-cards/getting-started' },
 					],
 				},
-				{
-					label: 'Mnemo-Card',
-					items: [
-						{ label: '開啟 Mnemo-Card', link: 'https://mnemo-card.vercel.app/app' },
-						{ label: '產品首頁', link: 'https://mnemo-card.vercel.app/' },
-					],
-				},
 			],
 		}),
 	],

@@ -1,20 +1,15 @@
 import { expect, test } from '@playwright/test';
-import { BASE, PRODUCT_LINKS, tabUntil } from './helpers';
+import { BASE, tabUntil } from './helpers';
 
 const sidebar = '#starlight__sidebar';
 const articleLink = `${sidebar} a[href="${BASE}first-use/"]`;
 
 test.describe('側欄（AC4）', () => {
-	test('最後一組是「Mnemo-Card」，含兩個外部連結，網址與文字正確', async ({ page }) => {
+	test('側欄只有站內文章，沒有外部連結', async ({ page }) => {
 		await page.goto('');
-		const groups = page.locator(`${sidebar} .top-level > li > details`);
-		await expect(groups.last().locator('summary')).toHaveText('Mnemo-Card');
-		const links = groups.last().locator('a');
-		await expect(links).toHaveCount(PRODUCT_LINKS.length);
-		for (const [i, { text, href }] of PRODUCT_LINKS.entries()) {
-			await expect(links.nth(i)).toHaveText(text);
-			await expect(links.nth(i)).toHaveAttribute('href', href);
-		}
+		const hrefs = await page.locator(`${sidebar} a`).evaluateAll((els) => els.map((a) => a.getAttribute('href') ?? ''));
+		expect(hrefs.length).toBeGreaterThan(0);
+		expect(hrefs.filter((h) => !h.startsWith(BASE))).toEqual([]);
 	});
 
 	test('首頁不在側欄', async ({ page }) => {
