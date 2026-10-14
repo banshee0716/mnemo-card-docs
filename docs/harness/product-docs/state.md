@@ -2,13 +2,13 @@
 
 ```harness
 slug: product-docs
-slice: "3a"
-stage: VERIFIED
-holder: human
+slice: "3b"
+stage: SPEC
+holder: builder
 tier: LOW
-gates_passed: [G1, G2A, G2B, G4]
+gates_passed: [G1, G2A, G2B]
 open_p0p1: 0
-gate: G5
+gate: G4
 round: 1
 ```
 本區塊是唯一的狀態事實；下方文字都不構成授權。
@@ -18,7 +18,7 @@ round: 1
 - slice 1：RELEASED 2026-10-14，封存於 `state-slice1.md`；slice 2：RELEASED 2026-10-14，封存於 `state-slice2.md`。
 - brief：`brief-slice3-learning-science.md`（owner 兩輪討論整理，非 intent）
 - intent：`intent-slice3.md`（owner G1 2026-10-14）
-- what is left：第一批（3a）：06a 骨架 ✓、07–09 與導讀頁文案 S6 全 PASS ✓ → owner 審文案 ✓（APA、代號已改）→ 上站 37358c5 ✓ → G4 ✓ → **owner 本機預覽與推送（G5、G7）** → S4 → 第二批（3b）查證文獻、寫文案、核對 → owner 審文案 → 上站與測試 → G4 → G5 → G7 → S4。
+- what is left：第一批（3a）：06a 骨架 ✓、07–09 與導讀頁文案 S6 全 PASS ✓ → owner 審文案 ✓（APA、代號已改）→ 上站 37358c5 ✓ → G4 ✓ → G5 ✓ → G7 ✓（3a RELEASED 2026-10-14）。第二批（3b）：10 自我解釋、11 認知負荷文獻查證中；12 KLI 等 owner 提供資料；13 上站。查證文獻、寫文案、核對 → owner 審文案 → 上站與測試 → G4 → G5 → G7 → S4。
 - blockers：none
 
 ## Gates
@@ -26,11 +26,14 @@ round: 1
 - [x] G2A spec reviewed（全新 opus r1 APPROVE AFTER FIXES → F25–F35 修完，不複審；reviews/product-docs-s3-g2-r1.md）
 - [x] G2B tickets reviewed（同一輪合審；工作票改為 06a、06b、07–13）
 - [x] G3 conditional checkpoint（LOW 不適用）
-- [x] G4 verified（3a：全新 sonnet，乾淨 clone @ 37358c5：npm test 89 passed、check:public 乾淨、無 PDF、copy 與 mdx 逐字相同；變異 9/9 紅；verification/g4-slice3a.md）
-- [x] G5 accepted by human（3a：owner 2026-10-14 審過文案並同意上線）
+- [ ] G4 verified（3b）
+- [x] 3a G4 verified（全新 sonnet，乾淨 clone @ 37358c5：npm test 89 passed、check:public 乾淨、無 PDF、copy 與 mdx 逐字相同；變異 9/9 紅；verification/g4-slice3a.md）
+- [ ] G5 accepted by human（3b）
+- [x] 3a G5 accepted（owner 2026-10-14 審過文案並同意上線）
 - [ ] G6A task review（owner 2026-10-14 指示豁免，輕量流程）
 - [ ] G6B code review（同上）
-- [ ] G7 released
+- [ ] G7 released（3b）
+- [x] 3a G7 released（2026-10-14，run 38582149919；evidence/s3a-g7-s4-smoke.md）
 
 ## Evidence (G4)
 | Acceptance criterion | Check | Result/output ref |
