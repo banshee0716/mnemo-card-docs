@@ -3,12 +3,12 @@
 ```harness
 slug: product-docs
 slice: "3a"
-stage: IMPLEMENT
+stage: VERIFIED
 holder: human
 tier: LOW
-gates_passed: [G1, G2A, G2B]
+gates_passed: [G1, G2A, G2B, G4]
 open_p0p1: 0
-gate: G4
+gate: G5
 round: 1
 ```
 本區塊是唯一的狀態事實；下方文字都不構成授權。
@@ -18,7 +18,7 @@ round: 1
 - slice 1：RELEASED 2026-10-14，封存於 `state-slice1.md`；slice 2：RELEASED 2026-10-14，封存於 `state-slice2.md`。
 - brief：`brief-slice3-learning-science.md`（owner 兩輪討論整理，非 intent）
 - intent：`intent-slice3.md`（owner G1 2026-10-14）
-- what is left：第一批（3a）：06a 骨架 ✓、07–09 與導讀頁文案 S6 全 PASS ✓ → **owner 審第一批文案（目前）** →查證文獻、寫文案、核對 → owner 審文案 → 上站與測試 → G4 → G5 → G7 → S4。
+- what is left：第一批（3a）：06a 骨架 ✓、07–09 與導讀頁文案 S6 全 PASS ✓ → owner 審文案 ✓（APA、代號已改）→ 上站 37358c5 ✓ → G4 ✓ → **owner 本機預覽與推送（G5、G7）** → S4 → 第二批（3b）查證文獻、寫文案、核對 → owner 審文案 → 上站與測試 → G4 → G5 → G7 → S4。
 - blockers：none
 
 ## Gates
@@ -26,7 +26,7 @@ round: 1
 - [x] G2A spec reviewed（全新 opus r1 APPROVE AFTER FIXES → F25–F35 修完，不複審；reviews/product-docs-s3-g2-r1.md）
 - [x] G2B tickets reviewed（同一輪合審；工作票改為 06a、06b、07–13）
 - [x] G3 conditional checkpoint（LOW 不適用）
-- [ ] G4 verified
+- [x] G4 verified（3a：全新 sonnet，乾淨 clone @ 37358c5：npm test 89 passed、check:public 乾淨、無 PDF、copy 與 mdx 逐字相同；變異 9/9 紅；verification/g4-slice3a.md）
 - [ ] G5 accepted by human
 - [ ] G6A task review（owner 2026-10-14 指示豁免，輕量流程）
 - [ ] G6B code review（同上）
@@ -70,3 +70,4 @@ round: 1
   排程整副牌組、兩種固定模式（1、3、7、14、30 天／每 7 天共 8 次），畫面無「最佳化／個人化」字樣；沒有對應生成學習的功能。
   → 生成學習篇預計不放產品段（R25 第 1 點，S6 確認）；文章用「檢索提示」（編輯器另稱「提取提示」）。
 - Builder: 2026-10-14 第一批四份文案 S6 全部 PASS（verification/content-ls-{index,retrieval-practice,spaced-practice,generative-learning}.md）；送 owner 審。
+- Builder: 2026-10-14 第一批上站（37358c5）：四頁 mdx 由 copy 產生（同步腳本只去 HTML 註解、導讀頁去文末兩節並加 prev: false）；側欄「學習科學」、首頁入口；測試 AC19–AC24 常數、PAGES、目錄；AC22 加 APA 回歸斷言（不得殘留中文式引用）。`npm test` 89 passed。
