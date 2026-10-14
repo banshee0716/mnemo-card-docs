@@ -27,7 +27,7 @@ round: 1
 - [x] G2B tickets reviewed（同一輪合審；工作票改為 06a、06b、07–13）
 - [x] G3 conditional checkpoint（LOW 不適用）
 - [x] G4 verified（3a：全新 sonnet，乾淨 clone @ 37358c5：npm test 89 passed、check:public 乾淨、無 PDF、copy 與 mdx 逐字相同；變異 9/9 紅；verification/g4-slice3a.md）
-- [ ] G5 accepted by human
+- [x] G5 accepted by human（3a：owner 2026-10-14 審過文案並同意上線）
 - [ ] G6A task review（owner 2026-10-14 指示豁免，輕量流程）
 - [ ] G6B code review（同上）
 - [ ] G7 released
@@ -59,6 +59,9 @@ round: 1
 - 2026-10-14：owner 審第一批文案：「沒甚麼問題」，要求（1）例子人名改成 A、B 代號；（2）所有引用用嚴謹的 APA 格式。
   Builder 改為 APA 第 7 版文中引用與完整書目（spec-slice3 R22 第 4 點同步改）；改完由全新子代理只核格式與內容未變，
   之後視為 owner 同意第一批文案，進入上站（06b）。
+- 2026-10-14：owner 同意第一批上線並授權推送 main（G5、G7）。本機 git 防護掛鉤擋下 Builder 的推送指令，由 owner 自行推送。
+- 2026-10-14：owner 第二批方向：認知負荷以 Sweller 2023 綜述為主；自我解釋主要依據季清華（Michelene T. H. Chi）的研究
+  （取代 brief 以 Tan 2025、Bisra 2018 為主的文獻池；其他文獻可輔助）；KLI 由 owner 稍後提供參考資料，收到前不開工。
 
 ## Decisions by Builder
 - Builder: 2026-10-14 slice 2 的 state 封存為 `state-slice2.md`，本檔改記 slice 3。
@@ -71,3 +74,4 @@ round: 1
   → 生成學習篇預計不放產品段（R25 第 1 點，S6 確認）；文章用「檢索提示」（編輯器另稱「提取提示」）。
 - Builder: 2026-10-14 第一批四份文案 S6 全部 PASS（verification/content-ls-{index,retrieval-practice,spaced-practice,generative-learning}.md）；送 owner 審。
 - Builder: 2026-10-14 第一批上站（37358c5）：四頁 mdx 由 copy 產生（同步腳本只去 HTML 註解、導讀頁去文末兩節並加 prev: false）；側欄「學習科學」、首頁入口；測試 AC19–AC24 常數、PAGES、目錄；AC22 加 APA 回歸斷言（不得殘留中文式引用）。`npm test` 89 passed。
+- Builder: 2026-10-14 第一批推送前，先平行查證第二批（10、11）的文獻；只蒐集事實，不動網站，第二批上站仍等第一批 RELEASED。
