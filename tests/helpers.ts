@@ -9,6 +9,10 @@ export const PAGES: { path: string; title: string }[] = [
 	{ path: 'first-use/', title: '第一次使用 Mnemo-Card' },
 	{ path: 'skills/mnemo-study-cards/', title: '認識 mnemo-study-cards' },
 	{ path: 'skills/mnemo-study-cards/getting-started/', title: '安裝並第一次產卡' },
+	{ path: 'learning-science/', title: '學習科學導讀' },
+	{ path: 'learning-science/retrieval-practice/', title: '檢索練習：為什麼「試著想起來」也是一種學習？' },
+	{ path: 'learning-science/spaced-practice/', title: '間隔練習：為什麼不要把複習全部擠在同一天？' },
+	{ path: 'learning-science/generative-learning/', title: '生成學習：為什麼整理過，不一定真的理解了？' },
 ];
 
 export type Theme = 'light' | 'dark';

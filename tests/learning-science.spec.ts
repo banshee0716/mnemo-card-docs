@@ -13,7 +13,26 @@ export const LEARNING_SCIENCE: {
 	product?: string;
 	noMnemoCard?: boolean;
 	noCardTypes?: boolean;
-}[] = [];
+}[] = [
+	{ slug: '', label: '導讀', h2: ['從哪一篇開始？'], isIndex: true },
+	{
+		slug: 'retrieval-practice/',
+		label: '檢索練習',
+		h2: ['它和重新閱讀有什麼不同？', '研究支持什麼？', '是不是只要一直考自己就好？', '可以怎麼開始？', 'Mnemo-Card 怎麼用這個概念？', '參考文獻', '延伸閱讀'],
+		product: 'Mnemo-Card 怎麼用這個概念？',
+	},
+	{
+		slug: 'spaced-practice/',
+		label: '間隔練習',
+		h2: ['一次讀完和分幾次讀，差在哪裡？', '研究支持什麼？', '間隔要多長才好？', '為什麼分散練習感覺比較沒效？', '可以怎麼開始？', 'Mnemo-Card 怎麼用這個概念？', '參考文獻', '延伸閱讀'],
+		product: 'Mnemo-Card 怎麼用這個概念？',
+	},
+	{
+		slug: 'generative-learning/',
+		label: '生成學習',
+		h2: ['整理過和理解了，差在哪裡？', '研究支持什麼？', '是不是做越多種活動越好？', '可以怎麼開始？', '參考文獻', '延伸閱讀'],
+	},
+];
 
 const REFERENCES = '參考文獻';
 const FURTHER_READING = '延伸閱讀';
@@ -83,6 +102,8 @@ for (const page of LEARNING_SCIENCE) {
 			}
 		}
 		await expect(content.locator('pre, code')).toHaveCount(0);
+		// spec-slice3 R22 第 4 點：引用採 APA 第 7 版，不得殘留中文式「（作者 等人，年份）」。
+		expect(text).not.toMatch(/（[A-Z][^）]*，\d{4}）|等人，\d{4}/);
 	});
 }
 
@@ -123,11 +144,15 @@ test('AC23：首頁有「學習科學」入口連到導讀頁', async ({ page })
 	test.skip(LEARNING_SCIENCE.length === 0, '學習科學尚無上線頁面');
 	await page.goto('');
 	await expect(page.locator('.sl-markdown-content h2', { hasText: '學習科學' })).toHaveCount(1);
-	await expect(page.locator(`.sl-markdown-content a[href="${BASE}learning-science/"]`).first()).toBeVisible();
+	// LinkCard 的 href 與其他首頁卡片一樣是相對網址，比對解析後的路徑。
+	const paths = await page
+		.locator('.sl-markdown-content a[href]')
+		.evaluateAll((as) => as.map((a) => new URL((a as HTMLAnchorElement).href).pathname));
+	expect(paths).toContain(`${BASE}learning-science/`);
 });
 
 /** AC24：搜尋詞 → 必須出現在結果中的頁面 slug。 */
-const SEARCHES: [string, string][] = [];
+const SEARCHES: [string, string][] = [['檢索練習', 'retrieval-practice/']];
 
 for (const [query, slug] of SEARCHES) {
 	test(`AC24：搜「${query}」的結果含 learning-science/${slug}`, async ({ page }) => {

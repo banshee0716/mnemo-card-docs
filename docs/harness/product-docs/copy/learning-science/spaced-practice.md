@@ -1,7 +1,7 @@
 <!--
   slice 3 ticket 08 文案草稿：學習科學〈間隔練習〉。
-  依 spec-slice3 R22–R25、R27；事實來源：research/spaced-practice.md（Mawson & Kang 2025、Cepeda 等人 2006、Smith & Scarf 2017）、
-  research/retrieval-practice.md 第 1 節（Carpenter 等人 2022，owner 經機構權限取得正式版）；產品段對照主程式正式版畫面。
+  依 spec-slice3 R22–R25、R27；事實來源：research/spaced-practice.md（Mawson & Kang 2025、Cepeda et al. 2006、Smith & Scarf 2017）、
+  research/retrieval-practice.md 第 1 節（Carpenter et al. 2022，owner 經機構權限取得正式版）；產品段對照主程式正式版畫面。
   Latimier 2021、Murray 2025 只讀到摘要，不用。
   送 owner 審閱；同意後才寫進 src/content/docs/learning-science/spaced-practice.mdx。
 -->
