@@ -55,6 +55,44 @@ test('AC5：搜「卡包」找得到 mnemo-study-cards 的文章', async ({ page
 	expect(hrefs.some((h) => h.startsWith(`${BASE}${ABOUT_SKILL}`))).toBe(true);
 });
 
+test('AC17：搜「卡包」的結果含第二篇本身', async ({ page }) => {
+	const hrefs = await searchFor(page, '卡包');
+	expect(hrefs.some((h) => h.split('#')[0] === `${BASE}${ABOUT_SKILL}`)).toBe(true);
+});
+
+test('AC18：第三篇第 4 節列出三種結果狀態', async ({ page }) => {
+	await page.goto(GETTING_STARTED);
+	const text = await page.locator('.sl-markdown-content').innerText();
+	for (const status of ['PASS', 'BLOCKED', 'UNVERIFIED']) expect(text).toContain(status);
+});
+
+/** spec-slice2 AC14：owner 同意的文案定稿的六個 h2，依序。 */
+const ABOUT_SKILL_H2 = ['怎麼判斷主題與牌組', '怎麼拆分內容', '怎麼生成卡片', '哪些事會問你', '怎麼檢查整理結果', '下一步'];
+
+test('AC14：第二篇的 h2 恰為定稿的六個、四種卡型都在、連到第一篇與第三篇', async ({ page }) => {
+	await page.goto(ABOUT_SKILL);
+	const content = page.locator('.sl-markdown-content');
+	const h2 = (await content.locator('h2').allInnerTexts()).map((t) => t.trim());
+	expect(h2).toEqual(ABOUT_SKILL_H2);
+	const text = await content.innerText();
+	for (const type of ['基礎概念卡', '深入解析卡', '關聯整合卡', '範例應用卡']) expect(text).toContain(type);
+	const paths = await content.locator('a[href]').evaluateAll((as) => as.map((a) => new URL((a as HTMLAnchorElement).href).pathname));
+	expect(paths).toContain(`${BASE}${GETTING_STARTED}`);
+	expect(paths).toContain(`${BASE}${FIRST_USE}`);
+});
+
+test('AC15：第二篇沒有實作細節與操作語句（回歸防護網，主要判斷在 S3）', async ({ page }) => {
+	await page.goto(ABOUT_SKILL);
+	const content = page.locator('.sl-markdown-content');
+	const description = (await page.locator('meta[name="description"]').getAttribute('content')) ?? '';
+	const text = `${await content.innerText()}\n${description}`;
+	expect(text).not.toMatch(/\b(concept|comparison|procedure|application)\b/i);
+	for (const banned of ['L1', 'L2', 'L3', 'L4', 'PASS', 'BLOCKED', 'UNVERIFIED', '.json', '.mjs', 'pack.md', '按「', '點選「', '選擇「', '輸入「', '拖入', '上傳']) {
+		expect(text, banned).not.toContain(banned);
+	}
+	await expect(content.locator('pre, code')).toHaveCount(0);
+});
+
 test('AC10：第三篇的下載段落沒有連結或程式碼區塊，全文沒有「待補」「待確認」', async ({ page }) => {
 	await page.goto(GETTING_STARTED);
 	const content = page.locator('.sl-markdown-content');
@@ -78,7 +116,11 @@ test('AC10：第三篇的下載段落沒有連結或程式碼區塊，全文沒�
 		};
 	});
 	expect(download).not.toBeNull();
-	expect(download!.text).toBe('目前尚未開放下載。');
+	// spec-slice2 AC18：owner 同意的兩段，取代 slice 1 的「目前尚未開放下載。」
+	expect(download!.text).toBe(
+		'mnemo-study-cards 是一組給 AI 工具使用的指示與檢查程式。安裝到支援技能的 AI 工具後，工具會依照它的規則，把你提供的來源整理成可以匯入 Mnemo-Card 的卡包。' +
+			'技能檔由研究者提供給符合條件的受試者。',
+	);
 	expect(download!.links).toBe(0);
 	expect(download!.code).toBe(0);
 });

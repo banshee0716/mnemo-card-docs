@@ -3,10 +3,10 @@
 ```harness
 slug: product-docs
 slice: "2"
-stage: SPEC_APPROVED
+stage: BUILT
 holder: builder
 tier: LOW
-gates_passed: [G1, G2A, G2B]
+gates_passed: [G1, G2A, G2B, G5, G6A, G6B]
 open_p0p1: 0
 gate: G4
 round: 1
@@ -18,7 +18,7 @@ round: 1
 - slice 1：RELEASED 2026-10-14，紀錄封存於 `state-slice1.md`。
 - intent：`docs/harness/product-docs/intent-slice2.md`（owner G1 2026-10-14）
 - spec：`spec-slice2.md`；tickets：`tickets/05-rewrite-skill-article.md`
-- what is left：ticket 05：S3 兩份複核皆 0 FAIL（第二篇 PASS 78、第三篇改動 PASS 24）→ owner 審文案 → owner 審文案 → G4 → G6 → G5 → G7。
+- what is left：輕量獨立驗證（G4）→ owner 推送 main（G7）→ S4 線上冒煙。G5、G6 依 owner 豁免。 → owner 審文案 → G4 → G6 → G5 → G7。
 - blockers：none
 
 ## Gates
@@ -27,9 +27,9 @@ round: 1
 - [x] G2B tickets reviewed（同一輪合審）
 - [x] G3 conditional checkpoint（LOW 不適用）
 - [ ] G4 verified
-- [ ] G5 accepted by human
-- [ ] G6A task review
-- [ ] G6B code review
+- [x] G5 accepted by human（owner 2026-10-14 同意文案並要求上線，視為驗收）
+- [x] G6A task review（owner 2026-10-14 豁免：要求輕量流程）
+- [x] G6B code review（同上豁免）
 - [ ] G7 released
 
 ## Evidence (G4)
@@ -49,6 +49,8 @@ round: 1
   其餘缺口列為已知限制（spec-slice2 R18）。
 - 2026-10-14：S3 發現 Mnemo-Card 公開首頁「四種卡片」區塊把深入解析卡寫成「和相近的做法差在哪？」，與新增卡片畫面及技能的
   「為什麼會這樣？」不一致。owner 裁定：文章以技能與新增卡片畫面為準；主程式首頁的說法另開主程式切片修正（不在本儲存庫）。
+- 2026-10-14：owner 同意兩篇文案（第二篇全文、第三篇 R18 改動、首頁說明句），要求放上網站，並要求流程輕量化、少耗 token。
+  Builder 依此記為：G5 由文案同意涵蓋；G6 Codex 豁免；保留一次輕量的獨立驗證（作者不自驗）。
 
 ## Decisions by Builder
 - Builder: 2026-10-14 slice 1 的 state 封存為 `state-slice1.md`，本檔改記 slice 2。
@@ -56,3 +58,4 @@ round: 1
 - Builder: R10 的卡型一致性：主程式正式版（STATUS 記錄的 main）新增卡片畫面上的四個卡型問句，與技能 v0.2.0 卡型表一致；
   v2 文案草稿記的「深入解析定義差異」是主程式內部詞彙表與技能的差異，讀者看不到，不觸發 intent 第 3 條的停點。
   spec-slice2 R16 仍要求核對者以畫面文字複核。
+- Builder: 文案上站（index.mdx、getting-started.mdx 與 copy 逐字相同；首頁說明句）；測試加 AC14、AC15、AC17、AC18，AC10 下載段改為 owner 同意的兩段；`npm test` 47 passed。
