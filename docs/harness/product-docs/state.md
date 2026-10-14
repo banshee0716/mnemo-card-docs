@@ -3,12 +3,12 @@
 ```harness
 slug: product-docs
 slice: "2"
-stage: BRIEFED
-holder: human
+stage: INTENT_APPROVED
+holder: reviewer
 tier: LOW
-gates_passed: []
+gates_passed: [G1]
 open_p0p1: 0
-gate: G1
+gate: G2A
 round: 1
 ```
 本區塊是唯一的狀態事實；下方文字都不構成授權。
@@ -16,12 +16,13 @@ round: 1
 - tier reason：單篇靜態文章改寫；不涉及認證、資料庫、資料刪除、匯入、付款或同步。
 - branch：`main`（G7 前不推送）
 - slice 1：RELEASED 2026-10-14，紀錄封存於 `state-slice1.md`。
-- intent：`docs/harness/product-docs/intent-slice2.md`（草稿，待 owner G1）
-- what is left：owner 確認 G1 → spec 增補與工作票 → G2 → 撰寫與 S3 核對 → owner 審文案 → G4 → G6 → G5 → G7。
+- intent：`docs/harness/product-docs/intent-slice2.md`（owner G1 2026-10-14）
+- spec：`spec-slice2.md`；tickets：`tickets/05-rewrite-skill-article.md`
+- what is left：G2（全新 opus 合審 spec-slice2 與 ticket 05）→ 撰寫與 S3 核對 → owner 審文案 → G4 → G6 → G5 → G7。
 - blockers：none
 
 ## Gates
-- [ ] G1 intent approved by human
+- [x] G1 intent approved by human（2026-10-14）
 - [ ] G2A spec reviewed
 - [ ] G2B tickets reviewed
 - [x] G3 conditional checkpoint（LOW 不適用）
@@ -42,7 +43,11 @@ round: 1
 - 2026-10-14：slice 2 重寫〈認識 mnemo-study-cards〉，說明技能如何判斷主題、拆分內容、生成卡片。owner 選定：
   依三個問題組織、卡型用中文名稱、沿用〈Cognitive offloading〉範例、舊段落濃縮保留（intent-slice2.md 第 2–5 條）。
 - 2026-10-14：owner 要求第二篇與第三篇目的截然不同：第二篇講原理，第三篇是單純步驟、不看第二篇也能照做（intent-slice2.md 第 6 條）。
+- 2026-10-14：owner G1 通過（「目前看可以，只要確定內容就好」）；附圖之後再考慮，不在本切片。
 
 ## Decisions by Builder
 - Builder: 2026-10-14 slice 1 的 state 封存為 `state-slice1.md`，本檔改記 slice 2。
 - Builder: 標題與網址不變，避免牽動側欄、上下篇與其他頁連結（intent-slice2.md 第 1 條，待 owner G1 確認）。
+- Builder: R10 的卡型一致性：主程式正式版（STATUS 記錄的 main）新增卡片畫面上的四個卡型問句，與技能 v0.2.0 卡型表一致；
+  v2 文案草稿記的「深入解析定義差異」是主程式內部詞彙表與技能的差異，讀者看不到，不觸發 intent 第 3 條的停點。
+  spec-slice2 R16 仍要求核對者以畫面文字複核。
