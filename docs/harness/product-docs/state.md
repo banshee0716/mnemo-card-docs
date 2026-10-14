@@ -18,7 +18,7 @@ round: 1
 - intent：`docs/harness/product-docs/intent.md`（owner G1 2026-10-14）
 - spec：`docs/harness/product-docs/spec.md`（G2A＋G2B r1 合審，修完關閉，2026-10-14）
 - tickets：`docs/harness/product-docs/tickets/` 01–04（同上）
-- what is left：ticket 01、02 驗收 PASS；ticket 03 已上站（本機）、S3 全 PASS，待全新子代理驗收；下一步 ticket 04。
+- what is left：ticket 01–03 驗收 PASS；ticket 04 已上站（本機）、S3 兩份全 PASS，待全新子代理驗收；之後 G4。
 - blockers：none
 
 ## Gates
@@ -46,6 +46,8 @@ round: 1
 
 - 2026-10-14：ticket 03 第一篇文案同意上站；帳號事實（研究者提供電子郵件與密碼、忘記密碼聯絡研究者）仍成立；
   第 1 步補「建立帳號」分頁不開放使用的提醒（附註 A），第 7 步補「已精通」只代表排程走完的說明（附註 C）。
+- 2026-10-14：ticket 04 第二篇〈認識 mnemo-study-cards〉與第三篇〈安裝並第一次產卡〉文案同意上站
+  （含依核對附註修正的 5 處）。
 
 ## Decisions by Builder
 - Builder: 2026-10-14 以 `npm view` 查證並鎖定：`astro` 7.3.8、`@astrojs/starlight` 0.42.6、
@@ -96,3 +98,9 @@ round: 1
 - Builder: 第一篇暫設 `next: false`：第二篇在 ticket 04 才存在，否則 Starlight 攤平側欄會把下一篇指向外部連結
   「開啟 Mnemo-Card」。ticket 04 移除此設定並補 R8 完整斷言。文末提到第二、三篇的句子也在 04 加連結。
 - Builder: AC3 的連結檢查加上頁內錨點驗證（`#…` 必須對應頁面上的 id）。
+- Builder: ticket 03 驗收由全新 sonnet 子代理在乾淨 clone 執行，全部 PASS（24 passed；加入「驗證信」與錯誤錨點時測試變紅）。
+- Builder: ticket 04 同樣先 S3 再送 owner。兩篇初核皆 0 FAIL；依核對附註改 5 處（第三篇：預覽後按「下一步」、
+  標題在「來源」步驟修改、頁碼以期刊版為準；第二篇：章節為整理單位的說法、「不會另外遮住概述」），複核皆 PASS。
+  終版：第二篇 PASS 35／FAIL 0；第三篇 PASS 52／FAIL 0。UCL 典藏頁被機器人驗證擋下，核對者改以公開書目索引確認。
+- Builder: 第一篇移除暫時的 `next: false`，文末兩篇名稱補上相對連結（文字不變）。首頁加 mnemo-study-cards 兩篇入口。
+  上下篇測試改成依 spec R8 表逐頁斷言文字與網址。

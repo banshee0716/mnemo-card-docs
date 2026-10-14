@@ -7,6 +7,8 @@ export const BASE = '/mnemo-card-docs/';
 export const PAGES: { path: string; title: string }[] = [
 	{ path: '', title: 'Mnemo-Card 文件' },
 	{ path: 'first-use/', title: '第一次使用 Mnemo-Card' },
+	{ path: 'skills/mnemo-study-cards/', title: '認識 mnemo-study-cards' },
+	{ path: 'skills/mnemo-study-cards/getting-started/', title: '安裝並第一次產卡' },
 ];
 
 export type Theme = 'light' | 'dark';
