@@ -3,11 +3,11 @@
 ```harness
 slug: product-docs
 slice: "1"
-stage: VERIFIED
-holder: reviewer
+stage: FIXING
+holder: builder
 tier: LOW
 gates_passed: [G1, G2A, G2B, G4]
-open_p0p1: 0
+open_p0p1: 1
 gate: G6A
 round: 1
 ```
@@ -18,8 +18,8 @@ round: 1
 - intent：`docs/harness/product-docs/intent.md`（owner G1 2026-10-14）
 - spec：`docs/harness/product-docs/spec.md`（G2A＋G2B r1 合審，修完關閉，2026-10-14）
 - tickets：`docs/harness/product-docs/tickets/` 01–04（同上）
-- what is left：G6A＋G6B 一輪 Codex 合審（packet：handoff-1-final-review.md，範圍 fa5a923...HEAD），等 owner 在本儲存庫發動；之後 G5、G7。
-- blockers：GitHub 儲存庫待 owner 刪除後重建（見 § Decisions by human 2026-10-14 外洩處理）。
+- what is left：G6 r1（Codex）APPROVE AFTER FIXES，F11–F15 待修；P1 修完由全新 opus 確認關閉，最終 HEAD 由全新驗證者重跑 G4；之後 G5、G7。
+- blockers：none
 
 ## Gates
 - [x] G1 intent approved by human（2026-10-14）
@@ -28,8 +28,8 @@ round: 1
 - [x] G3 conditional checkpoint（LOW 不適用）
 - [x] G4 verified（全新 opus 子代理，乾淨 clone @ d6fc960，2026-10-14）
 - [ ] G5 accepted by human
-- [ ] G6A task review（Codex，與 G6B 合一輪）
-- [ ] G6B code review
+- [ ] G6A task review（Codex r1 2026-10-14：APPROVE AFTER FIXES，F11–F15）
+- [ ] G6B code review（同上，APPROVE AFTER FIXES）
 - [ ] G7 released
 
 ## Evidence (G4)
@@ -63,6 +63,10 @@ round: 1
 - 2026-10-14：外洩處理。owner 裁定刪除 GitHub 上的儲存庫並重建，遠端 main 只放到原本公開的位置
   （乾淨版 fa5a923，對應舊 492e030，不含工作流、不觸發部署）。理由：查證 GitHub 仍可用 SHA 打開被強制推送取代的
   舊提交（含個人信箱的 5fe8c1f、含主程式內部細節的 26123a3），強制推送無法清除。
+- 2026-10-14：owner 在網頁刪除舊儲存庫；Builder 以 gh 重建（同名、公開、同描述與功能開關），owner 親自推送 fa5a923 到 main
+  （本機 push 受 owner 的 git 保護規則限制）。查證：舊提交 5fe8c1f、26123a3、117f21f、492e030 在 GitHub 皆回「No commit found」；
+  Actions 執行次數 0。
+- 2026-10-14：owner 在本儲存庫發動 G6 Codex 合審（`/codex:adversarial-review --background --base fa5a923`）。
 
 ## Decisions by Builder
 - Builder: 2026-10-14 以 `npm view` 查證並鎖定：`astro` 7.3.8、`@astrojs/starlight` 0.42.6、
