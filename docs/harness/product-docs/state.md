@@ -18,7 +18,7 @@ round: 1
 - slice 1：RELEASED 2026-10-14，紀錄封存於 `state-slice1.md`。
 - intent：`docs/harness/product-docs/intent-slice2.md`（owner G1 2026-10-14）
 - spec：`spec-slice2.md`；tickets：`tickets/05-rewrite-skill-article.md`
-- what is left：ticket 05：第二篇 S3 核對中；第三篇 R18 改動句待 S3 → owner 審文案 → G4 → G6 → G5 → G7。
+- what is left：ticket 05：S3 兩份複核皆 0 FAIL（第二篇 PASS 78、第三篇改動 PASS 24）→ owner 審文案 → owner 審文案 → G4 → G6 → G5 → G7。
 - blockers：none
 
 ## Gates
