@@ -4,7 +4,7 @@
 slug: product-docs
 slice: "3b"
 stage: SPEC
-holder: human
+holder: builder
 tier: LOW
 gates_passed: [G1, G2A, G2B]
 open_p0p1: 0
@@ -33,7 +33,8 @@ round: 1
 - [x] 3a G5 accepted（owner 2026-10-14 審過文案並同意上線）
 - [ ] G6A task review（owner 2026-10-14 指示豁免，輕量流程）
 - [ ] G6B code review（同上）
-- [ ] G7 released（3b）
+- [ ] G7 released（3b：KLI）
+- [x] 3b 第一部分 G7 released（2026-10-14，run 38590468708；evidence/s3b1-g7-s4-smoke.md）
 - [x] 3a G7 released（2026-10-14，run 38582149919；evidence/s3a-g7-s4-smoke.md）
 
 ## Evidence (G4)
@@ -72,6 +73,10 @@ round: 1
   （覆寫 spec-slice3 R23 第 2 點對本篇的要求）；閱讀指引仍只寫摘要明寫的內容。
 - 2026-10-14：owner 同意第二批〈自我解釋〉〈認知負荷理論〉文案（「先上這兩篇」），第二批改為分兩次上線：
   這兩篇與導讀頁補列先上；KLI 2026-10-15 單獨上線（偏離 spec-slice3 §0 第二批三篇一起）。
+- 2026-10-14：owner 推送 3b 第一部分（run 38590468708 success；evidence/s3b1-g7-s4-smoke.md 全 200）。導讀頁字數上限放寬
+  （Builder 定為 200–400 字，spec-slice3 R22 第 1 點、R26 同步）。KLI：owner 提供一份對 Koedinger et al. (2012) 的討論整理與
+  「三角形面積」四種知識的示意圖，要 Builder 參考其流程撰寫；所有說法仍須對照原論文查證。討論中「對閃卡系統的建議」一節
+  與 brief／R25／AC22（KLI 篇不放產品段、不出現 Mnemo-Card 與卡型名稱）衝突，不寫進正文。
 
 ## Decisions by Builder
 - Builder: 2026-10-14 slice 2 的 state 封存為 `state-slice2.md`，本檔改記 slice 3。
