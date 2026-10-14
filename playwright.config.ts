@@ -1,6 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
 
-const port = 4321;
+// 測試用獨立的埠，不與手動開的 preview（4321）共用，避免測到別的工作樹。
+const port = Number(process.env.PLAYWRIGHT_PORT ?? 4399);
 const base = '/mnemo-card-docs/';
 
 export default defineConfig({
@@ -17,7 +18,7 @@ export default defineConfig({
 		// --ignore-lock：Astro 偵測到 AI 代理時會自動把 preview 放到背景，Playwright 需要前景行程。
 		command: `npm run build && npm run preview -- --port ${port} --ignore-lock`,
 		url: `http://localhost:${port}${base}`,
-		reuseExistingServer: !process.env.CI,
+		reuseExistingServer: false,
 		timeout: 180_000,
 	},
 });

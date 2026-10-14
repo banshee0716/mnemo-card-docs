@@ -50,3 +50,4 @@ npm test          # Playwright：自動建置並啟動 preview，檢查頁面、
 
 測試涵蓋的頁面清單在 `tests/helpers.ts` 的 `PAGES`；新增文章時加進去。
 Astro 偵測到 AI 代理時會把 `astro preview` 自動放到背景；要前景執行請加 `--ignore-lock`。
+`npm test` 用獨立的 4399 埠（`PLAYWRIGHT_PORT` 可改）自行建置並啟動 preview，不會重用手動開的 4321。
