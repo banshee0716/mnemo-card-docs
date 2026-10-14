@@ -4,11 +4,11 @@
 slug: product-docs
 slice: "1"
 stage: VERIFIED
-holder: builder
+holder: reviewer
 tier: LOW
 gates_passed: [G1, G2A, G2B, G4]
 open_p0p1: 0
-gate: G4
+gate: G6A
 round: 1
 ```
 本區塊是唯一的狀態事實；下方文字都不構成授權。
@@ -18,8 +18,8 @@ round: 1
 - intent：`docs/harness/product-docs/intent.md`（owner G1 2026-10-14）
 - spec：`docs/harness/product-docs/spec.md`（G2A＋G2B r1 合審，修完關閉，2026-10-14）
 - tickets：`docs/harness/product-docs/tickets/` 01–04（同上）
-- what is left：ticket 01–04 完成，G4 VERIFIED。下一步 G6（一輪 Codex 合審）與 G5（owner 驗收）。G7 前不推送。
-- blockers：none
+- what is left：G6A＋G6B 一輪 Codex 合審（packet：handoff-1-final-review.md，範圍 492e030...HEAD），等 owner 在本儲存庫發動；之後 G5、G7。
+- blockers：Git 歷史（已推送的 26123a3）含主程式內部細節，是否改寫歷史並強制推送待 owner 決定。
 
 ## Gates
 - [x] G1 intent approved by human（2026-10-14）
