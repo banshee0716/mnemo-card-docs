@@ -4,10 +4,10 @@
 slug: product-docs
 slice: "1"
 stage: INTENT_APPROVED
-holder: reviewer
+holder: human
 tier: LOW
 gates_passed: [G1]
-open_p0p1: 0
+open_p0p1: 1
 gate: G2A
 round: 1
 ```
@@ -18,8 +18,8 @@ round: 1
 - intent：`docs/harness/product-docs/intent.md`（owner G1 2026-10-14）
 - spec：`docs/harness/product-docs/spec.md`（送 G2A＋G2B 合審）
 - tickets：`docs/harness/product-docs/tickets/` 01–04（送合審）
-- what is left：全新 opus 合審規格與工作票（G2A＋G2B 一次）→ 修正後不複審 → 開始 ticket 01。
-- blockers：none
+- what is left：G2 合審 r1 NEEDS FIXES，F1–F3、F5–F10 已修（findings.md）；F4（公開歷史含個人信箱）待 owner 授權改寫並強制推送。之後 G2A／G2B 通過 → PLAN_APPROVED → ticket 01。
+- blockers：F4 需 owner 決定是否改寫歷史（建議：是，趁提交還少）
 
 ## Gates
 - [x] G1 intent approved by human（2026-10-14）

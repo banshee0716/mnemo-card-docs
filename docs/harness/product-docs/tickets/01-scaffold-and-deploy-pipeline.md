@@ -4,7 +4,8 @@ depends-on: []
 
 ## 要做什麼
 
-spec R1、R2、R3、R5（不覆寫元件、關閉 editLink 與 lastUpdated）、R13、R14、K2。
+spec R1、R2、R3、R5（不覆寫元件、關閉 editLink 與 lastUpdated）、R13、R14、K2、K3。
+本票不推送；G7 之前不推 `main`（K3）。
 
 1. 以 `npm view` 查證 `astro`、`@astrojs/starlight`、`@playwright/test`、`@axe-core/playwright`
    的最新穩定版，鎖定精確版本，並把版本與日期記入 `state.md` § Decisions（`Builder:`）。
@@ -12,7 +13,7 @@ spec R1、R2、R3、R5（不覆寫元件、關閉 editLink 與 lastUpdated）、
    再寫 `.npmrc`、`engines.node`，以及 `dev`／`build`／`preview`／`test` 腳本。
 2. `astro.config.mjs`：設定 `site`、`base`、根語系 `zh-TW`、標題「Mnemo-Card 文件」，
    關閉 `editLink` 與 `lastUpdated`。
-3. 首頁先放一段真實簡介（這個站是什麼、還在建置中），不放假連結。側欄暫時只有首頁。
+3. 首頁先放一段真實簡介（這個站是什麼、還在建置中），不放假連結。側欄暫時沒有項目（首頁不列入側欄，spec R6）。
 4. `playwright.config.ts`：`webServer` 跑 `npm run build && npm run preview`，`baseURL` 含 `base`，
    只用 chromium。`tests/site.spec.ts` 先涵蓋首頁的以下項目：
    - AC2：首頁 200、`lang`、標題。
@@ -37,7 +38,8 @@ S1、S2（首頁部分）。
 - [ ] 工作流 YAML 符合 R14：權限只有三項、沒有 secret、測試通過後才部署
       （以閱讀確認；實際部署在 G7）
 - [ ] 若 Starlight 對 `zh-TW` 有字串落回簡體或英文，已依 R3 在 `src/content/i18n/zh-TW.json`
-      覆寫，並寫明是哪些字串
+      覆寫，並寫明是哪些字串（至少包含 `heading.anchorLabel`，見 spec AC9）
+- [ ] K2：`git log --format='%ae%n%ce' | sort -u` 只輸出 noreply 地址
 - [ ] AGENTS.md 的「指令」段與實際腳本一致
 
 示範：`npm run preview` 後開 `http://localhost:4321/mnemo-card-docs/`，

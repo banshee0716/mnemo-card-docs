@@ -9,13 +9,14 @@ spec R4、R5、R6（只做「Mnemo-Card」外部連結群組）、R7（首頁架
 1. `src/assets/logo.svg`，依 R4 製作。
 2. 以 fontsource 套件載入 Noto Sans TC 與 Noto Serif TC，同樣用 `npm view` 查證後鎖版。
    在 `src/styles/custom.css` 設定 `--sl-font`、標題字型與淺色／深色兩種主題的 accent 變數。
-   兩種主題的主色與背景對比都要達 AA。
-3. 側欄加上「Mnemo-Card」群組，內含兩個外部連結（R6）。
+   淺色用 #0071E3；深色的 `accent-high` 用同色系較淺的藍，值記入 `state.md`（spec R4）。
+3. 側欄加上「Mnemo-Card」群組，內含兩個外部連結（R6）；首頁不列入側欄。
 4. 首頁依 R7 撰寫「這是什麼、給誰讀」，以及「開啟 Mnemo-Card」連結。
    三篇文章的入口由 03／04 補上，本票不放指向尚未存在頁面的連結。
 5. 測試加入：
    - AC4 的外部連結部分：兩個連結的網址與文字正確。
-   - AC7 的「跳到正文」，以及手機寬度下用 Enter 打開選單。
+   - AC7 的跳轉連結（網址變 `#_top`、下一次 Tab 進入 `main`），以及手機寬度下用 Enter 打開選單、
+     按 Esc 關閉。
    - 首頁在新樣式下重跑 AC6、AC8。
 
 ## 測試接縫
