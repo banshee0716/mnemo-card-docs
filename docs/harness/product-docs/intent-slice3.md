@@ -1,7 +1,10 @@
-# product-docs slice 3 — intent（草稿，待 owner G1）
+# product-docs slice 3 — intent
 
 Builder 依 `brief-slice3-learning-science.md` 起草，2026-10-14。slice 1、2 已 RELEASED。
-brief 是討論整理；本檔通過 G1 後才是本切片的依據。**「待 owner 裁定」各條附 Builder 建議，請逐條回覆。**
+brief 是討論整理；本檔是本切片的依據。
+
+**owner G1 通過（2026-10-14）：「待 owner 裁定」A–E 全部採 Builder 建議（A1、B 沿用、C 3–7 篇、D1、E1），第三篇 `next: false` 不改。**
+沒有提供示範稿，照本檔與 brief 寫。
 
 ## 使用者得到什麼
 
@@ -29,7 +32,7 @@ KLI 框架）。沒有心理學背景、沒用過 Mnemo-Card 的讀者，讀完�
 7. **網站接法**：現有三篇網址不動；首頁「先讀哪一篇」之後加一個「學習科學」入口（一段說明＋導讀頁連結）；
    導讀頁列出六篇；各篇有上下篇；測試鎖住每篇的 h2 清單、側欄順序、上下篇。
 
-## 待 owner 裁定
+## owner 裁定（G1，2026-10-14，均採 Builder 建議）
 
 ### A. 是否分批上線
 
