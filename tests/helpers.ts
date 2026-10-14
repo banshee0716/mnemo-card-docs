@@ -4,7 +4,10 @@ import { expect, type Page } from '@playwright/test';
 export const BASE = '/mnemo-card-docs/';
 
 /** 測試涵蓋的頁面（相對於 base）。後續工作票在此加入新頁面。 */
-export const PAGES: { path: string; title: string }[] = [{ path: '', title: 'Mnemo-Card 文件' }];
+export const PAGES: { path: string; title: string }[] = [
+	{ path: '', title: 'Mnemo-Card 文件' },
+	{ path: 'first-use/', title: '第一次使用 Mnemo-Card' },
+];
 
 export type Theme = 'light' | 'dark';
 
@@ -50,6 +53,27 @@ export async function expectInternalLinksOk(page: Page, path: string) {
 		if (res.status() !== 200) failures.push(`${res.status()} ${url}`);
 	}
 	expect(failures, '非 200 的站內網址').toEqual([]);
+
+	// 頁內錨點（#…）要對應到頁面上存在的 id。
+	const brokenAnchors = await page.evaluate(() =>
+		[...document.querySelectorAll('a[href^="#"]')]
+			.map((a) => decodeURIComponent(a.getAttribute('href')!.slice(1)))
+			.filter((id) => id && !document.getElementById(id)),
+	);
+	expect(brokenAnchors, '找不到目標的頁內錨點').toEqual([]);
+}
+
+/** 用鍵盤打開搜尋、輸入關鍵字，回傳結果連結的 href 清單。 */
+export async function searchFor(page: Page, query: string) {
+	await page.goto('');
+	await page.locator('.pagefind-ui__form').waitFor({ state: 'attached' });
+	await page.keyboard.press('Control+k');
+	const input = page.locator('.pagefind-ui__search-input');
+	await expect(input).toBeFocused();
+	await input.fill(query);
+	const results = page.locator('.pagefind-ui__result-link');
+	await expect(results.first()).toBeVisible();
+	return results.evaluateAll((els) => els.map((el) => el.getAttribute('href') ?? ''));
 }
 
 /** AC8：axe 沒有 serious 或 critical 違規。 */

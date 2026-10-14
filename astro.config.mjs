@@ -21,6 +21,10 @@ export default defineConfig({
 			lastUpdated: false,
 			sidebar: [
 				{
+					label: '開始使用',
+					items: [{ label: '第一次使用 Mnemo-Card', slug: 'first-use' }],
+				},
+				{
 					label: 'Mnemo-Card',
 					items: [
 						{ label: '開啟 Mnemo-Card', link: 'https://mnemo-card.vercel.app/app' },

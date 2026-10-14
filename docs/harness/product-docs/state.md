@@ -18,8 +18,8 @@ round: 1
 - intent：`docs/harness/product-docs/intent.md`（owner G1 2026-10-14）
 - spec：`docs/harness/product-docs/spec.md`（G2A＋G2B r1 合審，修完關閉，2026-10-14）
 - tickets：`docs/harness/product-docs/tickets/` 01–04（同上）
-- what is left：ticket 01、02 已由全新子代理驗收 PASS。ticket 03 文案草稿與 S3 核對（全 PASS）完成，等 owner 審文案、確認帳號事實與附註 A、C。
-- blockers：ticket 03 等 owner 同意文案（copy/first-use.md）
+- what is left：ticket 01、02 驗收 PASS；ticket 03 已上站（本機）、S3 全 PASS，待全新子代理驗收；下一步 ticket 04。
+- blockers：none
 
 ## Gates
 - [x] G1 intent approved by human（2026-10-14）
@@ -43,6 +43,9 @@ round: 1
 - 2026-10-14：本儲存庫由 owner 授權建立；harness 文件遷入，之後的工作階段在此開。
 - 2026-10-14：第三篇以〈Cognitive offloading〉為輸入示例，不提供產出的卡片（G2 F2）。
 - 2026-10-14：授權改寫歷史並強制推送，把個人信箱換成 noreply（G2 F4）。
+
+- 2026-10-14：ticket 03 第一篇文案同意上站；帳號事實（研究者提供電子郵件與密碼、忘記密碼聯絡研究者）仍成立；
+  第 1 步補「建立帳號」分頁不開放使用的提醒（附註 A），第 7 步補「已精通」只代表排程走完的說明（附註 C）。
 
 ## Decisions by Builder
 - Builder: 2026-10-14 以 `npm view` 查證並鎖定：`astro` 7.3.8、`@astrojs/starlight` 0.42.6、
@@ -88,3 +91,8 @@ round: 1
 - Builder: 公開報告初版寫到登入頁的安全機制與寄信能力，違反 S3；已請同一核對者移除，該觀察只留內部報告。
 - Builder: S3 內部報告依 spec 寫在主程式儲存庫 `docs/harness/product-docs/content-check-first-use.md`，
   為未追蹤的新檔，未 add／commit，未動主程式任何既有檔案（K1 只新增這個 spec 指定的檔）。
+- Builder: owner 補的兩句（建立帳號分頁、已精通）由同一核對者複核 PASS；公開報告 62 PASS／0 FAIL／13 非產品說法。
+  `first-use.mdx` 與 `copy/first-use.md` 內容逐字相同（只多 `next: false`）。
+- Builder: 第一篇暫設 `next: false`：第二篇在 ticket 04 才存在，否則 Starlight 攤平側欄會把下一篇指向外部連結
+  「開啟 Mnemo-Card」。ticket 04 移除此設定並補 R8 完整斷言。文末提到第二、三篇的句子也在 04 加連結。
+- Builder: AC3 的連結檢查加上頁內錨點驗證（`#…` 必須對應頁面上的 id）。
