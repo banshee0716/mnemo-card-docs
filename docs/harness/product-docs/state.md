@@ -51,6 +51,11 @@ round: 1
 - 2026-10-14：檢索練習的主幹文獻 Carpenter 2022 讀不到全文（Nature Reviews Psychology 付費牆，無公開版）。owner 裁定改用
   Karpicke, J. D. (2017). Retrieval-based learning: A decade of progress（Byrne 主編 *Learning and Memory* 第 2 版，Elsevier，pp. 487–514；
   全文為 ERIC ED599273 作者提交版，頁碼依該版並註明）。Carpenter 2022 不再用於檢索與間隔；Gonçalves 2025 讀不到，不用。
+- 2026-10-14：owner 同意間隔練習補兩篇：Cepeda 等人 2006（*Psychological Bulletin* 經典後設分析，作者實驗室公開的期刊版）與
+  Smith 與 Scarf 2017（*Frontiers in Psychology* 開放取用）。Cepeda 超出 2021–2025 範圍，文中標「經典後設分析」。
+  owner 另提供兩個 Carpenter 2022 連結（Scribd、教師部落格），Builder 判斷為第三方轉貼、非授權來源，依 R24 不用。
+- 2026-10-14：owner 經機構權限從 Nature 官網下載 Carpenter 等人 2022 出版社正式版（owner 確認來源）。Builder 依此恢復使用：
+  作為〈間隔練習〉主要導讀文獻；〈檢索練習〉維持 Karpicke 2017 為主幹，不改。PDF 只放暫存目錄。
 
 ## Decisions by Builder
 - Builder: 2026-10-14 slice 2 的 state 封存為 `state-slice2.md`，本檔改記 slice 3。
