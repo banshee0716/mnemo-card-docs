@@ -3,10 +3,10 @@
 ```harness
 slug: product-docs
 slice: "1"
-stage: ACCEPTED
-holder: builder
+stage: RELEASED
+holder: human
 tier: LOW
-gates_passed: [G1, G2A, G2B, G4, G5, G6A, G6B]
+gates_passed: [G1, G2A, G2B, G4, G5, G6A, G6B, G7]
 open_p0p1: 0
 gate: G7
 round: 1
@@ -18,7 +18,7 @@ round: 1
 - intent：`docs/harness/product-docs/intent.md`（owner G1 2026-10-14）
 - spec：`docs/harness/product-docs/spec.md`（G2A＋G2B r1 合審，修完關閉，2026-10-14）
 - tickets：`docs/harness/product-docs/tickets/` 01–04（同上）
-- what is left：G6 r1 的 F11–F15 已修並由全新 opus 確認關閉（P1 關閉）；驗證者追加的 N1–N5 亦確認關閉 @ 3a3d059。G5 已由 owner 通過；進行 G7（Pages 設定 → owner 推送 main → S4）。
+- what is left：G6 r1 的 F11–F15 已修並由全新 opus 確認關閉（P1 關閉）；驗證者追加的 N1–N5 亦確認關閉 @ 3a3d059。G5 已由 owner 通過；G7 完成（第一次部署綠燈、S4 全部 200）。slice 1 結束。
 - blockers：none
 
 ## Gates
@@ -30,7 +30,7 @@ round: 1
 - [x] G5 accepted by human（2026-10-14，本機預覽）
 - [x] G6A task review（Codex r1 2026-10-14：APPROVE AFTER FIXES，F11–F15 修完；全新 opus 確認關閉，依 LOW 流程不複審）
 - [x] G6B code review（同上）
-- [ ] G7 released
+- [x] G7 released（2026-10-14，run 38543037703；evidence/g7-s4-smoke.md）
 
 ## Evidence (G4)
 | Acceptance criterion | Check | Result/output ref |
@@ -42,7 +42,7 @@ round: 1
 | AC7 | 跳轉連結、桌機側欄、手機選單 Enter／Esc、手機文章目錄、搜尋 | PASS（G4 後補強：Tab 走到手機目錄與文章連結，43 passed） |
 | AC10 | 第一篇禁用字與步驟句；第三篇下載段一句、無連結無程式碼、無待補待確認 | PASS；加連結時測試變紅 |
 | AC11 | verification/ 三份報告 | first-use 62 PASS；mnemo-study-cards 35 PASS；getting-started 52 PASS；FAIL 皆 0 |
-| AC12 | 部署與線上冒煙 | G7 時執行 |
+| AC12 | 部署與線上冒煙 | run 38543037703 build＋deploy success（CI 43 passed）；S4 五個網址皆 200（evidence/g7-s4-smoke.md） |
 | AC13 | `npm run check:public`（逐提交掃描）；提交者身分 | 乾淨（19 個提交）@ 5694ca9；乾淨（20 個提交）@ 3a3d059；只有 noreply 地址 |
 
 ## Deviation log
@@ -68,6 +68,7 @@ round: 1
   Actions 執行次數 0。
 - 2026-10-14：owner 在本儲存庫發動 G6 Codex 合審（`/codex:adversarial-review --background --base fa5a923`）。
 - 2026-10-14：owner G5 驗收通過，並授權執行 G7（Pages 來源設為 GitHub Actions、第一次部署、S4）。推送 main 由 owner 執行。
+- 2026-10-14：owner 推送 main（b2ad7d5），觸發第一次部署。
 
 ## Decisions by Builder
 - Builder: 2026-10-14 以 `npm view` 查證並鎖定：`astro` 7.3.8、`@astrojs/starlight` 0.42.6、
@@ -175,3 +176,4 @@ round: 1
   - N6：腳本目前版本的每一行都被信任。已在腳本開頭註明新增樣式只能寫一般字樣，不得寫真實專案網址、識別碼或金鑰；
     腳本改動會出現在 diff 與審查中。
 - Builder: G6A／G6B 關閉。owner 先前裁定 G6 先於 G5，因此階段記為 BUILT、閘門 G5、持有者 owner。
+- Builder: G7：以 gh 將 Pages 來源設為 GitHub Actions（owner 授權）；第一次部署綠燈，S4 全部 200。
