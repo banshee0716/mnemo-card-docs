@@ -167,9 +167,9 @@
 - **AC11**：S3 三份核對報告全部 PASS，沒有未處理的列。
 - **AC12**：R14 工作流在 push 後成功部署；S4 線上冒煙全部回 200（G7 時由 owner 授權執行）。
 - **AC13**：沒有提交任何 secret、個人信箱或主程式內部細節（G2 F3、F4）：
-  - 全儲存庫搜尋沒有輸出（G6 預審 2026-10-14 擴大：原本只搜 src、public、verification、evidence，
-    漏掉 reviews／spec；路徑樣式要求後接檔名，搜尋指令本身的字樣不會誤判）：
-    `git grep -n -i -E -e 'supabase|service_role|memo-card-system|disable_signup|smtp|寄不到' -e '(^|[^a-z])\.env' -e '(^|[^a-z])(lib|components)/[a-z]' -e 'app/\([a-z]' -e '\.tsx?:[0-9]' -e '(state|status)\.md:[0-9]' -- . ':!AGENTS.md' ':!package-lock.json' ':!.gitignore' ':!docs/harness/product-docs/spec.md'`
+  - `npm run check:public`（`scripts/check-public.mjs`）結束碼 0、沒有命中。它掃描 HEAD 可達的每一個提交（不只目前版本）
+    的檔案內容、提交者身分與提交訊息；搜尋樣式只定義在腳本內，已知無害的歷史行以「檔案＋整行」逐行允許，
+    不整檔排除。（G6 預審擴大到全儲存庫；G6 r1 F11 改為逐提交掃描）
   - K2 的提交者身分檢查只輸出 noreply 地址。
 
 ## 5. 閘門安排

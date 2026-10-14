@@ -26,15 +26,15 @@ NEEDS FIXES → F1–F10 全部關閉，依 owner 裁定不複審。
 
 ## F11 [P1] AC13 排除 spec 且只掃 HEAD，公開歷史洩漏仍會顯示通過（spec.md:169-173；confidence high）
 - 失敗情境：提交 A 在 spec.md 加入內部路徑或設定，提交 B 刪除；既定命令零輸出，A 推送後仍可用 SHA 存取。
-- Disposition: 待處理（擬修）
+- Disposition: fixed — 新增 `scripts/check-public.mjs`（`npm run check:public`）：掃描 HEAD 可達的每個提交的檔案內容、提交者身分與提交訊息；樣式只定義在腳本內，不整檔排除 spec，已知無害的歷史行以「檔案＋整行」逐行允許，未用到的允許項會警告。spec AC13 與 AGENTS.md 改為此指令。變異測試（暫存 clone）：spec 中間提交含寄信設定字樣後刪除、中間提交含主程式路徑後刪除、提交訊息含個人信箱、非 noreply 提交者、憑證樣式，五項皆 exit 1；還原後 exit 0。待全新 opus 確認關閉。
 ## F12 [P2] 最終介面與測試改動晚於最後一份獨立驗證（state.md:29-42）
 - 失敗情境：G4 證據停在 d6fc960，之後的側欄移除、splash 首頁、CSS、Logo 與 AC4／AC7 測試修改沒有獨立驗證。
-- Disposition: 待處理（擬修）
+- Disposition: fixed（待驗）— 修完後由全新驗證者在乾淨 clone 的最終 HEAD 重跑 G4（AC1–AC10、AC13）。
 ## F13 [P2] 唯一即時狀態仍把已完成的刪庫重建列為 blocker（state.md:21-22）
-- Disposition: 待處理（擬修）
+- Disposition: fixed — state.md blockers 改為 none，what is left 只列實際剩餘步驟；刪庫重建與推送結果記在 § Decisions by human。
 ## F14 [P2] AC10 仍可讓未加書名號的重設密碼指示假綠燈（tests/articles.spec.ts:115-126）
 - 失敗情境：段落寫「接著按忘記密碼重設」，不含書名號也不在清單中，測試仍綠。
-- Disposition: 待處理（擬修）
+- Disposition: fixed — 第一篇含「忘記密碼」的每一句都必須同時含「聯絡」與「研究者」。變異「如果忘記密碼，接著按忘記密碼重設。」→ AC10 紅燈。
 ## F15 [P3] AC3 丟棄跨頁 fragment，壞掉的深連結仍回報成功（tests/helpers.ts:35-65）
 - 失敗情境：連到 ../first-use/#不存在，頁面 200 即通過。
-- Disposition: 待處理（擬修）
+- Disposition: fixed — AC3 保留站內連結的 fragment，取得目標頁後確認存在對應 id。變異：連到 `../../first-use/#不存在的段落` → 紅燈；連到存在的 `#7-安排下一次練習` → 綠燈。

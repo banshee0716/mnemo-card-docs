@@ -31,30 +31,47 @@ export async function collectInternalUrls(page: Page) {
 	);
 	const origin = new URL(page.url()).origin;
 	const internal = new Set<string>();
+	/** 跨頁錨點：目標網址（不含 #）→ 需要存在的 id。 */
+	const fragments = new Map<string, Set<string>>();
 	const missingBase: string[] = [];
 	for (const value of raw) {
 		if (!value || value.startsWith('#') || /^(mailto|tel|data|javascript):/i.test(value)) continue;
 		const url = new URL(value, page.url());
 		if (url.origin !== origin) continue;
 		if (!url.pathname.startsWith(BASE)) missingBase.push(value);
+		const id = decodeURIComponent(url.hash.slice(1));
 		url.hash = '';
 		internal.add(url.href);
+		if (id) {
+			if (!fragments.has(url.href)) fragments.set(url.href, new Set());
+			fragments.get(url.href)!.add(id);
+		}
 	}
-	return { internal: [...internal], missingBase };
+	return { internal: [...internal], fragments, missingBase };
 }
 
 /** AC3：頁面上的站內連結與資源都在 base 之下且回 200。 */
 export async function expectInternalLinksOk(page: Page, path: string) {
 	await page.goto(path);
-	const { internal, missingBase } = await collectInternalUrls(page);
+	const { internal, fragments, missingBase } = await collectInternalUrls(page);
 	expect(missingBase, '站內連結漏掉 base 前綴').toEqual([]);
 	expect(internal.length).toBeGreaterThan(0);
 	const failures: string[] = [];
+	const brokenDeepLinks: string[] = [];
 	for (const url of internal) {
 		const res = await page.request.get(url);
 		if (res.status() !== 200) failures.push(`${res.status()} ${url}`);
+		// 跨頁錨點（other-page/#段落）要對應到目標頁上存在的 id。
+		const ids = fragments.get(url);
+		if (ids && res.status() === 200) {
+			const html = await res.text();
+			for (const id of ids) {
+				if (!html.includes(`id="${id}"`)) brokenDeepLinks.push(`${url}#${id}`);
+			}
+		}
 	}
 	expect(failures, '非 200 的站內網址').toEqual([]);
+	expect(brokenDeepLinks, '找不到目標段落的跨頁錨點').toEqual([]);
 
 	// 頁內錨點（#…）要對應到頁面上存在的 id。
 	const brokenAnchors = await page.evaluate(() =>

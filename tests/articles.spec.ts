@@ -119,6 +119,9 @@ test.describe('第一次使用 Mnemo-Card', () => {
 		expect(text).not.toContain('驗證信');
 		// 不論用哪個動詞，都不得引導讀者使用「忘記密碼？」。
 		expect(text).not.toContain('「忘記密碼？」');
+		// 提到忘記密碼的句子，只能是「聯絡研究者」的說法（spec R9）。
+		const forgot = text.split(/[。！？\n]/).filter((s) => s.includes('忘記密碼'));
+		expect(forgot.filter((s) => !(s.includes('聯絡') && s.includes('研究者')))).toEqual([]);
 		// 提到「建立帳號」只允許 owner 核准的提醒句：同一句必須寫明不開放使用。
 		const sentences = text.split(/[。！？\n]/).filter((s) => s.includes('「建立帳號」'));
 		expect(sentences.filter((s) => !s.includes('不開放使用'))).toEqual([]);

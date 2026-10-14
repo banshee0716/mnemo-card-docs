@@ -46,6 +46,7 @@ npm run dev       # 本機預覽（搜尋只在正式建置可用）
 npm run build     # 靜態建置，產生 dist/ 與 Pagefind 索引
 npm run preview   # 以 base 路徑預覽建置結果：http://localhost:4321/mnemo-card-docs/
 npm test          # Playwright：自動建置並啟動 preview，檢查頁面、連結、搜尋、手機寬度、鍵盤、無障礙
+npm run check:public  # 掃描每個提交的公開衛生（內部細節、憑證、個人信箱、提交者身分）；推送前必跑
 ```
 
 測試涵蓋的頁面清單在 `tests/helpers.ts` 的 `PAGES`；新增文章時加進去。
