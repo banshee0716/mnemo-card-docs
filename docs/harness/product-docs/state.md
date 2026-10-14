@@ -3,7 +3,7 @@
 ```harness
 slug: product-docs
 slice: "1"
-stage: PLAN_APPROVED
+stage: BUILDING
 holder: builder
 tier: LOW
 gates_passed: [G1, G2A, G2B]
@@ -14,11 +14,11 @@ round: 1
 本區塊是唯一的狀態事實；下方文字都不構成授權。
 
 - tier reason：靜態文件站，不涉及認證、資料庫、資料刪除、匯入、付款或同步。
-- branch：`main`（新儲存庫；尚無程式碼）
+- branch：`main`（G7 前不推送，K3）
 - intent：`docs/harness/product-docs/intent.md`（owner G1 2026-10-14）
 - spec：`docs/harness/product-docs/spec.md`（G2A＋G2B r1 合審，修完關閉，2026-10-14）
 - tickets：`docs/harness/product-docs/tickets/` 01–04（同上）
-- what is left：開始 ticket 01（新工作階段，在本儲存庫開）。
+- what is left：ticket 01 完成待核（本機）；下一步 ticket 02。
 - blockers：none
 
 ## Gates
@@ -45,3 +45,23 @@ round: 1
 - 2026-10-14：授權改寫歷史並強制推送，把個人信箱換成 noreply（G2 F4）。
 
 ## Decisions by Builder
+- Builder: 2026-10-14 以 `npm view` 查證並鎖定：`astro` 7.3.8、`@astrojs/starlight` 0.42.6、
+  `sharp` 0.35.5、`@playwright/test` 1.64.0、`@axe-core/playwright` 4.13.0。專案由 `create-astro` 5.2.6
+  的 `starlight` 範本產生後只取設定檔，不留範例文章與社群連結。
+- Builder: `.npmrc` 另加 `engine-strict=true`，讓 `engines.node: 24.x` 在其他 Node 版本直接安裝失敗。
+- Builder: `editLink` 只在設定 `baseUrl` 時出現，因此不設定即為關閉；`lastUpdated: false` 明寫。
+- Builder: `ignore-scripts=true` 下建置正常：sharp 走預建的平台套件，Pagefind 走平台二進位套件，
+  皆不需安裝腳本，無 deviation。
+- Builder: `npm audit` 有 10 筆 moderate，全部源自同一個 `postcss-selector-parser` 6.1.4
+  （GHSA-rj75-hqrm-r3gf，Starlight → expressive-code → postcss-nested）。只在建置時處理本站自有 CSS，
+  外部無法提供輸入；修正版是 7.x，跨主版本 override 風險高於弱點本身，暫不處理，待上游更新。
+- Builder: R3 覆寫（`src/content/i18n/zh-TW.json`）：`heading.anchorLabel`（原為英文
+  “Section titled …”）、`page.draft`（原為英文），以及全部 10 個 `pagefind.*` 字串（Pagefind 表單的
+  `aria-label` 原為英文 “Search this site”）。其餘 Starlight 繁中字串保持原樣。
+- Builder: Astro 7 偵測到 AI 代理時會把 `astro preview` 自動放到背景，導致 Playwright 判定伺服器提早結束；
+  `webServer` 指令加 `--ignore-lock` 強制前景執行。
+- Builder: 工作流 action 版本（2026-10-14 查各 action 最新 release）：`actions/checkout@v7`、
+  `actions/setup-node@v7`、`actions/upload-pages-artifact@v5`、`actions/deploy-pages@v5`。
+  Astro 官方範例同為 checkout@v7、deploy-pages@v5；GitHub Docs 與 README 仍示較舊主版本，取最新者。
+  不用 `withastro/action`，因為建置與部署之間要跑測試。
+- Builder: ticket 01 的 favicon 暫用範本內建的 `public/favicon.svg`，由 ticket 02 依 R4 換成書本圖示。

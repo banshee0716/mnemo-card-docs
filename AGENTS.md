@@ -37,11 +37,16 @@ Mnemo-Card 主程式未公開的架構或安全細節、受試者資料或真實
   該儲存庫是私有的：可以讀來核對，但不要把它的內部細節寫進本儲存庫。
 - mnemo-study-cards 技能：`/mnt/d/mnemo-study-cards-skill`，以 v0.2.0 為準。
 
-## 指令（建立後由 ticket 01 補齊）
+## 指令
 
 ```bash
+npm ci                              # 依 package-lock.json 安裝（ignore-scripts 生效）
+npx playwright install chromium     # 第一次跑測試前安裝瀏覽器
 npm run dev       # 本機預覽（搜尋只在正式建置可用）
 npm run build     # 靜態建置，產生 dist/ 與 Pagefind 索引
-npm run preview   # 以 base 路徑預覽建置結果
-npm test          # Playwright：頁面、連結、搜尋、手機寬度、鍵盤、無障礙
+npm run preview   # 以 base 路徑預覽建置結果：http://localhost:4321/mnemo-card-docs/
+npm test          # Playwright：自動建置並啟動 preview，檢查頁面、連結、搜尋、手機寬度、鍵盤、無障礙
 ```
+
+測試涵蓋的頁面清單在 `tests/helpers.ts` 的 `PAGES`；新增文章時加進去。
+Astro 偵測到 AI 代理時會把 `astro preview` 自動放到背景；要前景執行請加 `--ignore-lock`。
