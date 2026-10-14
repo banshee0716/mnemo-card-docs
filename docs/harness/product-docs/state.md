@@ -18,8 +18,8 @@ round: 1
 - intent：`docs/harness/product-docs/intent.md`（owner G1 2026-10-14）
 - spec：`docs/harness/product-docs/spec.md`（G2A＋G2B r1 合審，修完關閉，2026-10-14）
 - tickets：`docs/harness/product-docs/tickets/` 01–04（同上）
-- what is left：ticket 01 已由全新子代理驗收 PASS；ticket 02 完成待驗；下一步 ticket 03（需 owner 審文案）。
-- blockers：none
+- what is left：ticket 01、02 已由全新子代理驗收 PASS。ticket 03 文案草稿與 S3 核對（全 PASS）完成，等 owner 審文案、確認帳號事實與附註 A、C。
+- blockers：ticket 03 等 owner 同意文案（copy/first-use.md）
 
 ## Gates
 - [x] G1 intent approved by human（2026-10-14）
@@ -80,3 +80,11 @@ round: 1
   內建 `LinkCard`。「先讀哪一篇」與文章入口由 03／04 補。沒有任何元件覆寫。
 - Builder: 手機選單是原生 Popover，Esc 由瀏覽器關閉；測試以 `:popover-open` 斷言。搜尋測試先等 Pagefind
   表單插入再按 Tab，避免時序造成的假紅燈。
+- Builder: ticket 02 驗收由全新 sonnet 子代理在乾淨 clone 執行，全部 PASS（12 passed、Logo 路徑與主程式逐字相同、
+  對比計算、截圖檢視、改錯產品首頁網址時測試變紅）。
+- Builder: ticket 03 順序調整：先由全新 opus 子代理做 S3 核對、修 FAIL、複核，再送 owner 審文案，讓 owner 看到的
+  是核對過的版本。owner 若改動涉及產品操作的句子，該句再複核。核對對照正式版 main（STATUS 2026-10-11 發布），
+  以 `git show` 讀取，未 checkout。初核 3 FAIL（「基礎概念卡」、背面翻回正面的方式、手機簡稱）→ 修正 → 複核 PASS。
+- Builder: 公開報告初版寫到登入頁的安全機制與寄信能力，違反 S3；已請同一核對者移除，該觀察只留內部報告。
+- Builder: S3 內部報告依 spec 寫在主程式儲存庫 `docs/harness/product-docs/content-check-first-use.md`，
+  為未追蹤的新檔，未 add／commit，未動主程式任何既有檔案（K1 只新增這個 spec 指定的檔）。
