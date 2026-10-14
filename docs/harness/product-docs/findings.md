@@ -42,3 +42,34 @@ NEEDS FIXES → F1–F10 全部關閉，依 owner 裁定不複審。
 ## Round 1 verdict (2026-10-14)
 G6A APPROVE AFTER FIXES；G6B APPROVE AFTER FIXES → F11–F15 全部修正；F11（P1）由全新 opus 確認關閉（不跑第二輪 Codex，LOW 輕量流程）。
 關閉驗證者另提 N1–N5（P2／P3，無實際洩漏）已處理，見 state.md § Decisions by Builder。
+
+# slice 2 — G2A＋G2B round 1（全新 opus，2026-10-14）
+
+原文：`reviews/product-docs-s2-g2a-r1.md`（head 1fe6d41）。判定：G2A APPROVE AFTER FIXES；G2B APPROVE AFTER FIXES。
+依 LOW 輕量流程，修完不複審。
+
+## F16 [P2] 產品行為只核對卡型；背面漏了概述（slice 2 G2 F1；confidence high）
+- 失敗情境：文案寫「背面是兩個提示」，S3 只對技能核對而 PASS，網站描述與產品畫面不符。
+- Disposition: fixed — R15 主題 3 改為「背面有一段概述與兩個提示，背面組成以產品畫面為準」；S3 與 ticket 第 1 步加入正背面與匯入對照產品畫面。
+## F17 [P2] 搜「卡包」的斷言用前綴比對，第三篇命中也通過（slice 2 G2 F2；confidence high）
+- 失敗情境：新第二篇不含「卡包」，搜尋只回第三篇，AC5 仍綠。
+- Disposition: fixed — AC17 加斷言：有一筆結果路徑（去掉 `#`）完全等於第二篇網址；R15 第 3 點要求文案至少一處用「卡包」；ticket 變異清單加入「刪掉所有卡包」。
+## F18 [P2] 牌組計畫寫法易被寫成「等你確認」；漏了「要求先看計畫」（slice 2 G2 F3；confidence high）
+- 失敗情境：文案寫「先列計畫讓你確認再產卡」，與技能「列摘要後直接寫卡」相反。
+- Disposition: fixed — 主題 1 寫明列摘要後直接寫卡、只有要求先看計畫才停；主題 4 補「要求先看計畫」「來源缺漏補件」，以及「多數不問或只問一輪、最多三輪」。
+## F19 [P3] 冷讀定義過寬（slice 2 G2 F4；confidence high）
+- Disposition: fixed — 主題 3 改用技能的三個前提（本副先備程度、沒讀過來源、沒看過同副其他卡；領域常識不解釋）。
+## F20 [P2] S5 判準問不成，子代理可能用技能知識補缺口（slice 2 G2 F5；confidence medium-high）
+- 失敗情境：第三篇缺前提，子代理憑對技能的了解補上而判無缺口。
+- Disposition: fixed — 判準改為「缺少完成產卡所需的任何資訊」；明列禁讀（第二篇、copy、verification、spec、intent、技能目錄、主程式）與不得載入技能；每步須引用原句。
+## F21 [P3] AC14 沒規定 h2 恰好是哪些（slice 2 G2 F6；confidence medium-high）
+- Disposition: fixed — AC14 改為 h2 清單完全等於定稿文案的六個標題；R15 寫明不另立 h2；測試在文案定稿後寫死；變異清單加「多加一個 h2」。
+## F22 [P3] AC15 涵蓋太窄、比對方式未定（slice 2 G2 F7；confidence medium）
+- Disposition: fixed — 範圍為內容區加 meta description；英文代碼不分大小寫完整單字；加「點選「」「選擇「」「輸入「」「拖入」「上傳」；禁止行內 code；註明是回歸防護網。
+## F23 [P3] 「照推薦」與不寫操作的界線（slice 2 G2 F8；confidence medium）
+- Disposition: fixed — R15 第 5 點加：描述技能如何回應屬決策說明，不寫成「請輸入／請回覆…」指示句。
+## F24 [P3] 首頁說明句不經 owner 與 S3；intent 第 7 條未寫進 spec（slice 2 G2 F9；confidence high）
+- Disposition: fixed — 首頁說明句併入 copy 送 owner、列入 S3；spec 新增 §2「不做」。
+
+## Round 1 verdict (2026-10-14)
+G2A APPROVE AFTER FIXES；G2B APPROVE AFTER FIXES → F16–F24 全部修正，依 LOW 流程不複審。

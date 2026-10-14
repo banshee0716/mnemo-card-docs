@@ -3,12 +3,12 @@
 ```harness
 slug: product-docs
 slice: "2"
-stage: INTENT_APPROVED
-holder: reviewer
+stage: SPEC_APPROVED
+holder: builder
 tier: LOW
-gates_passed: [G1]
+gates_passed: [G1, G2A, G2B]
 open_p0p1: 0
-gate: G2A
+gate: G4
 round: 1
 ```
 本區塊是唯一的狀態事實；下方文字都不構成授權。
@@ -18,13 +18,13 @@ round: 1
 - slice 1：RELEASED 2026-10-14，紀錄封存於 `state-slice1.md`。
 - intent：`docs/harness/product-docs/intent-slice2.md`（owner G1 2026-10-14）
 - spec：`spec-slice2.md`；tickets：`tickets/05-rewrite-skill-article.md`
-- what is left：G2（全新 opus 合審 spec-slice2 與 ticket 05）→ 撰寫與 S3 核對 → owner 審文案 → G4 → G6 → G5 → G7。
+- what is left：ticket 05：撰寫文案 → S3 核對、S5 自足性 → owner 審文案 → G4 → G6 → G5 → G7。
 - blockers：none
 
 ## Gates
 - [x] G1 intent approved by human（2026-10-14）
-- [ ] G2A spec reviewed
-- [ ] G2B tickets reviewed
+- [x] G2A spec reviewed（全新 opus r1 APPROVE AFTER FIXES → F16–F24 修完，不複審；reviews/product-docs-s2-g2a-r1.md）
+- [x] G2B tickets reviewed（同一輪合審）
 - [x] G3 conditional checkpoint（LOW 不適用）
 - [ ] G4 verified
 - [ ] G5 accepted by human
