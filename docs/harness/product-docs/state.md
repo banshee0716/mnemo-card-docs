@@ -47,6 +47,8 @@ round: 1
 - 2026-10-14：S5（verification/standalone-getting-started.md）找到 11 個缺口（無阻擋級）。owner 裁定：第三篇大致沒問題，
   只補「卡包與檢查結果怎麼讀」；第 1 節改為說明技能是什麼，並寫明技能檔由研究者提供給符合條件的受試者（不點名 AI 工具）。
   其餘缺口列為已知限制（spec-slice2 R18）。
+- 2026-10-14：S3 發現 Mnemo-Card 公開首頁「四種卡片」區塊把深入解析卡寫成「和相近的做法差在哪？」，與新增卡片畫面及技能的
+  「為什麼會這樣？」不一致。owner 裁定：文章以技能與新增卡片畫面為準；主程式首頁的說法另開主程式切片修正（不在本儲存庫）。
 
 ## Decisions by Builder
 - Builder: 2026-10-14 slice 1 的 state 封存為 `state-slice1.md`，本檔改記 slice 2。
