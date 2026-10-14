@@ -9,11 +9,25 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'Mnemo-Card 文件',
+			logo: { src: './src/assets/logo.svg', replacesTitle: false },
 			locales: {
 				root: { label: '繁體中文', lang: 'zh-TW' },
 			},
+			customCss: [
+				'@fontsource-variable/noto-sans-tc',
+				'@fontsource-variable/noto-serif-tc',
+				'./src/styles/custom.css',
+			],
 			lastUpdated: false,
-			sidebar: [],
+			sidebar: [
+				{
+					label: 'Mnemo-Card',
+					items: [
+						{ label: '開啟 Mnemo-Card', link: 'https://mnemo-card.vercel.app/app' },
+						{ label: '產品首頁', link: 'https://mnemo-card.vercel.app/' },
+					],
+				},
+			],
 		}),
 	],
 });

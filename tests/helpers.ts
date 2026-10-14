@@ -108,3 +108,18 @@ export async function expectTraditionalUi(page: Page, path: string) {
 	const found = ENGLISH_FALLBACKS.filter((s) => new RegExp(`\\b${s}\\b`).test(uiText));
 	expect(found, '落回英文的介面字串').toEqual([]);
 }
+
+/** 反覆按 Tab，直到目前焦點元素符合 selector；回傳是否找到。 */
+export async function tabUntil(page: Page, selector: string, maxTabs = 60) {
+	for (let i = 0; i < maxTabs; i++) {
+		await page.keyboard.press('Tab');
+		if (await page.evaluate((s) => document.activeElement?.matches(s) ?? false, selector)) return true;
+	}
+	return false;
+}
+
+/** 側欄的外部連結（spec R6）。 */
+export const PRODUCT_LINKS = [
+	{ text: '開啟 Mnemo-Card', href: 'https://mnemo-card.vercel.app/app' },
+	{ text: '產品首頁', href: 'https://mnemo-card.vercel.app/' },
+];

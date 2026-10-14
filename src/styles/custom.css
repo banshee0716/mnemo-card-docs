@@ -1,0 +1,24 @@
+/* 字型：內文 Noto Sans TC、標題 Noto Serif TC（spec R4）。 */
+:root {
+	--sl-font: 'Noto Sans TC Variable', 'Noto Sans TC';
+	--mc-font-heading: 'Noto Serif TC Variable', 'Noto Serif TC', serif;
+}
+
+h1#_top,
+.sl-markdown-content :is(h1, h2, h3, h4, h5, h6) {
+	font-family: var(--mc-font-heading);
+	font-weight: 700;
+}
+
+/* 主色 #0071E3。深色主題的 accent-high 用同色系較淺的藍，兩種主題文字對比皆達 AA。 */
+:root {
+	--sl-color-accent-low: #00264f;
+	--sl-color-accent: #0071e3;
+	--sl-color-accent-high: #66b0ff;
+}
+
+:root[data-theme='light'] {
+	--sl-color-accent-low: #d9eafc;
+	--sl-color-accent: #0071e3;
+	--sl-color-accent-high: #004a99;
+}
