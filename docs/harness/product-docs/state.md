@@ -4,7 +4,7 @@
 slug: product-docs
 slice: "3b"
 stage: SPEC
-holder: human
+holder: builder
 tier: LOW
 gates_passed: [G1, G2A, G2B]
 open_p0p1: 0
@@ -69,6 +69,8 @@ round: 1
 - 2026-10-14：自我解釋：Bisra et al. 2018 用第一作者 SFU 博士論文第 2 章（改寫自期刊文）為依據，只採與期刊摘要核對過的數字
   （69 個效果量、g = .55），核對紀錄註明版本。Tan et al. 2025 找不到全文，放延伸閱讀，owner 裁定**不標**「本文僅依據摘要」
   （覆寫 spec-slice3 R23 第 2 點對本篇的要求）；閱讀指引仍只寫摘要明寫的內容。
+- 2026-10-14：owner 同意第二批〈自我解釋〉〈認知負荷理論〉文案（「先上這兩篇」），第二批改為分兩次上線：
+  這兩篇與導讀頁補列先上；KLI 2026-10-15 單獨上線（偏離 spec-slice3 §0 第二批三篇一起）。
 
 ## Decisions by Builder
 - Builder: 2026-10-14 slice 2 的 state 封存為 `state-slice2.md`，本檔改記 slice 3。
@@ -84,3 +86,4 @@ round: 1
 - Builder: 2026-10-14 第一批推送前，先平行查證第二批（10、11）的文獻；只蒐集事實，不動網站，第二批上站仍等第一批 RELEASED。
 - Builder: 2026-10-14 〈自我解釋〉Chi (2000) 專章沒有章節 DOI（重印本只有書級 DOI，不能當章節 DOI），參考文獻連到作者實驗室（ASU）公開該章的頁面：APA 7 允許附可取得的網址，且讀者能直接讀到全文；偏離 spec-slice3 R23 第 1 點「沒有 DOI 才用出版社頁」，此處記錄理由（S6 F4）。
 - Builder: 2026-10-14 第二批〈自我解釋〉〈認知負荷理論〉文案 S6 全部 PASS（verification/content-ls-self-explanation.md、content-ls-cognitive-load.md）；送 owner 審。KLI 等 owner 資料。
+- Builder: 2026-10-14 第二批前兩篇上站：側欄補自我解釋、認知負荷理論；導讀頁補列（S6 改版核對 PASS，295 字）；首頁 LinkCard 說明改為不列篇名的「依主題選一篇開始讀，每篇都能單獨閱讀。」（避免與上方說明句重複）；測試補兩頁、AC24 搜「認知負荷」。`npm test` 110 passed。

@@ -31,7 +31,7 @@ for (const { path, prev, next } of PAGINATION) {
 }
 
 // 學習科學導讀頁只有一個 h2，不列入（spec-slice3 AC25）。
-for (const path of [FIRST_USE, ABOUT_SKILL, GETTING_STARTED, 'learning-science/retrieval-practice/', 'learning-science/spaced-practice/', 'learning-science/generative-learning/']) {
+for (const path of [FIRST_USE, ABOUT_SKILL, GETTING_STARTED, 'learning-science/retrieval-practice/', 'learning-science/spaced-practice/', 'learning-science/generative-learning/', 'learning-science/self-explanation/', 'learning-science/cognitive-load/']) {
 	test(`AC4：${path} 在桌機有文章目錄（至少兩個二級標題）`, async ({ page }) => {
 		await page.setViewportSize({ width: 1280, height: 800 });
 		await page.goto(path);

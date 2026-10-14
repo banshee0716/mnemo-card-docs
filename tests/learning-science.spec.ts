@@ -32,6 +32,18 @@ export const LEARNING_SCIENCE: {
 		label: '生成學習',
 		h2: ['整理過和理解了，差在哪裡？', '研究支持什麼？', '是不是做越多種活動越好？', '可以怎麼開始？', '參考文獻', '延伸閱讀'],
 	},
+	{
+		slug: 'self-explanation/',
+		label: '自我解釋',
+		h2: ['重述和自我解釋，差在哪裡？', '研究支持什麼？', '什麼時候自我解釋幫助不大？', '可以怎麼開始？', 'Mnemo-Card 怎麼用這個概念？', '參考文獻', '延伸閱讀'],
+		product: 'Mnemo-Card 怎麼用這個概念？',
+	},
+	{
+		slug: 'cognitive-load/',
+		label: '認知負荷理論',
+		h2: ['負荷從哪裡來？', '研究支持什麼？', '是不是越輕鬆越好？', '可以怎麼開始？', '參考文獻', '延伸閱讀'],
+		noMnemoCard: true,
+	},
 ];
 
 const REFERENCES = '參考文獻';
@@ -152,7 +164,10 @@ test('AC23：首頁有「學習科學」入口連到導讀頁', async ({ page })
 });
 
 /** AC24：搜尋詞 → 必須出現在結果中的頁面 slug。 */
-const SEARCHES: [string, string][] = [['檢索練習', 'retrieval-practice/']];
+const SEARCHES: [string, string][] = [
+	['檢索練習', 'retrieval-practice/'],
+	['認知負荷', 'cognitive-load/'],
+];
 
 for (const [query, slug] of SEARCHES) {
 	test(`AC24：搜「${query}」的結果含 learning-science/${slug}`, async ({ page }) => {

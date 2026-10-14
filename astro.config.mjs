@@ -38,6 +38,8 @@ export default defineConfig({
 						{ label: '檢索練習', slug: 'learning-science/retrieval-practice' },
 						{ label: '間隔練習', slug: 'learning-science/spaced-practice' },
 						{ label: '生成學習', slug: 'learning-science/generative-learning' },
+						{ label: '自我解釋', slug: 'learning-science/self-explanation' },
+						{ label: '認知負荷理論', slug: 'learning-science/cognitive-load' },
 					],
 				},
 			],
