@@ -3,12 +3,12 @@
 ```harness
 slug: product-docs
 slice: "1"
-stage: BUILT
-holder: human
+stage: ACCEPTED
+holder: builder
 tier: LOW
-gates_passed: [G1, G2A, G2B, G4, G6A, G6B]
+gates_passed: [G1, G2A, G2B, G4, G5, G6A, G6B]
 open_p0p1: 0
-gate: G5
+gate: G7
 round: 1
 ```
 本區塊是唯一的狀態事實；下方文字都不構成授權。
@@ -18,7 +18,7 @@ round: 1
 - intent：`docs/harness/product-docs/intent.md`（owner G1 2026-10-14）
 - spec：`docs/harness/product-docs/spec.md`（G2A＋G2B r1 合審，修完關閉，2026-10-14）
 - tickets：`docs/harness/product-docs/tickets/` 01–04（同上）
-- what is left：G6 r1 的 F11–F15 已修並由全新 opus 確認關閉（P1 關閉）；驗證者追加的 N1–N5 亦確認關閉 @ 3a3d059。下一步 G5（owner 驗收），之後 G7。
+- what is left：G6 r1 的 F11–F15 已修並由全新 opus 確認關閉（P1 關閉）；驗證者追加的 N1–N5 亦確認關閉 @ 3a3d059。G5 已由 owner 通過；進行 G7（Pages 設定 → owner 推送 main → S4）。
 - blockers：none
 
 ## Gates
@@ -27,7 +27,7 @@ round: 1
 - [x] G2B tickets reviewed（同一輪合審）
 - [x] G3 conditional checkpoint（LOW 不適用）
 - [x] G4 verified（全新 opus 子代理，乾淨 clone @ d6fc960；G6 修正後最終重跑 VERIFIED @ 5694ca9，2026-10-14）
-- [ ] G5 accepted by human
+- [x] G5 accepted by human（2026-10-14，本機預覽）
 - [x] G6A task review（Codex r1 2026-10-14：APPROVE AFTER FIXES，F11–F15 修完；全新 opus 確認關閉，依 LOW 流程不複審）
 - [x] G6B code review（同上）
 - [ ] G7 released
@@ -67,6 +67,7 @@ round: 1
   （本機 push 受 owner 的 git 保護規則限制）。查證：舊提交 5fe8c1f、26123a3、117f21f、492e030 在 GitHub 皆回「No commit found」；
   Actions 執行次數 0。
 - 2026-10-14：owner 在本儲存庫發動 G6 Codex 合審（`/codex:adversarial-review --background --base fa5a923`）。
+- 2026-10-14：owner G5 驗收通過，並授權執行 G7（Pages 來源設為 GitHub Actions、第一次部署、S4）。推送 main 由 owner 執行。
 
 ## Decisions by Builder
 - Builder: 2026-10-14 以 `npm view` 查證並鎖定：`astro` 7.3.8、`@astrojs/starlight` 0.42.6、
