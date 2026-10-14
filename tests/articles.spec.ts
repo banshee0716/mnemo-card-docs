@@ -41,7 +41,7 @@ for (const path of [FIRST_USE, ABOUT_SKILL, GETTING_STARTED]) {
 }
 
 test('AC4：側欄依 R6 排列：開始使用、mnemo-study-cards', async ({ page }) => {
-	await page.goto('');
+	await page.goto(FIRST_USE);
 	const groups = page.locator('#starlight__sidebar .top-level > li > details');
 	await expect(groups.locator('> summary')).toHaveText(['開始使用', 'mnemo-study-cards']);
 	const skillLinks = groups.nth(1).locator('a');
@@ -85,7 +85,7 @@ test('AC10：第三篇的下載段落沒有連結或程式碼區塊，全文沒�
 
 test.describe('第一次使用 Mnemo-Card', () => {
 	test('AC4：側欄「開始使用」群組含本篇', async ({ page }) => {
-		await page.goto('');
+		await page.goto(ABOUT_SKILL);
 		const group = page.locator('#starlight__sidebar .top-level > li > details').first();
 		await expect(group.locator('summary')).toHaveText('開始使用');
 		await expect(group.locator('a')).toHaveText(['第一次使用 Mnemo-Card']);

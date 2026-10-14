@@ -6,14 +6,14 @@ const articleLink = `${sidebar} a[href="${BASE}first-use/"]`;
 
 test.describe('側欄（AC4）', () => {
 	test('側欄只有站內文章，沒有外部連結', async ({ page }) => {
-		await page.goto('');
+		await page.goto('first-use/');
 		const hrefs = await page.locator(`${sidebar} a`).evaluateAll((els) => els.map((a) => a.getAttribute('href') ?? ''));
 		expect(hrefs.length).toBeGreaterThan(0);
 		expect(hrefs.filter((h) => !h.startsWith(BASE))).toEqual([]);
 	});
 
 	test('首頁不在側欄', async ({ page }) => {
-		await page.goto('');
+		await page.goto('first-use/');
 		await expect(page.locator(`${sidebar} a[href="${BASE}"]`)).toHaveCount(0);
 	});
 });
@@ -33,13 +33,13 @@ test.describe('鍵盤操作（AC7）', () => {
 
 	test('桌機寬度下 Tab 能走到側欄的文章連結', async ({ page }) => {
 		await page.setViewportSize({ width: 1280, height: 800 });
-		await page.goto('');
+		await page.goto('skills/mnemo-study-cards/');
 		expect(await tabUntil(page, articleLink)).toBe(true);
 	});
 
 	test('手機寬度下 Enter 打開選單、Tab 到側欄的文章連結、Esc 關閉', async ({ page }) => {
 		await page.setViewportSize({ width: 375, height: 800 });
-		await page.goto('');
+		await page.goto('skills/mnemo-study-cards/');
 		expect(await tabUntil(page, '.sl-menu-button')).toBe(true);
 		await page.keyboard.press('Enter');
 		await expect(page.locator(`${sidebar}:popover-open`)).toHaveCount(1);
