@@ -46,6 +46,11 @@ round: 1
 - 2026-10-14：owner G1 通過（「可以，當然沒問題…直接開始做吧」）：A1 分兩批（第一批導讀＋檢索＋間隔＋生成學習；
   第二批自我解釋＋認知負荷＋KLI）、B 沿用 brief 標題、C 文獻 3–7 篇不湊數、D1 產品段只放在有對應功能的篇目、
   E1 讀不到全文先找合法公開版，找不到就降級；第三篇 `next: false` 不改。未提供示範稿。
+- 2026-10-14：間隔練習的 Latimier 2021、Murray 2025 讀不到全文（出版社付費；只有審查前預印本），正文可用文獻不足 3 筆（R23 第 4 點）。
+  owner 裁定：由 Builder 另找一篇讀得到全文的綜述，查證後補上。兩篇降級為延伸閱讀候選。
+- 2026-10-14：檢索練習的主幹文獻 Carpenter 2022 讀不到全文（Nature Reviews Psychology 付費牆，無公開版）。owner 裁定改用
+  Karpicke, J. D. (2017). Retrieval-based learning: A decade of progress（Byrne 主編 *Learning and Memory* 第 2 版，Elsevier，pp. 487–514；
+  全文為 ERIC ED599273 作者提交版，頁碼依該版並註明）。Carpenter 2022 不再用於檢索與間隔；Gonçalves 2025 讀不到，不用。
 
 ## Decisions by Builder
 - Builder: 2026-10-14 slice 2 的 state 封存為 `state-slice2.md`，本檔改記 slice 3。
