@@ -41,6 +41,7 @@ round: 1
 - 2026-10-14：owner 決定不做「編輯此頁」連結，改在 GitHub 網頁直接編輯；不保護 main、不改 PR 流程、不在工作流加跑公開檢查。
 - 2026-10-14：slice 2 重寫〈認識 mnemo-study-cards〉，說明技能如何判斷主題、拆分內容、生成卡片。owner 選定：
   依三個問題組織、卡型用中文名稱、沿用〈Cognitive offloading〉範例、舊段落濃縮保留（intent-slice2.md 第 2–5 條）。
+- 2026-10-14：owner 要求第二篇與第三篇目的截然不同：第二篇講原理，第三篇是單純步驟、不看第二篇也能照做（intent-slice2.md 第 6 條）。
 
 ## Decisions by Builder
 - Builder: 2026-10-14 slice 1 的 state 封存為 `state-slice1.md`，本檔改記 slice 2。
