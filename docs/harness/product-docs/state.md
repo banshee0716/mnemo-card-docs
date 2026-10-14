@@ -3,12 +3,12 @@
 ```harness
 slug: product-docs
 slice: "1"
-stage: BUILDING
+stage: VERIFIED
 holder: builder
 tier: LOW
-gates_passed: [G1, G2A, G2B]
+gates_passed: [G1, G2A, G2B, G4]
 open_p0p1: 0
-gate: G2A
+gate: G4
 round: 1
 ```
 本區塊是唯一的狀態事實；下方文字都不構成授權。
@@ -18,15 +18,15 @@ round: 1
 - intent：`docs/harness/product-docs/intent.md`（owner G1 2026-10-14）
 - spec：`docs/harness/product-docs/spec.md`（G2A＋G2B r1 合審，修完關閉，2026-10-14）
 - tickets：`docs/harness/product-docs/tickets/` 01–04（同上）
-- what is left：ticket 01–03 驗收 PASS；ticket 04 已上站（本機）、S3 兩份全 PASS，待全新子代理驗收；之後 G4。
+- what is left：ticket 01–04 完成，G4 VERIFIED。下一步 G6（一輪 Codex 合審）與 G5（owner 驗收）。G7 前不推送。
 - blockers：none
 
 ## Gates
 - [x] G1 intent approved by human（2026-10-14）
 - [x] G2A spec reviewed（fresh opus r1 NEEDS FIXES → F1–F10 修完，依 owner 裁定不複審；reviews/product-docs-s1-g2a-r1.md）
 - [x] G2B tickets reviewed（同一輪合審）
-- [ ] G3 conditional checkpoint
-- [ ] G4 verified
+- [x] G3 conditional checkpoint（LOW 不適用）
+- [x] G4 verified（全新 opus 子代理，乾淨 clone @ cea85bf，2026-10-14）
 - [ ] G5 accepted by human
 - [ ] G6A task review（Codex，與 G6B 合一輪）
 - [ ] G6B code review
@@ -35,6 +35,15 @@ round: 1
 ## Evidence (G4)
 | Acceptance criterion | Check | Result/output ref |
 | --- | --- | --- |
+| AC1 | 乾淨 clone `npm ci && npm run build`（Node 24.21.0） | EXIT=0；dist 四頁＋pagefind（zh-tw page_count 4） |
+| AC2、AC3、AC6、AC8、AC9 | `npm test`，四頁各跑（AC8 淺色＋深色） | 43 passed @ cea85bf |
+| AC4 | 側欄順序與外部連結、三篇文章目錄、R8 上下篇逐頁斷言 | PASS；調換側欄群組、拿掉 `next: false` 時測試變紅 |
+| AC5 | 鍵盤開搜尋：「熟悉度」→第一篇；「卡包」→技能文章 | PASS |
+| AC7 | 跳轉連結、桌機側欄、手機選單 Enter／Esc、手機文章目錄、搜尋 | PASS（G4 後補強：Tab 走到手機目錄與文章連結，43 passed） |
+| AC10 | 第一篇禁用字與步驟句；第三篇下載段一句、無連結無程式碼、無待補待確認 | PASS；加連結時測試變紅 |
+| AC11 | verification/ 三份報告 | first-use 62 PASS；mnemo-study-cards 35 PASS；getting-started 52 PASS；FAIL 皆 0 |
+| AC12 | 部署與線上冒煙 | G7 時執行 |
+| AC13 | spec 的 `git grep`；提交者身分 | 無輸出；只有 noreply 地址 |
 
 ## Deviation log
 
@@ -104,3 +113,6 @@ round: 1
   終版：第二篇 PASS 35／FAIL 0；第三篇 PASS 52／FAIL 0。UCL 典藏頁被機器人驗證擋下，核對者改以公開書目索引確認。
 - Builder: 第一篇移除暫時的 `next: false`，文末兩篇名稱補上相對連結（文字不變）。首頁加 mnemo-study-cards 兩篇入口。
   上下篇測試改成依 spec R8 表逐頁斷言文字與網址。
+- Builder: G4 驗證者的 P3 建議中，AC7 兩項已補強（手機文章目錄改用 Tab 走到再 Enter；側欄改斷言走到文章連結）。
+  其餘 P3 不處理：AC3 不遞迴檢查 CSS `url()` 字型分片（四頁互相連結，頁面層級已完整）；文章目錄只在桌機斷言；
+  建置時 Starlight 的 404 內容項警告（自動產生 404 頁，無影響）。

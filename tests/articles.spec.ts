@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { BASE, searchFor } from './helpers';
+import { BASE, searchFor, tabUntil } from './helpers';
 
 const FIRST_USE = 'first-use/';
 const ABOUT_SKILL = 'skills/mnemo-study-cards/';
@@ -102,7 +102,7 @@ test.describe('第一次使用 Mnemo-Card', () => {
 		await page.goto(FIRST_USE);
 		const details = page.locator('#starlight__mobile-toc');
 		await expect(details).not.toHaveAttribute('open');
-		await page.locator('#starlight__on-this-page--mobile').focus();
+		expect(await tabUntil(page, '#starlight__on-this-page--mobile')).toBe(true);
 		await page.keyboard.press('Enter');
 		await expect(details).toHaveAttribute('open');
 		await page.keyboard.press('Tab');

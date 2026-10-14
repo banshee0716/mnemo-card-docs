@@ -2,6 +2,7 @@ import { expect, test } from '@playwright/test';
 import { BASE, PRODUCT_LINKS, tabUntil } from './helpers';
 
 const sidebar = '#starlight__sidebar';
+const articleLink = `${sidebar} a[href="${BASE}first-use/"]`;
 
 test.describe('側欄（AC4）', () => {
 	test('最後一組是「Mnemo-Card」，含兩個外部連結，網址與文字正確', async ({ page }) => {
@@ -35,19 +36,19 @@ test.describe('鍵盤操作（AC7）', () => {
 		expect(inMain).toBe(true);
 	});
 
-	test('桌機寬度下 Tab 能走到側欄連結', async ({ page }) => {
+	test('桌機寬度下 Tab 能走到側欄的文章連結', async ({ page }) => {
 		await page.setViewportSize({ width: 1280, height: 800 });
 		await page.goto('');
-		expect(await tabUntil(page, `${sidebar} a`)).toBe(true);
+		expect(await tabUntil(page, articleLink)).toBe(true);
 	});
 
-	test('手機寬度下 Enter 打開選單、Tab 到側欄連結、Esc 關閉', async ({ page }) => {
+	test('手機寬度下 Enter 打開選單、Tab 到側欄的文章連結、Esc 關閉', async ({ page }) => {
 		await page.setViewportSize({ width: 375, height: 800 });
 		await page.goto('');
 		expect(await tabUntil(page, '.sl-menu-button')).toBe(true);
 		await page.keyboard.press('Enter');
 		await expect(page.locator(`${sidebar}:popover-open`)).toHaveCount(1);
-		expect(await tabUntil(page, `${sidebar} a`, 20)).toBe(true);
+		expect(await tabUntil(page, articleLink, 20)).toBe(true);
 		await page.keyboard.press('Escape');
 		await expect(page.locator(`${sidebar}:popover-open`)).toHaveCount(0);
 	});
