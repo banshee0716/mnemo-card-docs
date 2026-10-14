@@ -56,6 +56,9 @@ round: 1
   owner 另提供兩個 Carpenter 2022 連結（Scribd、教師部落格），Builder 判斷為第三方轉貼、非授權來源，依 R24 不用。
 - 2026-10-14：owner 經機構權限從 Nature 官網下載 Carpenter 等人 2022 出版社正式版（owner 確認來源）。Builder 依此恢復使用：
   作為〈間隔練習〉主要導讀文獻；〈檢索練習〉維持 Karpicke 2017 為主幹，不改。PDF 只放暫存目錄。
+- 2026-10-14：owner 審第一批文案：「沒甚麼問題」，要求（1）例子人名改成 A、B 代號；（2）所有引用用嚴謹的 APA 格式。
+  Builder 改為 APA 第 7 版文中引用與完整書目（spec-slice3 R22 第 4 點同步改）；改完由全新子代理只核格式與內容未變，
+  之後視為 owner 同意第一批文案，進入上站（06b）。
 
 ## Decisions by Builder
 - Builder: 2026-10-14 slice 2 的 state 封存為 `state-slice2.md`，本檔改記 slice 3。
