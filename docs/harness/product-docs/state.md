@@ -18,7 +18,7 @@ round: 1
 - slice 1：RELEASED 2026-10-14，紀錄封存於 `state-slice1.md`。
 - intent：`docs/harness/product-docs/intent-slice2.md`（owner G1 2026-10-14）
 - spec：`spec-slice2.md`；tickets：`tickets/05-rewrite-skill-article.md`
-- what is left：ticket 05：撰寫文案 → S3 核對、S5 自足性 → owner 審文案 → G4 → G6 → G5 → G7。
+- what is left：ticket 05：第二篇 S3 核對中；第三篇 R18 改動句待 S3 → owner 審文案 → G4 → G6 → G5 → G7。
 - blockers：none
 
 ## Gates
@@ -44,6 +44,9 @@ round: 1
   依三個問題組織、卡型用中文名稱、沿用〈Cognitive offloading〉範例、舊段落濃縮保留（intent-slice2.md 第 2–5 條）。
 - 2026-10-14：owner 要求第二篇與第三篇目的截然不同：第二篇講原理，第三篇是單純步驟、不看第二篇也能照做（intent-slice2.md 第 6 條）。
 - 2026-10-14：owner G1 通過（「目前看可以，只要確定內容就好」）；附圖之後再考慮，不在本切片。
+- 2026-10-14：S5（verification/standalone-getting-started.md）找到 11 個缺口（無阻擋級）。owner 裁定：第三篇大致沒問題，
+  只補「卡包與檢查結果怎麼讀」；第 1 節改為說明技能是什麼，並寫明技能檔由研究者提供給符合條件的受試者（不點名 AI 工具）。
+  其餘缺口列為已知限制（spec-slice2 R18）。
 
 ## Decisions by Builder
 - Builder: 2026-10-14 slice 1 的 state 封存為 `state-slice1.md`，本檔改記 slice 2。

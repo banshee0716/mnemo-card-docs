@@ -18,7 +18,9 @@ spec-slice2 R15、R16、R17。
    產品的句子，該句再複核。
 5. owner 同意後寫進 `src/content/docs/skills/mnemo-study-cards/index.mdx`（內容與 copy 逐字相同，只多前言），
    並把首頁卡片說明換成 copy 中同意的那一句。
-6. 測試：在 `tests/articles.spec.ts` 加 AC14（h2 清單完全等於定稿的六個標題）、AC15（spec-slice2 列的禁用字、
+5a. 第三篇（R18）：`copy/getting-started.md` 已依 owner 裁定起草；改動句由 S3 核對後與第二篇文案一起送 owner，
+   同意後同步到 `getting-started.mdx`。
+6. 測試：AC18（第三篇第 1 節文字、無連結與程式碼、第 4 節三種狀態），並在 `tests/articles.spec.ts` 加 AC14（h2 清單完全等於定稿的六個標題）、AC15（spec-slice2 列的禁用字、
    英文代碼不分大小寫完整單字、無程式碼區塊與行內 code、含 meta description），以及 AC17 的搜尋斷言
    （搜「卡包」有一筆路徑完全等於第二篇網址）。既有 AC5、R8 上下篇等斷言保持不變。
 
@@ -28,7 +30,7 @@ S1、S2、S3、S5。
 
 ## 驗收條件
 
-- [ ] owner 同意文案（含首頁說明句）
+- [ ] owner 同意文案（含首頁說明句與第三篇 R18 修改）
 - [ ] S3 報告全部 PASS；S5 報告沒有缺口或缺口已由 owner 裁定
 - [ ] `npm run build` exit 0；`npm test` 全綠（含 AC14、AC15、AC17 新斷言）
 - [ ] 變異：在第二篇加入「pack.md」、加入「Concept」、調換兩個 h2、多加一個 h2、刪掉第二篇所有「卡包」時，測試都變紅
