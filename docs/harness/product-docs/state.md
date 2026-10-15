@@ -17,7 +17,7 @@ round: 1
 - branch：`main`（G7 前不推送；推送由 owner 執行）
 - slice 1–3：RELEASED，封存於 `state-slice1.md`、`state-slice2.md`、`state-slice3.md`。
 - 任務：依完整使用者旅程，把〈第一次使用 Mnemo-Card〉寫得更完整；需要附圖，先以小字佔位（owner 2026-10-15）。
-- what is left：兩篇文案已起草 → S3 → owner 審 → 上站 → G4 → owner 推送 → S4。 → spec＋工作票 → G2 → 文案 → S3 核對 → owner 審 → 上站 → G4 → owner 推送 → S4。
+- what is left：兩篇文案 S3 全部 PASS（複核後），送 owner 審文案、新頁標題、「設定」核准句與首頁改法 → S3 → owner 審 → 上站 → G4 → owner 推送 → S4。 → spec＋工作票 → G2 → 文案 → S3 核對 → owner 審 → 上站 → G4 → owner 推送 → S4。
 - blockers：none
 
 ## Gates
@@ -46,3 +46,4 @@ round: 1
 - Builder: 2026-10-15 產品旅程盤點完成（子代理唯讀正式版 main）；發現第 1 步帳號說法與程式不一致，列為 intent B 交 owner 確認。
 - Builder: 2026-10-15 slice 3 的 state 封存為 `state-slice3.md`，本檔改記 slice 4。
 - Builder: 2026-10-15 G2 r1 的 F36–F49 全部照建議修進 spec-slice4、工作票 14／15、intent 註記與兩篇草稿；R39 字數下修為第一篇 2,000–3,000、新頁 1,100–2,000（owner 要避免認知負荷過大）。
+- Builder: 2026-10-15 S3 初核 7 列 FAIL（側欄底部顯示寬度、首頁主卡時機、張數顯示、禁用詞「保證」、匯入入口、登出行為），照核對者建議修正，複核全部 PASS；快捷鍵表格改清單（R39 第 2 點）。
