@@ -4,7 +4,7 @@
 slug: product-docs
 slice: "3b"
 stage: SPEC
-holder: human
+holder: builder
 tier: LOW
 gates_passed: [G1, G2A, G2B]
 open_p0p1: 0
@@ -79,6 +79,7 @@ round: 1
   與 brief／R25／AC22（KLI 篇不放產品段、不出現 Mnemo-Card 與卡型名稱）衝突，不寫進正文。
 - 2026-10-15：owner 要求 KLI 一文著重 K、L、I 的分別定義、學習活動（過程）的分類，以及與各種學習理論的連結；提供兩篇部落格
   （chengweihu.com、chengwei.substack.com）作參考。Builder 只作結構參考、不引用；說法以 Koedinger et al. 2012 原文為準。
+- 2026-10-15：owner 審 KLI：要求寫完整一點、約 2,000 字，「之後就過」（擴寫經 S6 通過即視為 owner 同意 KLI 與導讀頁第三版文案）。
 
 ## Decisions by Builder
 - Builder: 2026-10-14 slice 2 的 state 封存為 `state-slice2.md`，本檔改記 slice 3。
@@ -97,3 +98,4 @@ round: 1
 - Builder: 2026-10-14 第二批前兩篇上站：側欄補自我解釋、認知負荷理論；導讀頁補列（S6 改版核對 PASS，295 字）；首頁 LinkCard 說明改為不列篇名的「依主題選一篇開始讀，每篇都能單獨閱讀。」（避免與上方說明句重複）；測試補兩頁、AC24 搜「認知負荷」。`npm test` 110 passed。
 - Builder: 2026-10-15 電腦重開機清空 /tmp：暫存目錄的 PDF 與腳本遺失；已重建 sync_ls.py（重跑後 mdx 與已提交版本相同）。Koedinger 2012 用 CMU KiltHub 作者最終稿（頁碼依稿件頁序）。KLI 學習過程原寫成表格，依 R22 第 6 點改為清單。
 - Builder: 2026-10-15 〈KLI 框架〉S6 PASS（36 列，F 2 處修畢＋1 微調，1,599 字）；導讀頁第三版（加 KLI）S6 PASS（392 字）。送 owner 審。
+- Builder: 2026-10-15 KLI 擴寫至 2,004 字，S6 擴寫核對 18 項 PASS（兩則可選措辭微調未採，避免再核）；依 owner「之後就過」視為同意 KLI 與導讀頁第三版。KLI 頁上站：側欄、測試（AC20–AC22 含 noMnemoCard、noCardTypes）、PAGES、目錄；`npm test` 121 passed。

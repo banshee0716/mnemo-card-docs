@@ -40,6 +40,7 @@ export default defineConfig({
 						{ label: '生成學習', slug: 'learning-science/generative-learning' },
 						{ label: '自我解釋', slug: 'learning-science/self-explanation' },
 						{ label: '認知負荷理論', slug: 'learning-science/cognitive-load' },
+						{ label: 'KLI 框架', slug: 'learning-science/kli-framework' },
 					],
 				},
 			],

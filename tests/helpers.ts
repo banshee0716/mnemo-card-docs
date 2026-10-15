@@ -15,6 +15,7 @@ export const PAGES: { path: string; title: string }[] = [
 	{ path: 'learning-science/generative-learning/', title: '生成學習：為什麼整理過，不一定真的理解了？' },
 	{ path: 'learning-science/self-explanation/', title: '自我解釋：為什麼要問自己「這一步為什麼成立」？' },
 	{ path: 'learning-science/cognitive-load/', title: '認知負荷理論：為什麼有些教材讓人越看越亂？' },
+	{ path: 'learning-science/kli-framework/', title: 'KLI 框架：為什麼要先想清楚「學會」是什麼意思？' },
 ];
 
 export type Theme = 'light' | 'dark';

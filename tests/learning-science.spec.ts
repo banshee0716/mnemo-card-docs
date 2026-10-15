@@ -43,6 +43,12 @@ export const LEARNING_SCIENCE: {
 		label: '認知負荷理論',
 		h2: ['負荷從哪裡來？', '研究支持什麼？', '是不是越輕鬆越好？', '可以怎麼開始？', '參考文獻', '延伸閱讀'],
 		noMnemoCard: true,
+	},	{
+		slug: 'kli-framework/',
+		label: 'KLI 框架',
+		h2: ['K、L、I 各指什麼？', '學習有哪幾種過程？', 'KLI 怎麼把不同的學習研究連在一起？', '是不是只要找到最好的教學方法就好？', '可以怎麼開始？', '參考文獻', '延伸閱讀'],
+		noMnemoCard: true,
+		noCardTypes: true,
 	},
 ];
 
