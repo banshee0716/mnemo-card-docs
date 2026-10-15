@@ -17,7 +17,7 @@ round: 1
 - branch：`main`（G7 前不推送；推送由 owner 執行）
 - slice 1–3：RELEASED，封存於 `state-slice1.md`、`state-slice2.md`、`state-slice3.md`。
 - 任務：依完整使用者旅程，把〈第一次使用 Mnemo-Card〉寫得更完整；需要附圖，先以小字佔位（owner 2026-10-15）。
-- what is left：兩篇文案 S3 全部 PASS（複核後），送 owner 審文案、新頁標題、「設定」核准句與首頁改法 → S3 → owner 審 → 上站 → G4 → owner 推送 → S4。 → spec＋工作票 → G2 → 文案 → S3 核對 → owner 審 → 上站 → G4 → owner 推送 → S4。
+- what is left：已上站（本機），npm test 139 passed → G4（全新子代理）→ owner 推送 → S4。 → S3 → owner 審 → 上站 → G4 → owner 推送 → S4。 → spec＋工作票 → G2 → 文案 → S3 核對 → owner 審 → 上站 → G4 → owner 推送 → S4。
 - blockers：none
 
 ## Gates
@@ -41,6 +41,8 @@ round: 1
 - 2026-10-15：owner 開下一個任務：依完整使用者旅程，把〈第一次使用 Mnemo-Card〉寫得更完整；文章需要附圖，目前沒有圖，先加小字做佔位符。
 
 - 2026-10-15 G1：A2 在「開始使用」拆兩篇；B1 帳號沿用 R9（介面帳號功能沒開資料庫權限）；C、D 照建議，豁免 G6；手機版先不管，只寫桌機與平板。
+
+- 2026-10-15 owner：兩篇文案「大略可行，可以直接放了」（G5 文案同意，含新頁標題、「設定」核准句、首頁改法；最後一節開頭維持原樣）。
 
 ## Decisions by Builder
 - Builder: 2026-10-15 產品旅程盤點完成（子代理唯讀正式版 main）；發現第 1 步帳號說法與程式不一致，列為 intent B 交 owner 確認。

@@ -22,7 +22,10 @@ export default defineConfig({
 			sidebar: [
 				{
 					label: '開始使用',
-					items: [{ label: '第一次使用 Mnemo-Card', slug: 'first-use' }],
+					items: [
+						{ label: '第一次使用 Mnemo-Card', slug: 'first-use' },
+						{ label: '之後的複習與管理', slug: 'review-and-manage' },
+					],
 				},
 				{
 					label: 'mnemo-study-cards',

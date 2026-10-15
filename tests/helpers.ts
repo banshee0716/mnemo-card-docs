@@ -7,6 +7,7 @@ export const BASE = '/mnemo-card-docs/';
 export const PAGES: { path: string; title: string }[] = [
 	{ path: '', title: 'Mnemo-Card 文件' },
 	{ path: 'first-use/', title: '第一次使用 Mnemo-Card' },
+	{ path: 'review-and-manage/', title: '之後的複習與管理' },
 	{ path: 'skills/mnemo-study-cards/', title: '認識 mnemo-study-cards' },
 	{ path: 'skills/mnemo-study-cards/getting-started/', title: '安裝並第一次產卡' },
 	{ path: 'learning-science/', title: '學習科學導讀' },

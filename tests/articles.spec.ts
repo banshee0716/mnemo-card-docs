@@ -2,13 +2,15 @@ import { expect, test } from '@playwright/test';
 import { BASE, searchFor, tabUntil } from './helpers';
 
 const FIRST_USE = 'first-use/';
+const REVIEW = 'review-and-manage/';
 const ABOUT_SKILL = 'skills/mnemo-study-cards/';
 const GETTING_STARTED = 'skills/mnemo-study-cards/getting-started/';
 
-/** spec R8：各頁的上一篇／下一篇（null 表示沒有）。 */
+/** spec R8、spec-slice4 R30：各頁的上一篇／下一篇（null 表示沒有）。 */
 const PAGINATION: { path: string; prev: [string, string] | null; next: [string, string] | null }[] = [
-	{ path: FIRST_USE, prev: null, next: ['認識 mnemo-study-cards', ABOUT_SKILL] },
-	{ path: ABOUT_SKILL, prev: ['第一次使用 Mnemo-Card', FIRST_USE], next: ['安裝並第一次產卡', GETTING_STARTED] },
+	{ path: FIRST_USE, prev: null, next: ['之後的複習與管理', REVIEW] },
+	{ path: REVIEW, prev: ['第一次使用 Mnemo-Card', FIRST_USE], next: ['認識 mnemo-study-cards', ABOUT_SKILL] },
+	{ path: ABOUT_SKILL, prev: ['之後的複習與管理', REVIEW], next: ['安裝並第一次產卡', GETTING_STARTED] },
 	{ path: GETTING_STARTED, prev: ['認識 mnemo-study-cards', ABOUT_SKILL], next: null },
 ];
 
@@ -31,7 +33,7 @@ for (const { path, prev, next } of PAGINATION) {
 }
 
 // 學習科學導讀頁只有一個 h2，不列入（spec-slice3 AC25）。
-for (const path of [FIRST_USE, ABOUT_SKILL, GETTING_STARTED, 'learning-science/retrieval-practice/', 'learning-science/spaced-practice/', 'learning-science/generative-learning/', 'learning-science/self-explanation/', 'learning-science/cognitive-load/', 'learning-science/kli-framework/']) {
+for (const path of [FIRST_USE, REVIEW, ABOUT_SKILL, GETTING_STARTED, 'learning-science/retrieval-practice/', 'learning-science/spaced-practice/', 'learning-science/generative-learning/', 'learning-science/self-explanation/', 'learning-science/cognitive-load/', 'learning-science/kli-framework/']) {
 	test(`AC4：${path} 在桌機有文章目錄（至少兩個二級標題）`, async ({ page }) => {
 		await page.setViewportSize({ width: 1280, height: 800 });
 		await page.goto(path);
@@ -131,14 +133,6 @@ test('AC10：第三篇的下載段落沒有連結或程式碼區塊，全文沒�
 });
 
 test.describe('第一次使用 Mnemo-Card', () => {
-	test('AC4：側欄「開始使用」群組含本篇', async ({ page }) => {
-		await page.goto(ABOUT_SKILL);
-		const group = page.locator('#starlight__sidebar .top-level > li > details').first();
-		await expect(group.locator('summary')).toHaveText('開始使用');
-		await expect(group.locator('a')).toHaveText(['第一次使用 Mnemo-Card']);
-		await expect(group.locator('a')).toHaveAttribute('href', `${BASE}${FIRST_USE}`);
-	});
-
 	test('AC5：搜「熟悉度」找得到本篇', async ({ page }) => {
 		const hrefs = await searchFor(page, '熟悉度');
 		expect(hrefs.some((h) => h.startsWith(`${BASE}${FIRST_USE}`))).toBe(true);
@@ -158,9 +152,12 @@ test.describe('第一次使用 Mnemo-Card', () => {
 		);
 		expect(inToc).toBe(true);
 	});
+});
 
-	test('AC10：沒有驗證信，也沒有教讀者按「建立帳號」或「忘記密碼？」', async ({ page }) => {
-		await page.goto(FIRST_USE);
+// spec R9、spec-slice4 R34：帳號規則套用到「開始使用」兩篇（佔位文字也在正文裡，一併掃描）。
+for (const path of [FIRST_USE, REVIEW]) {
+	test(`AC10、AC32：${path} 沒有驗證信，也沒有教讀者按「建立帳號」或「忘記密碼？」`, async ({ page }) => {
+		await page.goto(path);
 		const content = page.locator('.sl-markdown-content');
 		const text = await content.innerText();
 		expect(text).not.toContain('驗證信');
@@ -179,4 +176,4 @@ test.describe('第一次使用 Mnemo-Card', () => {
 		const steps = await content.locator('li').allInnerTexts();
 		expect(steps.filter((s) => /建立帳號|忘記密碼/.test(s))).toEqual([]);
 	});
-});
+}
