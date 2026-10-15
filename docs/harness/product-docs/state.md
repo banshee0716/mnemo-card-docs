@@ -3,8 +3,8 @@
 ```harness
 slug: product-docs
 slice: "3b"
-stage: SPEC
-holder: builder
+stage: VERIFIED
+holder: human
 tier: LOW
 gates_passed: [G1, G2A, G2B]
 open_p0p1: 0
@@ -26,10 +26,10 @@ round: 1
 - [x] G2A spec reviewed（全新 opus r1 APPROVE AFTER FIXES → F25–F35 修完，不複審；reviews/product-docs-s3-g2-r1.md）
 - [x] G2B tickets reviewed（同一輪合審；工作票改為 06a、06b、07–13）
 - [x] G3 conditional checkpoint（LOW 不適用）
-- [ ] G4 verified（3b：KLI 上線時再驗）
+- [x] G4 verified（3b KLI：全新 sonnet，乾淨 clone @ fcb80d3：121 passed、check:public 乾淨、無 PDF、逐字相同；變異 8/8 紅；verification/g4-slice3b-kli.md）
 - [x] 3b 第一部分 G4 verified（全新 sonnet，乾淨 clone @ 7c4038d：110 passed、check:public 乾淨、無 PDF、逐字相同；變異 7/8 紅，g 缺口已補 R26 導讀頁清單測試，刪連結變異改為紅（貼出輸出）；verification/g4-slice3b-part1.md）
 - [x] 3a G4 verified（全新 sonnet，乾淨 clone @ 37358c5：npm test 89 passed、check:public 乾淨、無 PDF、copy 與 mdx 逐字相同；變異 9/9 紅；verification/g4-slice3a.md）
-- [ ] G5 accepted by human（3b）
+- [x] G5 accepted by human（3b：owner 2026-10-14 同意自我解釋、認知負荷；2026-10-15「之後就過」同意 KLI 與導讀頁第三版）
 - [x] 3a G5 accepted（owner 2026-10-14 審過文案並同意上線）
 - [ ] G6A task review（owner 2026-10-14 指示豁免，輕量流程）
 - [ ] G6B code review（同上）
