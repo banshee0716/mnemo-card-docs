@@ -77,6 +77,8 @@ round: 1
   （Builder 定為 200–400 字，spec-slice3 R22 第 1 點、R26 同步）。KLI：owner 提供一份對 Koedinger et al. (2012) 的討論整理與
   「三角形面積」四種知識的示意圖，要 Builder 參考其流程撰寫；所有說法仍須對照原論文查證。討論中「對閃卡系統的建議」一節
   與 brief／R25／AC22（KLI 篇不放產品段、不出現 Mnemo-Card 與卡型名稱）衝突，不寫進正文。
+- 2026-10-15：owner 要求 KLI 一文著重 K、L、I 的分別定義、學習活動（過程）的分類，以及與各種學習理論的連結；提供兩篇部落格
+  （chengweihu.com、chengwei.substack.com）作參考。Builder 只作結構參考、不引用；說法以 Koedinger et al. 2012 原文為準。
 
 ## Decisions by Builder
 - Builder: 2026-10-14 slice 2 的 state 封存為 `state-slice2.md`，本檔改記 slice 3。
@@ -93,3 +95,4 @@ round: 1
 - Builder: 2026-10-14 〈自我解釋〉Chi (2000) 專章沒有章節 DOI（重印本只有書級 DOI，不能當章節 DOI），參考文獻連到作者實驗室（ASU）公開該章的頁面：APA 7 允許附可取得的網址，且讀者能直接讀到全文；偏離 spec-slice3 R23 第 1 點「沒有 DOI 才用出版社頁」，此處記錄理由（S6 F4）。
 - Builder: 2026-10-14 第二批〈自我解釋〉〈認知負荷理論〉文案 S6 全部 PASS（verification/content-ls-self-explanation.md、content-ls-cognitive-load.md）；送 owner 審。KLI 等 owner 資料。
 - Builder: 2026-10-14 第二批前兩篇上站：側欄補自我解釋、認知負荷理論；導讀頁補列（S6 改版核對 PASS，295 字）；首頁 LinkCard 說明改為不列篇名的「依主題選一篇開始讀，每篇都能單獨閱讀。」（避免與上方說明句重複）；測試補兩頁、AC24 搜「認知負荷」。`npm test` 110 passed。
+- Builder: 2026-10-15 電腦重開機清空 /tmp：暫存目錄的 PDF 與腳本遺失；已重建 sync_ls.py（重跑後 mdx 與已提交版本相同）。Koedinger 2012 用 CMU KiltHub 作者最終稿（頁碼依稿件頁序）。KLI 學習過程原寫成表格，依 R22 第 6 點改為清單。
