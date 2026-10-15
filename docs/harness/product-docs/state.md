@@ -4,7 +4,7 @@
 slug: product-docs
 slice: "3b"
 stage: SPEC
-holder: builder
+holder: human
 tier: LOW
 gates_passed: [G1, G2A, G2B]
 open_p0p1: 0
@@ -96,3 +96,4 @@ round: 1
 - Builder: 2026-10-14 第二批〈自我解釋〉〈認知負荷理論〉文案 S6 全部 PASS（verification/content-ls-self-explanation.md、content-ls-cognitive-load.md）；送 owner 審。KLI 等 owner 資料。
 - Builder: 2026-10-14 第二批前兩篇上站：側欄補自我解釋、認知負荷理論；導讀頁補列（S6 改版核對 PASS，295 字）；首頁 LinkCard 說明改為不列篇名的「依主題選一篇開始讀，每篇都能單獨閱讀。」（避免與上方說明句重複）；測試補兩頁、AC24 搜「認知負荷」。`npm test` 110 passed。
 - Builder: 2026-10-15 電腦重開機清空 /tmp：暫存目錄的 PDF 與腳本遺失；已重建 sync_ls.py（重跑後 mdx 與已提交版本相同）。Koedinger 2012 用 CMU KiltHub 作者最終稿（頁碼依稿件頁序）。KLI 學習過程原寫成表格，依 R22 第 6 點改為清單。
+- Builder: 2026-10-15 〈KLI 框架〉S6 PASS（36 列，F 2 處修畢＋1 微調，1,599 字）；導讀頁第三版（加 KLI）S6 PASS（392 字）。送 owner 審。

@@ -1,0 +1,120 @@
+# S6 核對：〈KLI 框架〉文案
+
+- 核對對象：`copy/learning-science/kli-framework.md`（2026-10-15 版本，未提交）。
+- 核對者：全新工作階段的 opus 子代理（作者不自驗）。依 spec-slice3 §3 S6 第 1、2、4、5 點；本篇無產品段，不做第 3 點。
+- 參照：spec-slice3 R22–R27、brief-slice3-learning-science §4「6. KLI 框架」與 §5、state.md Decisions by human（2026-10-14、10-15 KLI 相關）。
+  `research/kli-framework.md` 只當線索；下表頁碼都是核對者自己在全文找到的。
+
+## 全文版本
+
+| 文獻 | 核對者使用的版本 | 頁碼寫法 |
+|---|---|---|
+| Koedinger, Corbett, & Perfetti (2012) | 作者最終稿（2011-12-06 稿，41 頁），CMU KiltHub：https://doi.org/10.1184/r1/6470522 ，與 `research/` 同一版本 | 「稿 p.N」＝稿件頁首頁序，**不是**期刊印刷頁 757–798 |
+| Reinhold et al. (2024) | 出版社開放取用正式版（CC BY 4.0），https://doi.org/10.1007/s10648-024-09845-6 | 「p.N」＝頁首「Page N of 21」 |
+| Loibl et al. (2025) | 出版社開放取用正式版（CC BY 4.0），https://doi.org/10.1007/s11251-024-09665-9 | 期刊印刷頁（PDF 第 N 頁＝第 1484+N 頁，已抽查 PDF 第 2、4、18 頁頁首為 1486、1488、1502） |
+
+三份 PDF 只放工作階段暫存目錄，未進儲存庫；未使用第三方轉貼來源。
+
+## 1. 逐句研究說法
+
+行號依文案檔。
+
+| # | 行 | 說法（摘要） | 文獻與頁碼（核對者自查） | 結果 | 備註 |
+|---|---|---|---|---|---|
+| 1 | 15–20 | 三角形面積四種能力，標「示意，不是原始論文的分類」 | Koedinger 稿 p.11、p.13、p.15（原文只用三角形、圓面積公式當變動條件知識組件與有理由規則的例子，沒有這四分法） | PASS | 示意標得清楚，符合 brief §4.6 與 research i 項 |
+| 2 | 22 | 同一單元有多種能力，學會一種不代表學會其他 | 稿 p.14（會做不會說、會說不會做是不同知識）、p.13 | PASS | 承接示意例子的推論，未掛引用，不構成獨立研究說法 |
+| 3 | 22 | 三角形面積公式有道理可講，但會正確使用的學生未必理解 | 稿 p.15 §3.1.5：公式是歐氏空間可證的規律；"the successful geometry student may not understand the rationale" | PASS | |
+| 4 | 24 | 先弄清楚要學會哪種知識、需要哪種學習過程，再問教法 | 稿 p.5（知識限制學習過程，學習過程限制教學選擇）、p.18（教學選擇取決於目標知識組件的種類） | PASS | |
+| 5 | 28 | KLI 是三個英文字的縮寫 | 稿 p.1–2 標題與摘要；p.5 三個分類 | PASS | |
+| 6 | 30 | 知識組件是學到的知識單位；看不見，只能從一組相關任務上的表現推論 | 稿 p.9 定義："an acquired unit of cognitive function or structure that can be inferred from performance on a set of related tasks"；p.7、p.13（不可直接觀察，需多個評量事件） | PASS | 「一組相關任務」忠於原文（不是單一任務） |
+| 7 | 31 | 學習：腦中的變化，看不見，受原有知識影響 | 稿 p.6 圖 1 說明（學習事件是不可觀察的過程，會受既有知識影響）、p.6 §2.1 | PASS | |
+| 8 | 32 | 教學：看得見、通常事先安排的活動，例如給練習題、回饋、帶討論 | 稿 p.6 圖 1 說明（"usually planned" 的環境變動）、§2.1（可觀察、由教學者控制）；p.7（課堂對話）、p.17（回饋） | PASS | 舉例為一般說明，原文均有對應 |
+| 9 | 34 | 知識種類限制學習過程，學習過程限制合適的教學 | 稿 p.5 | PASS | |
+| 10 | 34 | 框架把「評量」列為看得見的事件；要知道學到什麼，只能靠比較不同題目上的表現 | 稿 p.6 §2.1（教學事件與評量事件可觀察）；p.7（比較不同評量事件的表現來推論知識組件）；p.13（需要多個評量事件） | PASS | 「評量事件」的定位正確：原文是與教學、學習並列的第三種事件 |
+| 11 | 36–40 | 知識組件依四個問題區分：什麼時候用、答案是什麼、說得出來嗎、有道理可講嗎 | 稿 p.12（四個關鍵區分：應用條件的一般性、反應的一般性、是否語言可表達、能被合理化的程度）；p.11（條件固定或變動、反應固定或變動）；p.14 §3.1.4 | PASS | 備註：第 41 行「能不能說出它為什麼成立」原文是指知識本身有沒有理由（"the extent to which the KC can be rationalized"），不是學習者說不說得出；與「說得出來嗎」並列時可能被讀成學習者能力。可選擇改成「這項知識背後有沒有成立的理由」（字數需持平，見 R22-1）。不列 FAIL |
+| 12 | 41 | 作者說「有道理可講」是程度之分 | 稿 p.15："graded rather than all or none"，且取決於該領域理論發展深度 | PASS | |
+| 13 | 43 | 可分出事實、類別、概念、規則、原理等；名稱只是粗略對應 | 稿 p.12 表 3（association、fact、category、concept、production／schema／skill、rule／plan、principle／rule／model）；同頁 "rough mappings … not necessarily one-to-one with the cells" | PASS | |
+| 14 | 47–51 | 三類學習過程：記憶與流暢化、歸納與精煉、理解與意義建構，及各自內容 | 稿 p.2 摘要、p.19 §4（A：強化記憶與編譯，更自動；B：提高準確度，含概括、辨別、分類、基模歸納；C：明確、以語言為中介的理解與推理，連結知識與其理由）、p.22 | PASS | 英文術語與原文一致 |
+| 15 | 53 | 三個過程例子標「示意」 | — | PASS | |
+| 16 | 55 | 三類不是固定先後順序，可各自進行，也可同時發生 | 稿 p.33："can proceed more-or-less independently or in some synchrony"；p.21（記憶強化貫穿全程）、p.21（歸納也作用於之後的修正）、p.22（理解也可出現在知識形成早期） | PASS | |
+| 17 | 55 | 但新手常在歸納與理解，熟練之後重點轉向精煉與流暢化 | 稿 p.31："novices are primarily engaged in KC induction and sense making, while advanced students are primarily engaged in refinement and fluency building"；p.32（逐個知識組件的進程）；p.24（規則學習的階段） | PASS | 「有傾向但非固定順序」兩面都寫到 |
+| 18 | 57 | 穩健學習：長期記得、用在新情境、讓之後學習更快 | 稿 p.5–6（long-term retention、transfer、accelerates future learning） | PASS | |
+| 19 | 57 | 學習過程與三種結果不是一對一，例如不是只有理解才帶來遷移 | 稿 p.20："There is no one-to-one mapping … it is not the case that only sense making leads to transfer" | PASS | |
+| 20 | 61 | 原始論文把有研究支持的教學原則，依它主要促進的學習過程分類 | 稿 p.24（「原則」指有 substantial evidence 提升穩健學習效率的教學事件；教學分類直接沿用學習分類）、p.25 表 5（"Some examples"） | PASS | 表 5 是舉例，文案未宣稱為完整清單，可接受 |
+| 21 | 63 | 記憶與流暢化：間隔練習、測驗（即檢索練習） | 稿 p.25 表 5 "Spacing and Testing"（較長間隔、需要主動回想）；p.25 §5.1；p.21 | PASS | 表 5 另有「最佳化排程」，文案未列，屬省略不屬誤述。連到〈間隔練習〉〈檢索練習〉的對應忠實 |
+| 22 | 64 | 歸納與精煉：即時回饋、引導注意關鍵特徵、提供解題示範（見〈認知負荷理論〉） | 稿 p.25 表 5（Timely Feedback、Feature Focusing、Worked Examples）；p.30 §6.1（工作範例研究主要由認知負荷理論驅動） | PASS | 「解題示範」與〈認知負荷理論〉用語一致，該篇確有討論。原文 §6 另提「知識缺口」解釋作為可能互補的替代，文案只寫「見」，不構成誤述 |
+| 23 | 65 | 理解與意義建構：提示自我解釋、讓學生在討論中說明理由 | 稿 p.25 表 5（Prompted Self-Explanation、Accountable Talk：教師用「談話動作」讓學生對正確知識與嚴謹推理負責）；p.27 §5.3 | PASS | 連到〈自我解釋〉忠實 |
+| 24 | 67 | 有些研究者主張刻意增加難度，有些主張**減少認知負荷**；差異可能來自知識種類、學習過程與評量方式不同，是可進一步檢驗的假設 | 稿 p.8：一方是增加學生負擔以產生 "desirable difficulties"，另一方是降低 **extraneous** "cognitive load"；KLI 用來 "help generate hypotheses" 說明可能因知識組件、學習事件、評量事件的差異而化解 | **FAIL** | 「寫成假設」與三個差異來源都忠實；問題在把原文的「降低**外在**認知負荷」寫成「減少認知負荷」。這與本站〈認知負荷理論〉的常見誤解（理論要減少的是外在負荷，不是學習越輕鬆越好；brief §5）衝突。**修法**：把「有些則主張減少認知負荷」改成「有些則主張減少外在負荷」（漢字數不變；可把「外在負荷」連到 ../cognitive-load/）。不要改成「減少不必要的認知負荷」，會使正文超過 1,600 字（見 R22-1） |
+| 25 | 69 | 不對稱假說：簡單學習過程也能幫助學習複雜知識；論證、解釋這類複雜過程對沒有道理可講的單純事實未必有幫助 | 稿 p.23 §4.4（"simpler learning processes (fluency and refinement) may support complex knowledge but complex learning processes (e.g., argumentation) may fail to support simple knowledge (e.g., arbitrary constant-constant associations)"）；p.29（任意聯結無法用解釋結構重新推導） | PASS | 內容與方向正確。備註：原文的簡單過程是「流暢化與精煉」，文案寫「記憶、練習」，省略了精煉、且「練習」偏教學層次；不致誤導，可選擇改為「記憶與流暢化這類簡單的學習過程」（+2 字，若與 #33 的 +2 寫法同時採用會超過 1,600）。強度：「也能」比原文 "may" 稍強，但同段末已明寫「仍是一個假說」，整體可接受 |
+| 26 | 69 | 作者認為這比「簡單知識配簡單教法、複雜知識配複雜教法」更接近事實，但仍是假說 | 稿 p.28（對齊假說：簡單知識不需複雜教學、複雜知識不需簡單教學）；p.29 "These observations suggest the asymmetry hypothesis is more nearly correct"；p.33 "could turn out to be more nearly correct"；p.29 另列反方論點 | PASS | 強度相符 |
+| 27 | 71 | 有研究把 KLI 和生成學習常用的「選擇、組織、整合」等觀點整合，分析數位工具如何影響學習 | Reinhold p.1 摘要（CoDiL 結合 ULO 框架、KLI、領域研究，自稱 synthesizing framework）；p.3（引入 KLI 與 SOI〔選擇─組織─整合，Mayer 2014〕與 ULO）；p.4（「高層次的概念整合」）；p.6、p.10（學習是主動、生成的過程，與生成學習理論一致）；p.13（KLI、SOI、ULO 的高層次概念整合） | PASS | 「生成學習常用的選擇、組織、整合」與本站〈生成學習〉延伸閱讀的用語一致；「等觀點」涵蓋 ULO，可接受 |
+| 28 | 71 | 有研究沿用 KLI 的層次分析多階段教學設計 | Loibl p.1486（KLI 把知識組件、學習過程、教學設計三層關聯）；p.1488（"The framework follows Koedinger and colleagues' (2012) argument"，聚焦各階段之間的互動）；p.1502 | PASS | |
+| 29 | 71 | 這些是延伸 KLI 的框架，不是新版 KLI | Reinhold p.1、p.3、p.13；Loibl p.1485 摘要、p.1488 | PASS | 兩篇都自述為借鑑或沿用 KLI 的新框架 |
+| 30 | 75 | 不問「哪個方法最好」，改問「對哪種知識、需要哪種學習過程時，哪個方法較有效」 | 稿 p.18（教學原則應指向知識組件而非領域）；p.28 §5.4（教學原則不會普遍適用，取決於目標知識組件）；p.33（受知識種類與學習階段限制） | PASS | 常見誤解 h2 的核心說法有據 |
+| 31 | 77 | 知識類型與教學方式的配對是暫時假設，需更多實驗檢驗 | 稿 p.18 "tentative hypotheses … all these hypotheses require further testing"；p.19（分類不解決爭論，只提供可實驗檢驗的方向）；p.29、p.34 | PASS | |
+| 32 | 77 | 框架主要根據國中到大學的研究，用在其他族群需新研究 | 稿 p.5 §1.3："studies at the junior high school through college levels"；推廣到其他族群需新研究，每個命題都是可檢驗的假設 | PASS | 「國中到大學」出處確認 |
+| 33 | 77 | 拆知識組件，作者形容是「藝術成分不亞於科學」 | 稿 p.8 §3："Cognitive task analysis remains as much an art as a science"（上下文為把學習目標分析成知識組件） | **FAIL**（格式） | 內容出處正確、翻譯可接受。問題：用引號標成作者原話（譯文直接引用），卻沒有頁碼，違反 R27 第 4 點「直接引文加引號與頁碼」；而本篇只有作者稿頁碼，無法給 APA 要求的印刷頁。**修法**：只拿掉引號改為轉述，寫成「作者形容是藝術成分不亞於科學」或「作者形容其中藝術成分不亞於科學」（前者漢字數持平，後者 +2 字＝1,600，仍在上限內但不能再加字） |
+| 34 | 77 | 需要判斷，沒有萬無一失的方法 | 稿 p.8（知識不可觀察、科學工具有限）；p.10（知識組件有階層，要選對層級）；p.16（估計複雜度的兩種方法 "Neither approach is guaranteed"）；p.17–18（沒有萬無一失的方法預測學生迷思） | PASS | 綜合多處，原文沒有專節限制；轉述未過度 |
+| 35 | 84 | 檢查時看隔一段時間還記不記得、新題目會不會用 | 稿 p.13、p.17 §3.3.1（評量要含長期保留與流暢度，並以多樣任務檢查一般性） | PASS | 屬做法建議，與原文一致 |
+| 36 | 95、97 | 延伸閱讀指引：先讀三種事件、分類表與三類過程；大學典藏庫有公開版本／Reinhold 適合想知道 KLI 如何與其他理論結合；全文開放取用 | Koedinger 稿 §2.1、表 3、§4；CMU KiltHub 公開；Reinhold CC BY 4.0 | PASS | |
+
+## 2. 書目逐筆
+
+| 書目 | 核對（Crossref 與 PDF 首頁） | 結果 |
+|---|---|---|
+| Koedinger, K. R., Corbett, A. T., & Perfetti, C. (2012). The Knowledge-Learning-Instruction framework: Bridging the science-practice chasm to enhance robust student learning. *Cognitive Science, 36*(5), 757–798. https://doi.org/10.1111/j.1551-6709.2012.01245.x | 作者與順序（Kenneth R.、Albert T.、Charles）、年份、篇名、期刊、36(5)、757–798、DOI 皆符。作者稿首頁把第二作者印成 "A.C."，以 Crossref 的 A. T. 為準，文案正確。篇名 sentence case，框架名保留大寫可接受 | PASS |
+| Loibl, K., Leuders, T., Glogger-Frey, I., & Rummel, N. (2025). CID: A framework for the cognitive analysis of composite instructional designs. *Instructional Science, 53*(6), 1485–1509. https://doi.org/10.1007/s11251-024-09665-9 | 作者四位（Katharina、Timo、Inga、Nikol）、53(6)、1485–1509、DOI 皆符。2024-05-18 先行線上、2025 年第 6 期刊出；APA 7 以刊出卷期年份 2025 為準 | PASS |
+| Reinhold, F., Leuders, T., Loibl, K., Nückles, M., Beege, M., & Boelmann, J. M. (2024). Learning mechanisms explaining learning with digital tools in educational settings: A cognitive process framework. *Educational Psychology Review, 36*(1), Article 14. https://doi.org/10.1007/s10648-024-09845-6 | 作者六位（Frank、Timo、Katharina、Matthias、Maik、Jan M.）、36(1)（Crossref 期號 1）、文章編號 14、DOI 皆符 | PASS |
+
+- 參考文獻 3 筆（R23 第 1 點 3–7 筆），依字母序，每筆有 DOI 連結、無追蹤參數。PASS
+- R23 第 3 點：正文引用 Koedinger et al., 2012（多處）、Reinhold et al., 2024、Loibl et al., 2025（第 71 行）都在參考文獻；參考文獻三筆都在正文被引用。PASS
+- 延伸閱讀 2 筆（R23 第 2 點 1–2 筆），完整 APA 書目並接「閱讀指引：」。無降級文獻。PASS
+
+## 3. 產品段
+
+本篇依 R25 第 1 點不放產品段。正文（去掉 HTML 註解後）不含「Mnemo-Card」與四種卡型名稱；只有檔首 HTML 註解提到「卡型名稱」字樣，上站同步會去掉註解（AC22 不受影響）。PASS
+
+## 4. R22、R25、R27 判斷
+
+| 項目 | 判斷 | 結果 |
+|---|---|---|
+| R22-1 字數 | 正文（不含前言、參考文獻、延伸閱讀；含 h2）漢字 **1,598 字**，與〈認知負荷理論〉S6 同一算法（該篇算得 1,225，與其報告一致）。落在 1,000–1,600，但只差 2 字：任何修改都必須持平或減字 | PASS（貼近上限） |
+| R22-2 路線 | 熟悉情境（老師說「學會三角形面積」）→ 白話概念（K、L、I，先中文後英文術語）→ 比較（「增加難度」與「減少外在負荷」兩派、對齊與不對稱兩種教法配對，由框架調和）→ 研究發現與限制 → 可以怎麼做。沒有「學生 A／學生 B」式的具體做法對照，但 brief §4.6 與 owner 2026-10-15 指定本篇著重定義、過程分類與理論連結，兩派建議的對照可視為比較例子 | PASS（備註） |
+| R22-3 h2 | 五個問題句 h2：「K、L、I 各指什麼？」「學習有哪幾種過程？」「KLI 怎麼把不同的學習研究連在一起？」「是不是只要找到最好的教學方法就好？」「可以怎麼開始？」，加文末「參考文獻」「延伸閱讀」。3–5 個之內；例子（開頭與第二個 h2）、研究發現與限制（第三、四個 h2）、可以怎麼做（第五個 h2）都有涵蓋 | PASS |
+| R22-4 引用格式 | 文中引用皆為半形括號 APA 第 7 版（Koedinger et al., 2012 等），三位以上用 et al.；沒有殘留中文式引用；正文未逐篇介紹文獻。例子人物只有泛稱「老師」，沒有人名 | PASS |
+| R22-5 常見誤解 | 「是不是只要找到最好的教學方法就好？」破除「有一種最佳教法」 | PASS |
+| R22-6 | 無圖、無表格、無程式碼區塊與行內程式碼 | PASS |
+| R22-7 brief §4.6 | 從「學會指的是什麼」開始、示意標明非原文分類；三層用途是連結而非最佳教法；含 brief 指定的問句（第 83 行）；Reinhold、Loibl 寫成延伸。brief「延伸」中「工具功能不等於實際認知活動、前一階段知識改變下一階段效果」未展開，只以一句帶過，屬取捨 | PASS |
+| R25 | 無產品段；正文無「Mnemo-Card」 | PASS |
+| R27-1／brief §5 | 沒有把任何卡型對應到 KLI 知識類型；正文無卡型名稱 | PASS |
+| R27-2 | 無產品成效說法；研究說法帶條件（暫時假設、國中到大學、仍是假說） | PASS |
+| R27-3 | 無數字、無口號 | PASS |
+| R27-4 | 第 77 行「藝術成分不亞於科學」以引號標成作者原話但沒有頁碼（同第 1 節 #33） | **FAIL** |
+
+## 5. 讀者驗收三問（假裝沒有心理學背景，只讀正文）
+
+1. **一句話說明概念**：KLI 把「要學會哪種知識」「腦中怎麼學會」「怎麼教」分開來看，知識的種類決定需要的學習過程，學習過程再決定適合的教法。PASS
+2. **哪個例子示範它**：開頭「學會三角形面積」拆成說出公式、找出底和高、算出面積、說明為何除以二四種能力；三類學習過程也各用三角形舉例。PASS
+3. **破除的誤解**：以為只要找到「最好的教學方法」就好；文中說要改問「對哪種知識、哪種學習過程，哪個方法比較有效」。PASS
+
+## 結論
+
+- 逐句表 36 列：34 PASS、2 FAIL（#24、#33）；書目 3 筆全 PASS，引用與清單對應 PASS；R22／R25／R27 共 12 項：11 PASS、1 FAIL（R27-4，與 #33 同一處）。
+- 不重複計算，待修的問題共 2 處：
+  1. 第 67 行「減少認知負荷」→ 改「減少外在負荷」（原文是 extraneous；漢字數持平）。
+  2. 第 77 行「藝術成分不亞於科學」去掉引號改為轉述（無頁碼的直接引文），例如「作者形容是藝術成分不亞於科學」。
+- 提醒：正文 1,598 字，距上限 2 字；兩處建議修法都不增字，改稿後請重算字數。第 41 行「有道理可講」的說明與第 69 行「記憶、練習」可選擇微調（非 FAIL）。
+- 修完由同一核對者複核 FAIL 列。
+
+## 複核（2026-10-15，同一核對者）
+
+文案修改後重讀第 36–43、67、77 行，`git diff` 確認只改了這三行。
+
+| 列 | 修改後 | 對照 | 結果 |
+|---|---|---|---|
+| #24（第 67 行） | 「有些則主張減少外在負荷」 | 稿 p.8 "reduce extraneous 'cognitive load'"；與〈認知負荷理論〉的「外在負荷」用語一致 | PASS |
+| #33／R27-4（第 77 行） | 「作者形容是藝術成分不亞於科學」，不加引號，改為轉述 | 稿 p.8；不再是沒有頁碼的直接引文 | PASS |
+| #11（第 41 行，採納微調） | 「有道理可講嗎？這項知識有沒有成立的理由？（作者說這是程度之分。）」 | 稿 p.12 "the extent to which the KC can be rationalized"、p.15 "graded"；現在指知識本身，不再像在問學習者的能力 | PASS |
+| R22-1 字數 | 重算正文漢字 **1,599**（含 h2，算法同前） | 1,000–1,600 | PASS（距上限 1 字） |
+
+複核後所有列都是 PASS，本篇沒有未處理的 FAIL。
