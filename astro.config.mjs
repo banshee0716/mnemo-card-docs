@@ -8,7 +8,7 @@ export default defineConfig({
 	base: '/mnemo-card-docs',
 	integrations: [
 		starlight({
-			title: 'Mnemo-Card 文件',
+			title: 'Mnemo-Card',
 			logo: { src: './src/assets/logo.svg', replacesTitle: false },
 			locales: {
 				root: { label: '繁體中文', lang: 'zh-TW' },

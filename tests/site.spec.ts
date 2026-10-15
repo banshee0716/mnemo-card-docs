@@ -16,7 +16,7 @@ for (const { path, title } of PAGES) {
 			expect(res?.status()).toBe(200);
 			await expect(page.locator('html')).toHaveAttribute('lang', 'zh-TW');
 			await expect(page).toHaveTitle(new RegExp(title));
-			await expect(page).toHaveTitle(/Mnemo-Card 文件/);
+			await expect(page).toHaveTitle(/Mnemo-Card/);
 		});
 
 		test('AC3：站內連結與資源都在 base 之下且回 200', async ({ page }) => {
