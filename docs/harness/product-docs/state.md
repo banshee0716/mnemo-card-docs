@@ -3,10 +3,10 @@
 ```harness
 slug: product-docs
 slice: "4"
-stage: RELEASE
+stage: RELEASED
 holder: builder
 tier: LOW
-gates_passed: [G1, G2A, G2B, G4, G5]
+gates_passed: [G1, G2A, G2B, G4, G5, G7]
 open_p0p1: 0
 gate: G7
 round: 1
@@ -17,7 +17,7 @@ round: 1
 - branch：`main`（G7 前不推送；推送由 owner 執行）
 - slice 1–3：RELEASED，封存於 `state-slice1.md`、`state-slice2.md`、`state-slice3.md`。
 - 任務：依完整使用者旅程，把〈第一次使用 Mnemo-Card〉寫得更完整；需要附圖，先以小字佔位（owner 2026-10-15）。
-- what is left：owner 推送 main → 部署 → S4（12 頁＋pagefind.js 共 13 個網址）。 → S3 → owner 審 → 上站 → G4 → owner 推送 → S4。 → spec＋工作票 → G2 → 文案 → S3 核對 → owner 審 → 上站 → G4 → owner 推送 → S4。
+- what is left：無。之後換真圖另開切片。 → S3 → owner 審 → 上站 → G4 → owner 推送 → S4。 → spec＋工作票 → G2 → 文案 → S3 核對 → owner 審 → 上站 → G4 → owner 推送 → S4。
 - blockers：none
 
 ## Gates
@@ -29,7 +29,7 @@ round: 1
 - [x] G5 accepted by human（2026-10-15「大略可行，可以直接放了」）
 - [x] G6A task review（owner G1 豁免）
 - [x] G6B code review（owner G1 豁免）
-- [ ] G7 released
+- [x] G7 released（run 38672179817 success；S4 13/13 回 200，evidence/s4-g7-s4-smoke.md）
 
 ## Evidence (G4)
 | Acceptance criterion | Check | Result/output ref |
