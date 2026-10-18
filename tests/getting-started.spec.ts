@@ -40,22 +40,32 @@ for (const p of GETTING_STARTED_PAGES) {
 		expect(h2).toEqual(p.h2);
 	});
 
-	test(`AC31：${p.slug} 的圖片佔位格式、連號，每個 h2 區段最多兩個`, async ({ page }) => {
+	test(`AC31：${p.slug} 的截圖都是有替代文字與說明的圖片，且沒有殘留佔位`, async ({ page }) => {
 		await page.goto(p.slug);
-		const placeholders = page.locator('.sl-markdown-content .figure-placeholder');
-		await expect(placeholders).toHaveCount(p.placeholders);
-		const texts = (await placeholders.allInnerTexts()).map((t) => t.trim());
-		for (const [i, text] of texts.entries()) {
-			expect(text.startsWith(`〔附圖 ${i + 1}：`), text).toBe(true);
-			expect(text).toContain('示範資料');
-		}
+		await expect(page.locator('.sl-markdown-content .figure-placeholder')).toHaveCount(0);
+		const text = await page.locator('.sl-markdown-content').innerText();
+		expect(text).not.toContain('〔附圖');
+		const figures = page.locator('.sl-markdown-content figure.shot');
+		await expect(figures).toHaveCount(p.placeholders);
 		for (let i = 0; i < p.placeholders; i++) {
-			await expect(placeholders.nth(i)).toHaveAttribute('data-pagefind-ignore');
+			const img = figures.nth(i).locator('img');
+			await expect(img).toBeVisible();
+			const alt = (await img.getAttribute('alt')) ?? '';
+			expect(alt.trim().length, `第 ${i + 1} 張 alt`).toBeGreaterThan(5);
+			await expect(figures.nth(i).locator('figcaption')).toHaveText(/^圖：.{10,}/);
+			// 圖真的載入成功（延遲載入，先捲到可見），且不超出內容寬度。
+			await img.scrollIntoViewIfNeeded();
+			await expect.poll(() => img.evaluate((el: HTMLImageElement) => el.complete && el.naturalWidth > 0), `第 ${i + 1} 張載入`).toBe(true);
+			const ok = await img.evaluate((el: HTMLImageElement) => {
+				const box = el.closest('.sl-markdown-content')!.getBoundingClientRect();
+				return el.complete && el.naturalWidth > 0 && el.getBoundingClientRect().width <= box.width + 1;
+			});
+			expect(ok, `第 ${i + 1} 張載入並不超出內容寬度`).toBe(true);
 		}
-		// 依文件順序，數每個 h2 之後（到下一個 h2 前）的佔位數。
+		// 每個 h2 區段最多兩張圖。
 		const perSection = await page.evaluate(() => {
 			const counts: number[] = [0];
-			const nodes = document.querySelectorAll('.sl-markdown-content h2, .sl-markdown-content .figure-placeholder');
+			const nodes = document.querySelectorAll('.sl-markdown-content h2, .sl-markdown-content figure.shot');
 			for (const node of nodes) {
 				if (node.tagName === 'H2') counts.push(0);
 				else counts[counts.length - 1]++;
