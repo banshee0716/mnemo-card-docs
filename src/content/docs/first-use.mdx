@@ -4,6 +4,17 @@ description: 從登入開始，用一張範例卡完成第一輪練習：認識�
 prev: false
 ---
 
+import { Image } from 'astro:assets';
+import fu1 from '../../assets/screenshots/first-use-01-login.png';
+import fu2 from '../../assets/screenshots/first-use-02-home.png';
+import fu3 from '../../assets/screenshots/first-use-03-card-types.png';
+import fu4 from '../../assets/screenshots/first-use-04-editor.png';
+import fu5 from '../../assets/screenshots/first-use-05-study-front.png';
+import fu6 from '../../assets/screenshots/first-use-06-study-back.png';
+import fu7 from '../../assets/screenshots/first-use-07-complete.png';
+import fu8 from '../../assets/screenshots/first-use-08-scheduled-deck.png';
+
+
 讀完一段材料後，你能否先不看原文，說出它的意思、條件與理由？Mnemo-Card 把同一主題整理成卡片，讓你反覆練習這件事，並記下何時回來複習。
 
 它適合用來練習概念、關係、判斷條件與原理應用。教材仍是理解背景與查證的來源；不需要把每一段文字都製成卡片，也不用靠卡片數量判斷自己學了多少。
@@ -23,9 +34,10 @@ prev: false
 1. 開啟 [Mnemo-Card 首頁](https://mnemo-card.vercel.app/)，按右上方「登入」。
 2. 輸入研究者提供的電子郵件與密碼，按「登入」，進入工作區。
 
-<small class="figure-placeholder" data-pagefind-ignore>〔附圖 1：登入頁；標出「登入」分頁、電子郵件與密碼欄、「登入」按鈕。桌機寬度，示範資料〕</small>
-
-登入頁上的「建立帳號」分頁目前不開放使用，請直接在「登入」分頁輸入。
+<figure class="shot">
+	<Image src={fu1} alt="Mnemo-Card 登入頁：上方是電子郵件欄與密碼欄，下方是藍色的「登入」按鈕。" format="webp" />
+	<figcaption>圖：登入頁。依序輸入電子郵件與密碼，再按藍色的「登入」按鈕。</figcaption>
+</figure>
 
 如果忘記密碼，請聯絡提供帳號給你的研究者。後面的操作都在登入後的工作區進行。
 
@@ -44,7 +56,10 @@ prev: false
 
 第一次登入時，首頁標題是「歡迎使用 Mnemo-Card」，中間有一張「開始你的第一組知識」，下方有「建立第一副牌組」與「匯入既有內容」兩個按鈕。建立牌組後，這個位置會跟著改變；之後有牌組到期時，它會提醒你今天要複習哪一副。
 
-<small class="figure-placeholder" data-pagefind-ignore>〔附圖 2：第一次登入的首頁；標出左側側欄四個項目與「建立第一副牌組」按鈕。桌機寬度，示範資料〕</small>
+<figure class="shot">
+	<Image src={fu2} alt="第一次登入後的首頁：左側側欄有四個圖示項目，主畫面是「開始你的第一組知識」卡片，下方有「建立第一副牌組」按鈕。" width={1400} format="webp" />
+	<figcaption>圖：第一次登入的首頁。左側側欄有四個項目，主畫面的「建立第一副牌組」是第一步。</figcaption>
+</figure>
 
 ## 3 建立第一副牌組
 
@@ -73,7 +88,10 @@ prev: false
 4. 編輯畫面會填入一張範例，標題是「檢索練習是什麼？為什麼要自我解釋？」。先看看內容，這次可以保留原樣。
 5. 按「建立卡片」，把它存進牌組。
 
-<small class="figure-placeholder" data-pagefind-ignore>〔附圖 3：「選擇卡片類型」畫面；標出四種卡型與「基礎概念卡」下方的「先載入範例」。桌機寬度，示範資料〕</small>
+<figure class="shot">
+	<Image src={fu3} alt="「選擇卡片類型」視窗：四個卡型並排，每個卡型下方都有「先載入範例」。" width={1400} format="webp" />
+	<figcaption>圖：選擇卡片類型。四種卡型各有一句問題說明，第一次先看「基礎概念卡」下方的「先載入範例」。</figcaption>
+</figure>
 
 「先載入範例」只會填好一張待編輯的草稿，要按「建立卡片」才會儲存。儲存後，你應該能在牌組中看到這張卡。
 
@@ -81,13 +99,16 @@ prev: false
 
 - **正面 — 知識點**（必填）：要學的內容。第一行的標題就是卡片標題。
 - **背面 — 概述**（必填）：重點整理，用來在回答後核對。
-- **提取提示**（可選）：請你先憑記憶回答的問題；學習時，這一區叫「檢索提示」。
+- **檢索提示**（可選）：請你先憑記憶回答的問題；學習時，背面也會以「檢索提示」顯示。
 - **自我解釋提示**（可選）：請你說明理由或關係的問題。
 - **圖片**（可選）。
 
 第一次不用準備四種卡型。一張卡就能開始學習；先走完流程，再逐步加入自己的內容。
 
-<small class="figure-placeholder" data-pagefind-ignore>〔附圖 4：載入範例後的卡片編輯畫面；標出正面、背面概述、提取提示、自我解釋提示四個欄位與「建立卡片」按鈕。桌機寬度，示範資料〕</small>
+<figure class="shot">
+	<Image src={fu4} alt="載入範例後的卡片編輯畫面：左側有正面、背面、檢索提示與自我解釋提示等欄位，右側是預覽，右下角是「建立卡片」按鈕。" format="webp" />
+	<figcaption>圖：載入範例後的編輯畫面。左側由上而下是正面、背面概述、檢索提示、自我解釋提示，填好後按右下角的「建立卡片」。</figcaption>
+</figure>
 
 ## 5 開始第一次練習
 
@@ -101,7 +122,10 @@ prev: false
 - ←、→：上一張、下一張
 - 1–5：翻面後評分
 
-<small class="figure-placeholder" data-pagefind-ignore>〔附圖 5：學習畫面正面；標出上方的進度與「1 / 1」、下方的「上一張」「下一張」。桌機寬度，示範資料〕</small>
+<figure class="shot">
+	<Image src={fu5} alt="學習畫面正面：中間是一張卡片，右上角顯示目前張數，下方有「上一張」與「下一張」。" format="webp" />
+	<figcaption>圖：學習畫面的正面。右上角是進度與目前張數，左下與右下是「上一張」「下一張」。</figcaption>
+</figure>
 
 學習前，牌組上方的排程選單預設是「遺忘曲線」。第一次可以先不管它，選擇模式本身不會啟動排程；第 8 節會說明怎麼選。
 
@@ -117,7 +141,10 @@ prev: false
 2. **回答後再核對。** 再看概述，必要時翻回正面，找出自己漏掉或說錯的地方。
 3. **說明理由，再試一次。** 依自我解釋提示，試著說出關係或理由。補足理解後，再移開視線回答，看看這次能否自行說明。
 
-<small class="figure-placeholder" data-pagefind-ignore>〔附圖 6：學習畫面背面；標出概述、「檢索提示」「自我解釋提示」兩個區塊。桌機寬度，示範資料〕</small>
+<figure class="shot">
+	<Image src={fu6} alt="學習畫面背面：卡片顯示背面概述，下方有「檢索提示」與「自我解釋提示」兩個區塊。" format="webp" />
+	<figcaption>圖：翻到背面後的畫面。先看概述，再讀「檢索提示」與「自我解釋提示」兩個問題。</figcaption>
+</figure>
 
 如果剛才是看著概述重述，就把它當成一次閱讀與核對；接著再試一次不看內容的回答。翻面本身不表示已完成回想。
 
@@ -133,7 +160,10 @@ prev: false
 
 評分後會自動前進到下一張。整副牌組都評分完，就會進入完成畫面，標題是「複習完成！」（第一次學習也是這個標題），畫面上有本次的張數、用時與熟悉度分佈。之後卡片變多，若漏了評分，畫面會提示「還有 N 張尚未評分」，並讓你從漏評處繼續。
 
-<small class="figure-placeholder" data-pagefind-ignore>〔附圖 7：完成畫面；標出熟悉度分佈與「建立複習排程」按鈕。桌機寬度，示範資料〕</small>
+<figure class="shot">
+	<Image src={fu7} alt="完成畫面：標題是「複習完成！」，下方有熟悉度分佈、「建立複習排程」與「返回牌組」兩個按鈕。" format="webp" />
+	<figcaption>圖：完成畫面。中段是熟悉度分佈，要安排下次複習，按藍色的「建立複習排程」。</figcaption>
+</figure>
 
 ## 8 安排下一次練習
 
@@ -152,7 +182,10 @@ prev: false
 2. 在第一次學習的完成畫面，按「建立複習排程」。這時才會開始安排複習；如果只按「返回牌組」，不會自動建立排程。
 3. 建立後，牌組上方會顯示目前的模式與進度，以及下次複習的日期；「我的牌組」列表也會顯示「下次複習」的日期。
 
-<small class="figure-placeholder" data-pagefind-ignore>〔附圖 8：建立排程後的牌組上方；標出鎖定的模式、「已完成 0/5」與下次複習日期。桌機寬度，示範資料〕</small>
+<figure class="shot">
+	<Image src={fu8} alt="建立排程後的牌組上方：顯示「排程中・下次：10/20」、鎖頭圖示加「遺忘曲線」，以及「已完成 0/5」。" width={1400} format="webp" />
+	<figcaption>圖：建立排程後的牌組上方。看「下次」的日期、鎖頭旁已固定的模式，以及「已完成 0/5」的進度。</figcaption>
+</figure>
 
 先記住三件事：
 
