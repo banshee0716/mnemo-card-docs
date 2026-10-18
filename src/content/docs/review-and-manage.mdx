@@ -3,6 +3,13 @@ title: 之後的複習與管理
 description: 建立複習排程之後：到期時回來複習、額外練習、走完一輪之後怎麼辦，以及修改、刪除、匯入與匯出內容。
 ---
 
+import { Image } from 'astro:assets';
+import rv1 from '../../assets/screenshots/review-01-home-due.png';
+import rv2 from '../../assets/screenshots/review-02-more-menu.png';
+import rv3 from '../../assets/screenshots/review-03-deck-interior.png';
+import rv4 from '../../assets/screenshots/review-04-import.png';
+
+
 這篇接在[〈第一次使用 Mnemo-Card〉](../first-use/)之後：你已經完成第一輪練習，也建立了複習排程。接下來的使用很單純：到期時回來，照第一次的方式練習與評分。其餘的節可以等需要時再讀。文中提到的側欄，在螢幕較窄時（例如平板直向）會收進畫面左上角的選單按鈕。
 
 產品目前沒有統計或歷史紀錄頁。你看得到的進度是：牌組的狀態與下次複習日期、每張卡的熟悉度，以及每次學完的完成畫面。
@@ -17,7 +24,10 @@ description: 建立複習排程之後：到期時回來複習、額外練習、�
 - 牌組顯示「逾期 N 天」，表示已經過了預定日期 N 天。逾期仍然可以複習，照常進行即可。
 - 首頁上方會出現「繼續複習」這副牌組的提醒，按「開始複習」就能直接開始。
 
-<small class="figure-placeholder" data-pagefind-ignore>〔附圖 1：有牌組到期時的首頁；標出「繼續複習」提醒、「開始複習」按鈕與牌組上的「今日待複習」。桌機寬度，示範資料〕</small>
+<figure class="shot">
+	<Image src={rv1} alt="有牌組到期時的首頁：上方是「繼續複習」提醒與「開始複習」按鈕，下方的牌組列表標示「今日待複習」。" width={1400} format="webp" />
+	<figcaption>圖：有牌組到期時的首頁。上方的提醒卡有「開始複習」，下方列表中的牌組標示「今日待複習」。</figcaption>
+</figure>
 
 複習的畫面和第一次學習相同：讀正面、先自己試答、翻面核對、說明理由，最後替每張卡評分。整副牌組都評分完，系統會接著安排下一階段的日期。
 
@@ -41,7 +51,10 @@ description: 建立複習排程之後：到期時回來複習、額外練習、�
 2. 確認畫面會提醒：每張卡片的熟悉度都會清除，並進入新的一輪，而且無法還原。
 3. 選好新一輪的排程模式後確認。之後牌組會標示「第 2 輪」。
 
-<small class="figure-placeholder" data-pagefind-ignore>〔附圖 2：「⋯」選單；標出「重置排程」。桌機寬度，示範資料〕</small>
+<figure class="shot">
+	<Image src={rv2} alt="牌組上方「⋯」選單展開：新增卡片、批次管理、牌組設定、重置排程、匯出 Markdown、刪除牌組。" format="webp" />
+	<figcaption>圖：牌組上方「⋯」選單。「重置排程」「匯出 Markdown」「牌組設定」與「刪除牌組」都在這裡。</figcaption>
+</figure>
 
 ## 4 管理牌組與卡片
 
@@ -53,7 +66,10 @@ description: 建立複習排程之後：到期時回來複習、額外練習、�
 
 **新增更多卡片：** 在牌組上方按「新增卡片」。編輯畫面有「儲存並新增下一張」，可以連續建立好幾張。
 
-<small class="figure-placeholder" data-pagefind-ignore>〔附圖 3：牌組內部；標出一張選取的卡片、右側預覽的「編輯」「刪除」，以及上方的「新增卡片」與「⋯」。桌機寬度，示範資料〕</small>
+<figure class="shot">
+	<Image src={rv3} alt="牌組內部：左側是卡片列表，右側是選取卡片的預覽與「編輯」「刪除」，上方有「新增卡片」與「⋯」。" width={1400} format="webp" />
+	<figcaption>圖：牌組內部。左側選一張卡，右側預覽的右下角有「刪除」與「編輯」，上方有「新增卡片」與「⋯」。</figcaption>
+</figure>
 
 **刪除：** 刪除都會先請你確認，而且無法還原。
 
@@ -73,7 +89,10 @@ description: 建立複習排程之後：到期時回來複習、額外練習、�
 
 檔案的格式可以按頁面上的「看格式說明」查看。用 mnemo-study-cards 技能產出的卡包，也是從這裡匯入；完整的例子見[〈安裝並第一次產卡〉](../skills/mnemo-study-cards/getting-started/)。
 
-<small class="figure-placeholder" data-pagefind-ignore>〔附圖 4：匯入頁；標出四步驟「來源／預覽／確認／結果」與「看格式說明」。桌機寬度，示範資料〕</small>
+<figure class="shot">
+	<Image src={rv4} alt="匯入頁：上方是來源、預覽、確認、結果四個步驟，下方是拖入檔案區、貼上文字區與「看格式說明」。" width={1400} format="webp" />
+	<figcaption>圖：匯入頁。上方是四個步驟，目前在「來源」；格式說明在頁面底部的「看格式說明」。</figcaption>
+</figure>
 
 **匯出：** 在牌組上方按「⋯」，選「匯出 Markdown」，就能把這副牌組存成檔案。
 
