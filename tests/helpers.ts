@@ -10,13 +10,6 @@ export const PAGES: { path: string; title: string }[] = [
 	{ path: 'review-and-manage/', title: '之後的複習與管理' },
 	{ path: 'skills/mnemo-study-cards/', title: '認識 mnemo-study-cards' },
 	{ path: 'skills/mnemo-study-cards/getting-started/', title: '安裝並第一次產卡' },
-	{ path: 'learning-science/', title: '學習科學導讀' },
-	{ path: 'learning-science/retrieval-practice/', title: '檢索練習：為什麼「試著想起來」也是一種學習？' },
-	{ path: 'learning-science/spaced-practice/', title: '間隔練習：為什麼不要把複習全部擠在同一天？' },
-	{ path: 'learning-science/generative-learning/', title: '生成學習：為什麼整理過，不一定真的理解了？' },
-	{ path: 'learning-science/self-explanation/', title: '自我解釋：為什麼要問自己「這一步為什麼成立」？' },
-	{ path: 'learning-science/cognitive-load/', title: '認知負荷理論：為什麼有些教材讓人越看越亂？' },
-	{ path: 'learning-science/kli-framework/', title: 'KLI 框架：為什麼要先想清楚「學會」是什麼意思？' },
 ];
 
 export type Theme = 'light' | 'dark';

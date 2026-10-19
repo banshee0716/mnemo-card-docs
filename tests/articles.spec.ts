@@ -32,8 +32,7 @@ for (const { path, prev, next } of PAGINATION) {
 	});
 }
 
-// 學習科學導讀頁只有一個 h2，不列入（spec-slice3 AC25）。
-for (const path of [FIRST_USE, REVIEW, ABOUT_SKILL, GETTING_STARTED, 'learning-science/retrieval-practice/', 'learning-science/spaced-practice/', 'learning-science/generative-learning/', 'learning-science/self-explanation/', 'learning-science/cognitive-load/', 'learning-science/kli-framework/']) {
+for (const path of [FIRST_USE, REVIEW, ABOUT_SKILL, GETTING_STARTED]) {
 	test(`AC4：${path} 在桌機有文章目錄（至少兩個二級標題）`, async ({ page }) => {
 		await page.setViewportSize({ width: 1280, height: 800 });
 		await page.goto(path);
@@ -43,7 +42,7 @@ for (const path of [FIRST_USE, REVIEW, ABOUT_SKILL, GETTING_STARTED, 'learning-s
 	});
 }
 
-test('AC4：側欄依 R6 排列：開始使用、mnemo-study-cards（之後的「學習科學」由 AC19 檢查）', async ({ page }) => {
+test('AC4：側欄依 R6 排列：開始使用、mnemo-study-cards', async ({ page }) => {
 	await page.goto(FIRST_USE);
 	const groups = page.locator('#starlight__sidebar .top-level > li > details');
 	await expect(groups.nth(0).locator('> summary')).toHaveText('開始使用');

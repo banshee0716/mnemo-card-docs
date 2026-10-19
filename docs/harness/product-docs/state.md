@@ -2,39 +2,36 @@
 
 ```harness
 slug: product-docs
-slice: "5"
-stage: RELEASED
-holder: none
+slice: "6"
+stage: VERIFYING
+holder: claude
 tier: LOW
-gates_passed: [G1, G4, G5, G7]
+gates_passed: [G1]
 open_p0p1: 0
-gate: G7
+gate: G4
 round: 1
 ```
 本區塊是唯一的狀態事實；下方文字都不構成授權。
 
-- tier reason：換圖與一句過時說明；不涉及認證、資料庫、資料刪除、匯入、付款或同步。
+- tier reason：刪除一個內容分區與其導覽、測試；不涉及認證、資料庫、資料刪除、匯入、付款或同步。
 - branch：`main`（推送由 owner 執行）
-- slice 1–4：RELEASED，封存於 `state-slice1.md` … `state-slice4.md`。
-- 意圖：`intent-slice5.md`（owner G1 2026-10-19）。
-- what is left：無。後續見 § Decisions。
+- slice 1–5：RELEASED，封存於 `state-slice1.md` … `state-slice5.md`。
+- what is left：G4 覆核、G5、G7（owner 推送）。
 - blockers：none
 
 ## Gates
-- [x] G1 intent approved by human（2026-10-19，對話中逐項裁定）
+- [x] G1 intent approved by human（2026-10-19：「文件站刪掉學習科學區：照你的裁定，不留說明頁也不轉址。新站已經上線，現在可以開始做。」）
 - [ ] G2 — owner 指示直接處理（範圍小，無 spec／工作票）
-- [x] G4 verified：`npm test` 139 passed、`npm run check:public` 乾淨、`npm run build` 13 頁（2026-10-19，Builder 貼出輸出；截圖由 Builder 逐張目視核對標籤）
-- [x] G5 accepted by human（owner 本機預覽兩篇：「驗證完畢，可以出了」，2026-10-19）
-- [ ] G6 — 豁免（owner「可以出了」，比照 slice 4 D）
-- [x] G7 released（owner 推送 main；Pages 部署）
+- [ ] G4 verified
+- [ ] G5 accepted by human
+- [ ] G6 — 待 owner 決定是否比照 slice 4／5 豁免
+- [ ] G7 released
+
+## 範圍
+- 刪除 `src/content/docs/learning-science/` 七頁、側欄「學習科學」群組、首頁「學習科學」段落與 frontmatter 描述中的「學習科學入門」。
+- 舊網址一律是一般 404：不留說明頁、不轉址、不連到新站（owner 2026-10-19）。
+- `docs/harness/` 內的學習科學研究、文案、驗證紀錄保留為歷史，不刪。
 
 ## Decisions by Builder
-- Builder: 12 個佔位改為 astro:assets 圖片（webp），圖下一行「圖：」說明；說明文字不再排除於搜尋（佔位才需要排除）。
-- Builder: owner FireShot 截圖中的測試帳號電子郵件已塗掉（owner 2026-10-19）；其餘截圖於本機以 example.com 示範帳號拍攝。
-- Builder: 首頁與卡片編輯兩張以主程式 develop `82e88b5a`（編輯欄位改名「檢索提示」）重拍；正式站需先上該版。
-- Builder: 刪除〈第一次使用〉「『建立帳號』分頁」一句（主程式 2026-10-18 起登入頁無分頁）；文章「提取提示」改「檢索提示」。
-
-## 後續（不在本切片）
-- 技能頁 `skills/mnemo-study-cards/getting-started.mdx` 第 81 行 `## 提取提示` 為匯入格式標題；待主程式加入「檢索提示」匯入別名後一併改。
-- 主程式用字：建立排程後的「開始 Practice」未翻譯；匯入頁副標「三步驟」但有四步。
-- 學習科學文章搬到另一個專案，本站只留操作文件（owner 2026-10-19）。
+- Builder: `tests/learning-science.spec.ts` 改名為 `tests/learning-science-removed.spec.ts`，改為斷言刪除結果：七個舊網址回 404 且網址不變、無 meta refresh；側欄只剩兩群組；首頁無學習科學段落、連結與描述字樣；搜「檢索練習」不出現學習科學頁。
+- Builder: 首頁不加連到作品集新站的入口（屬新的讀者可見內容，owner 未要求）。

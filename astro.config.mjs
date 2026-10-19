@@ -34,18 +34,6 @@ export default defineConfig({
 						{ label: '安裝並第一次產卡', slug: 'skills/mnemo-study-cards/getting-started' },
 					],
 				},
-				{
-					label: '學習科學',
-					items: [
-						{ label: '導讀', slug: 'learning-science' },
-						{ label: '檢索練習', slug: 'learning-science/retrieval-practice' },
-						{ label: '間隔練習', slug: 'learning-science/spaced-practice' },
-						{ label: '生成學習', slug: 'learning-science/generative-learning' },
-						{ label: '自我解釋', slug: 'learning-science/self-explanation' },
-						{ label: '認知負荷理論', slug: 'learning-science/cognitive-load' },
-						{ label: 'KLI 框架', slug: 'learning-science/kli-framework' },
-					],
-				},
 			],
 		}),
 	],
