@@ -5,3 +5,6 @@ test-results/
 playwright-report/
 .env*
 *.pdf
+
+# 本機交付物（受試者資料等），不得公開
+deliverables/
