@@ -3,10 +3,10 @@
 ```harness
 slug: product-docs
 slice: "6"
-stage: RELEASING
-holder: owner
+stage: RELEASED
+holder: none
 tier: LOW
-gates_passed: [G1, G4, G5]
+gates_passed: [G1, G4, G5, G7]
 open_p0p1: 0
 gate: G7
 round: 1
@@ -16,7 +16,7 @@ round: 1
 - tier reason：刪除一個內容分區與其導覽、測試；不涉及認證、資料庫、資料刪除、匯入、付款或同步。
 - branch：`main`（推送由 owner 執行）
 - slice 1–5：RELEASED，封存於 `state-slice1.md` … `state-slice5.md`。
-- what is left：G7（owner 推送 main）。
+- what is left：無。
 - blockers：none
 
 ## Gates
@@ -25,7 +25,7 @@ round: 1
 - [x] G4 verified：Builder 貼出 `npm test` 75 passed（含新增 10 項刪除斷言）、`npm run build` 6 頁、`npm run check:public` 乾淨；全新 opus 子代理覆核 22fb761 重跑三項同綠，無 P0–P2（2026-10-19）
 - [x] G5 accepted by human（owner「沒問題，幫我推」，2026-10-19）
 - [ ] G6 — 豁免（owner「沒問題，幫我推」，比照 slice 4／5）
-- [ ] G7 released
+- [x] G7 released（owner 推送 main；Pages run 39220141987 成功；正式站首頁 200 且無「學習科學」、`learning-science/` 與 `learning-science/kli-framework/` 皆 404，2026-10-19）
 
 ## 範圍
 - 刪除 `src/content/docs/learning-science/` 七頁、側欄「學習科學」群組、首頁「學習科學」段落與 frontmatter 描述中的「學習科學入門」。
